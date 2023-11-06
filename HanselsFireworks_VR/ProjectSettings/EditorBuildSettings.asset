@@ -30,5 +30,9 @@ EditorBuildSettings:
     path: Assets/01.Scenes/FPS/07. BadEnding.unity
     guid: f571d9443dea51243ac30592ac982de7
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4b36b7eaa57f08c478431851c43ff0dd,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: dd99d89fc0cda0e40aff50139da3dd78,
+      type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: d637445bc06add643992e66af52cdb6c,
       type: 2}

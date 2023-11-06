@@ -8,6 +8,9 @@ TagManager:
   - Wall
   - Interactable
   - Floor
+  - Bullet
+  - Right Hand
+  - Left Hand
   layers:
   - Default
   - TransparentFX
@@ -19,7 +22,7 @@ TagManager:
   - Enemy
   - Bullet
   - EnemyBullet
-  - 
+  - Interactable
   - 
   - 
   - 

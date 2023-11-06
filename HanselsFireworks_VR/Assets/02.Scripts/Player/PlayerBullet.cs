@@ -9,7 +9,7 @@ public class PlayerBullet : MonoBehaviour
     public float speed;
     public float time;
     private MemoryPool memoryPool;
-    private ImpactMemoryPool impactMemoryPool;
+    [SerializeField] private ImpactMemoryPool impactMemoryPool;
     [SerializeField] private Mode mode;
     // Start is called before the first frame update
     void Start()

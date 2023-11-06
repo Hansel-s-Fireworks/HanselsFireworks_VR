@@ -106,7 +106,7 @@ public class UIManager : MonoBehaviour
         tScore.text = GameManager.Instance.score.ToString();
         tCombo.text = GameManager.Instance.combo.ToString();
         tLeftCase.text = GameManager.Instance.leftCase.ToString();
-        FeverUI();
+        //FeverUI();
     }
 
     void FeverUI()

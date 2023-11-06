@@ -59,14 +59,14 @@ public class Player : MonoBehaviour
                 case Mode.normal:
                     if (Input.GetMouseButtonDown(0))
                     {
-                        fireGun.StartWeaponAction();
+                        //fireGun.StartWeaponAction();
                     }
                     break;
                 case Mode.Burst:
                     if (Input.GetMouseButtonDown(0))
                     {
                         fireGun.isAutomaticAttack = true;
-                        fireGun.StartWeaponAction();
+                        //fireGun.StartWeaponAction();
                     }
                     else if (Input.GetMouseButtonUp(0))
                     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,7 +15,7 @@ public class ShortEnemy : Enemy
     [SerializeField] private float recognitionRange;            // 인식 및 공격 범위 (이 범위 안에 들어오면 Attack" 상태로 변경)
 
 
-    [SerializeField] private Player target;
+    [SerializeField] private XROrigin target;
 
     
     [Header("Audio Clips")]
@@ -37,7 +38,7 @@ public class ShortEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        target = FindObjectOfType<Player>();        // 플레이어 인식
+        target = FindObjectOfType<XROrigin>();        // 플레이어 인식
         animator = GetComponent<Animator>();
         animator.SetInteger("HP", currentHP);
         nav = GetComponent<NavMeshAgent>();

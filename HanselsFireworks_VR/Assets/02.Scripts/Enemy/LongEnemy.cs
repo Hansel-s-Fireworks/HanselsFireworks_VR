@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -23,7 +24,7 @@ public class LongEnemy : Enemy
     private MemoryPool memoryPool;
     private EnemyState enemyState = EnemyState.None;
 
-    [SerializeField] private Player target;
+    [SerializeField] private XROrigin target;
 
     private DissolveEnemy dissoveEffect;
 
@@ -69,7 +70,7 @@ public class LongEnemy : Enemy
 
     private void Start()
     {
-        target = FindObjectOfType<Player>();        // 플레이어 인식
+        target = FindObjectOfType<XROrigin>();        // 플레이어 인식
         animator = GetComponent<Animator>();
         dissoveEffect = GetComponent<DissolveEnemy>();
         collider = GetComponent<CapsuleCollider>();

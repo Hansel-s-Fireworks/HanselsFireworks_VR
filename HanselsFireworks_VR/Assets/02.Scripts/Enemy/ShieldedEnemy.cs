@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,7 +22,7 @@ public class ShieldedEnemy : Enemy
     [SerializeField] private AudioClip audioClipAttack;
 
     public int shieldScore;
-    [SerializeField] private Player target;                           // 적의 공격 대상(플레이어)
+    [SerializeField] private XROrigin target;                           // 적의 공격 대상(플레이어)
     
     private Vector3 moveDirection = Vector3.zero;
     private EnemyState enemyState = EnemyState.None;    // 현재 적 행동
@@ -38,7 +39,7 @@ public class ShieldedEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        target = FindObjectOfType<Player>();        // 플레이어 인식
+        target = FindObjectOfType<XROrigin>();        // 플레이어 인식
         animator = GetComponent<Animator>();
         animator.SetInteger("HP", currentHP);
         nav = GetComponent<NavMeshAgent>();

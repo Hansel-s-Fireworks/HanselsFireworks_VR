@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class FireGun : MonoBehaviour
 {
@@ -27,6 +29,8 @@ public class FireGun : MonoBehaviour
 
     private void Start()
     {
+        XRGrabInteractable grabbable = GetComponent<XRGrabInteractable>();
+        grabbable.activated.AddListener(StartWeaponAction);
         isAttack = false;
         isAutomaticAttack = false;
         audioSource = GetComponent<AudioSource>();
@@ -44,7 +48,7 @@ public class FireGun : MonoBehaviour
         audioSource.Play();             // 사운드 재생
     }
 
-    public void StartWeaponAction()
+    public void StartWeaponAction(ActivateEventArgs arg)
     {
         // 실제 공격은 OnAttack메소드에 있으며 
         // OnAttackLoop는 OnAttack을 매프레임 실행
@@ -59,8 +63,7 @@ public class FireGun : MonoBehaviour
         else
         {
             OnAttack();
-        }      
-
+        }
     }
 
     public void StopWeaponAction()
