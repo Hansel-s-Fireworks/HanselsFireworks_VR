@@ -12,9 +12,13 @@ public class EnemyWeapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        // if (other.CompareTag("Player"))
+        // {
+        //     other.GetComponent<Player>().TakeScore();
+        // }
+        if (other.CompareTag("Marshmallow"))
         {
-            other.GetComponent<Player>().TakeScore();
+            other.GetComponent<Marshmallow>().Descend();
         }
     }
 }

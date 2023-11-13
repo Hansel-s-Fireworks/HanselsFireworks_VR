@@ -15,8 +15,8 @@ public class ShortEnemy : Enemy
     [SerializeField] private float recognitionRange;            // 인식 및 공격 범위 (이 범위 안에 들어오면 Attack" 상태로 변경)
 
 
-    [SerializeField] private XROrigin target;
-
+    [SerializeField] private Marshmallow target;
+    // [SerializeField] private Marshmallow marshmallow;
     
     [Header("Audio Clips")]
     [SerializeField] private AudioClip audioClipWalk;
@@ -38,7 +38,9 @@ public class ShortEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        target = FindObjectOfType<XROrigin>();        // 플레이어 인식
+        // target = FindObjectOfType<XROrigin>();        // 플레이어 인식
+        target = FindObjectOfType<Marshmallow>();
+
         animator = GetComponent<Animator>();
         animator.SetInteger("HP", currentHP);
         nav = GetComponent<NavMeshAgent>();

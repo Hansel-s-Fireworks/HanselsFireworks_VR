@@ -11,6 +11,7 @@ TagManager:
   - Bullet
   - Right Hand
   - Left Hand
+  - Marshmallow
   layers:
   - Default
   - TransparentFX

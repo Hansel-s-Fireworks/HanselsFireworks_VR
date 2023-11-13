@@ -23,6 +23,10 @@ public class Marshmallow : MonoBehaviour
     void Update()
     {
         // realTimer += Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            timer -= 0.01f;
+        }
     }
 
     private void FixedUpdate()
@@ -30,13 +34,20 @@ public class Marshmallow : MonoBehaviour
         realTimer += Time.fixedDeltaTime;
     }
 
+    public void Descend()
+    {
+        // PlaySound(audioClipHurt);
+        Debug.Log("Marshmallow Damaged");
+        if (timer >= 0) timer -= 0.01f;
+        else timer = 0;
+    }
+    
 
     IEnumerator Ascend()
     {
         timer = 0;
         float fakeLoadingDuration = 1f / loadTime;
         // 높이는??
-        float ratioAscend = 0;
         while (true)
         {
             timer += Time.deltaTime * fakeLoadingDuration;
@@ -46,7 +57,7 @@ public class Marshmallow : MonoBehaviour
             transform.position = new Vector3(0, value, 0);
             transform.localScale = new Vector3(2, value, 2);
 
-            if (value >= height)
+            if (timer >= 1)
             {
 
                 yield break;
