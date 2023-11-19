@@ -17,8 +17,6 @@ public enum Mode
     Burst
 }
 
-// 한글 테스트
-// 여기도되나용?
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance = null;

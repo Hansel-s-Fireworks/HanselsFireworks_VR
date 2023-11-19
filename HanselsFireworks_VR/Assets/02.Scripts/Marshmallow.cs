@@ -1,68 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Marshmallow : MonoBehaviour
+using Unity.XR.CoreUtils;
+using UnityEditor;
+using UnityEngine.InputSystem;
+namespace VR
 {
-    public float loadTime;
-    public float height;
-
-    [SerializeField] private float timer;
-    [SerializeField] private float realTimer;
-    // [SerializeField] private float timer;
-    // [SerializeField] private float timer;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Marshmallow : MonoBehaviour
     {
-        realTimer = 0;
-        StartCoroutine(Ascend());
-    }
+        public float loadTime;
+        [SerializeField] private XROrigin player;
+        [SerializeField] private float speed;
+        [SerializeField] private float timer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        // realTimer += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Start is called before the first frame update
+        void Start()
         {
-            timer -= 0.01f;
+            speed = 1;
+            player = FindObjectOfType<XROrigin>();
+            StartStageOne();
         }
-    }
 
-    private void FixedUpdate()
-    {
-        realTimer += Time.fixedDeltaTime;
-    }
-
-    public void Descend()
-    {
-        // PlaySound(audioClipHurt);
-        Debug.Log("Marshmallow Damaged");
-        if (timer >= 0) timer -= 0.01f;
-        else timer = 0;
-    }
-    
-
-    IEnumerator Ascend()
-    {
-        timer = 0;
-        float fakeLoadingDuration = 1f / loadTime;
-        // 높이는??
-        while (true)
+        private void Update()
         {
-            timer += Time.deltaTime * fakeLoadingDuration;
-            // transform.position += new Vector3(0, Time.deltaTime * fakeLoadingDuration, 0);
-            // transform.localScale += new Vector3(0, Time.deltaTime * fakeLoadingDuration, 0);
-            float value = Mathf.Lerp(0f, height, timer);
-            transform.position = new Vector3(0, value, 0);
-            transform.localScale = new Vector3(2, value, 2);
-
-            if (timer >= 1)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-
-                yield break;
+                StartCoroutine(Ascend(10, 20));
             }
-            yield return null;
+        }
+
+        public void StartStageOne()
+        {
+            StartCoroutine(Ascend(0, 10));
+        }
+
+        public void Descend()
+        {
+            // PlaySound(audioClipHurt);
+            Debug.Log("Marshmallow Damaged");
+            speed -= 0.02f;
+        }
+
+
+        IEnumerator Ascend(int startHeight, int topHeight)
+        {
+            timer = 0;
+            float fakeLoadingDuration = 1f / loadTime;
+
+            while (true)
+            {
+                timer += Time.deltaTime * speed * fakeLoadingDuration;
+                float value = Mathf.Lerp(startHeight, topHeight, timer);
+                player.transform.position = new Vector3(0, value * 2, 0);
+                transform.position = new Vector3(0, value, 0);
+                transform.localScale = new Vector3(2, value, 2);
+
+                if (timer >= 1)
+                {
+                    Debug.Log("Next Floor");
+                    // 수류탄 소환
+                    yield break;
+                }
+                yield return null;
+            }
         }
     }
 }

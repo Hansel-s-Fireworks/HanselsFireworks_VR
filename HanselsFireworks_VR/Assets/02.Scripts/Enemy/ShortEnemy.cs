@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
-
-public class ShortEnemy : Enemy
+using VR;
+    public class ShortEnemy : Enemy
 {
     [Header("Move Speed")]
     public float pursuitSpeed;

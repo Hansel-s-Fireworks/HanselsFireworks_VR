@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
-
+using VR;
 public class ShieldedEnemy : Enemy
 {
     [Header("Move Speed")]
