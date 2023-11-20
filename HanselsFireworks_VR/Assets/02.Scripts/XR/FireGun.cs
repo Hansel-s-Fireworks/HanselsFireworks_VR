@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction;
+using UnityEngine.XR.Interaction.Toolkit;
 
-namespace Tutorial
+namespace VR
 {
-
     public class FireGun : MonoBehaviour
     {
         [Header("Weapon Setting")]
@@ -15,25 +16,33 @@ namespace Tutorial
 
         [Header("Audio Clips")]
         [SerializeField] private AudioClip audioClipFire;                // 공격 사운드
-                                                                         // [SerializeField] private AudioClip burstBGM;
+         // [SerializeField] private AudioClip burstBGM;
 
         GunAnimatorController animator;
         AudioSource audioSource;                // 사운드 재생 컴포넌트
+        private MemoryPool bulletMemoryPool;
         float lastAttackTime = 0;
         bool isAttack;                  // 공격 여부 체크용
 
         private void Awake()
         {
-            
+            bulletMemoryPool = new MemoryPool(bullet);
         }
 
         private void Start()
         {
+            XRGrabInteractable grabbable = GetComponent<XRGrabInteractable>();
+            grabbable.activated.AddListener(StartWeaponAction);
             isAttack = false;
             isAutomaticAttack = false;
             audioSource = GetComponent<AudioSource>();
             animator = GetComponent<GunAnimatorController>();
         }
+        private void OnApplicationQuit()
+        {
+            bulletMemoryPool.DestroyObjects();
+        }
+
         private void PlaySound(AudioClip clip)
         {
             audioSource.Stop();             // 기존에 재생중인 사운드를 정지하고 
@@ -41,22 +50,26 @@ namespace Tutorial
             audioSource.Play();             // 사운드 재생
         }
 
-        public void StartWeaponAction()
+        public void StartWeaponAction(ActivateEventArgs arg)
         {
-            // 실제 공격은 OnAttack메소드에 있으며 
-            // OnAttackLoop는 OnAttack을 매프레임 실행
-            // 마우스 좌클릭(공격 시전)
-            // 연속 공격
             if (isAutomaticAttack == true)
             {
-                isAttack = true;
-                StartCoroutine(OnAttackLoop());
-            }
-            // 단발 공격
+                StartCoroutine(OnAttackLoop());     // 연속 공격
+            }            
             else
             {
-                OnAttack();
+                OnAttack();                 // 단발 공격
             }
+        }
+
+        public void BurstMode()
+        {
+            GameManager.Instance.leftCase += 100;
+            isAutomaticAttack = true;
+        }
+
+        public void AttachLazor()
+        {
 
         }
 
@@ -74,8 +87,6 @@ namespace Tutorial
                 OnAttack();
                 if (GameManager.Instance.leftCase <= 0)
                 {
-                    GameManager.Instance.PlayMainBGM();
-                    GameManager.Instance.mode = Mode.normal;
                     isAutomaticAttack = false;
                     break;
                 }
@@ -99,7 +110,12 @@ namespace Tutorial
                 // 총구 이펙트 재생
                 // StartCoroutine("OnMuzzleFlashEffect");
                 Debug.Log("Shoot Gun Anim");
-                GameObject clone = Instantiate(bullet,bulletSpawnPoint);
+                GameObject clone = bulletMemoryPool.ActivatePoolItem();
+
+                clone.transform.position = bulletSpawnPoint.position;
+                clone.transform.rotation = bulletSpawnPoint.rotation;
+                clone.GetComponent<PlayerBullet>().Setup(bulletMemoryPool);
+                // if (GameManager.Instance.mode == Mode.Burst) GameManager.Instance.leftCase -= 1; // 연사일때만 총알개수 줄이기
 
                 // 공격 사운드 재생
                 PlaySound(audioClipFire);
@@ -108,3 +124,4 @@ namespace Tutorial
     }
 
 }
+

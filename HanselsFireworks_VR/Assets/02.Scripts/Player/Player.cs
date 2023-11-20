@@ -26,8 +26,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject feverModeEffect;
     [SerializeField] private Animator gunAnimator;
-    public FireGun fireGun;
-
+    //public FireGun fireGun;
+     
 
     // Start is called before the first frame update
     void Start()
@@ -65,12 +65,12 @@ public class Player : MonoBehaviour
                 case Mode.Burst:
                     if (Input.GetMouseButtonDown(0))
                     {
-                        fireGun.isAutomaticAttack = true;
+                        //fireGun.isAutomaticAttack = true;
                         //fireGun.StartWeaponAction();
                     }
                     else if (Input.GetMouseButtonUp(0))
                     {
-                        fireGun.StopWeaponAction();
+                        //fireGun.StopWeaponAction();
                     }
                 break;
                 default:

@@ -12,6 +12,8 @@ TagManager:
   - Right Hand
   - Left Hand
   - Marshmallow
+  - Bomb
+  - Item
   layers:
   - Default
   - TransparentFX

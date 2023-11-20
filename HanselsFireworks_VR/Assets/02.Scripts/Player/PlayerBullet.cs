@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
-
+using VR;
 public class PlayerBullet : MonoBehaviour
 {
     public float speed;
@@ -88,6 +88,9 @@ public class PlayerBullet : MonoBehaviour
             impactMemoryPool.OnSpawnImpact(other, transform.position, transform.rotation);
             memoryPool.DeactivatePoolItem(gameObject);
         }
-        
+        else if (other.CompareTag("Item"))
+        {
+            other.GetComponent<Item>().GetItem();
+        }
     }
 }

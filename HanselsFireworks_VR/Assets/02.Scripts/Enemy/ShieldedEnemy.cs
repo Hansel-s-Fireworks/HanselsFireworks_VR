@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
@@ -22,8 +23,8 @@ public class ShieldedEnemy : Enemy
     [SerializeField] private AudioClip audioClipAttack;
 
     public int shieldScore;
-    [SerializeField] private XROrigin target;                           // 적의 공격 대상(플레이어)
-    
+    [SerializeField] private Marshmallow target;                           // 적의 공격 대상(플레이어)
+
     private Vector3 moveDirection = Vector3.zero;
     private EnemyState enemyState = EnemyState.None;    // 현재 적 행동
     public GameObject shield;
@@ -36,10 +37,12 @@ public class ShieldedEnemy : Enemy
     private NavMeshAgent navMeshAgent;
     private DissolveEnemy dissoveEffect;
 
+    public float distance;
+
     // Start is called before the first frame update
     void Start()
     {
-        target = FindObjectOfType<XROrigin>();        // 플레이어 인식
+        target = FindObjectOfType<Marshmallow>();        // 플레이어 인식
         animator = GetComponent<Animator>();
         animator.SetInteger("HP", currentHP);
         nav = GetComponent<NavMeshAgent>();
@@ -86,12 +89,7 @@ public class ShieldedEnemy : Enemy
         else 
         {
             PlaySound(audioClipDie);
-
-            GameManager.Instance.mode = Mode.Burst;
-            GameManager.Instance.leftCase += 100;            
-            GameManager.Instance.PlayBurstBGM();
-            
-            
+                        
             dissoveEffect.StartDissolve();      // 몬스터 효과 재생
             // 모든 코루틴 스탑 => 중간에 공격모션시 소리나는 에러때문에 
             StopAllCoroutines();
@@ -127,8 +125,9 @@ public class ShieldedEnemy : Enemy
 
     private void SetStatebyDistance()
     {
-        float distance = Vector3.Distance(target.transform.position, transform.position);
-        if(distance < attackRange)
+        distance = Vector3.Distance(new Vector3(target.transform.position.x, 0, target.transform.position.z),
+            transform.position);
+        if (distance < attackRange)
         {
             animator.SetBool("Pursuit", false);
             ChangeState(EnemyState.Attack);
@@ -189,19 +188,28 @@ public class ShieldedEnemy : Enemy
     }
 
     private IEnumerator Attack()
-    {        
+    {
         while (true)
-        {            
+        {
             nav.enabled = false;
-            candyCane.enabled = true;
             FreezeVelocity();
-            LookRotationToTarget();         // 타겟 방향을 계속 주시
+            LookRotationToTarget();                 // 타겟 방향을 계속 주시
             animator.SetBool("Attack", true);
+
             PlaySound(audioClipAttack);
             SetStatebyDistance();
-            yield return new WaitForSeconds(0.75f);
+            // ----------------------------------
+            // DeActivateCane();
+            // yield return new WaitForSeconds(0.2f / 2f);
+            ActivateCane();
+            yield return new WaitForSeconds(0.75f / 2f);
+            DeActivateCane();
+            yield return new WaitForSeconds(0.75f / 2f);
         }
     }
+
+    private void ActivateCane() => candyCane.enabled = true;
+    private void DeActivateCane() => candyCane.enabled = false;
 
     private void LookRotationToTarget()
     {

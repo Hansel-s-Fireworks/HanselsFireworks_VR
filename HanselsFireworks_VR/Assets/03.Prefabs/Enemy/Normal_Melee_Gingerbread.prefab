@@ -6580,7 +6580,6 @@ GameObject:
   - component: {fileID: 6009529452846109001}
   - component: {fileID: 8575064077514928201}
   - component: {fileID: 7521202174756880475}
-  - component: {fileID: 91617859914208029}
   - component: {fileID: 6818478480787512717}
   m_Layer: 0
   m_Name: Normal_Melee_Gingerbread
@@ -6668,6 +6667,7 @@ MonoBehaviour:
   audioClipAttack: {fileID: 8300000, guid: 6e80bf2fc38ceba4e8853bfd59fb5fca, type: 3}
   animator: {fileID: 6121125441432794729}
   candyCane: {fileID: 5881364618663347801}
+  distance: 0
 --- !u!195 &6009529452846109001
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6740,21 +6740,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 2
---- !u!114 &91617859914208029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8811367503579928193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a35fd54ac079a8b47aa6549789157333, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iconPrefab: {fileID: 4922837886278913688, guid: 64491c38b1af452409456a53259a0f43,
-    type: 3}
-  clampOnRadar: 1
 --- !u!82 &6818478480787512717
 AudioSource:
   m_ObjectHideFlags: 0

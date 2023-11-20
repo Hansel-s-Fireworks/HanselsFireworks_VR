@@ -9,16 +9,18 @@ namespace VR
     public class Marshmallow : MonoBehaviour
     {
         public float loadTime;
+        public float growSpeed;
+        public float currentHeight;
+        
         [SerializeField] private XROrigin player;
-        [SerializeField] private float speed;
         [SerializeField] private float timer;
 
         // Start is called before the first frame update
         void Start()
         {
-            speed = 1;
+            growSpeed = 1;
             player = FindObjectOfType<XROrigin>();
-            StartStageOne();
+            
         }
 
         private void Update()
@@ -29,18 +31,34 @@ namespace VR
             }
         }
 
-        public void StartStageOne()
+        public void StartStage()
         {
-            StartCoroutine(Ascend(0, 10));
+            switch (GameManager.Instance.currentStage)
+            {
+                case 1:
+                    StartCoroutine(Ascend(0, 10));
+                    break;
+                case 2:
+                    StartCoroutine(Ascend(10, 20));
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void Descend()
         {
             // PlaySound(audioClipHurt);
             Debug.Log("Marshmallow Damaged");
-            speed -= 0.02f;
+            float nextSpeed = growSpeed - 0.2f;
+            if (nextSpeed > 0) { growSpeed -= 0.2f; Invoke("RecoverSpeed", 2f); }
+            else { growSpeed = 0; }
+            
         }
 
+        private void RecoverSpeed() => growSpeed += 0.2f;
 
         IEnumerator Ascend(int startHeight, int topHeight)
         {
@@ -49,7 +67,8 @@ namespace VR
 
             while (true)
             {
-                timer += Time.deltaTime * speed * fakeLoadingDuration;
+                // if(speed <= 1) { speed += Time.deltaTime; }
+                timer += Time.deltaTime * growSpeed * fakeLoadingDuration;
                 float value = Mathf.Lerp(startHeight, topHeight, timer);
                 player.transform.position = new Vector3(0, value * 2, 0);
                 transform.position = new Vector3(0, value, 0);

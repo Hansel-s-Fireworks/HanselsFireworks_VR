@@ -148,7 +148,7 @@ public class UIManager : MonoBehaviour
 
         // 컴포넌트 비활성화 
         // player.audioSource.Stop();
-        player.fireGun.gameObject.SetActive(false);     // 총 애니메이션을 비활성화해야하는데 그냥 총 비활성화...
+        // player.fireGun.gameObject.SetActive(false);     // 총 애니메이션을 비활성화해야하는데 그냥 총 비활성화...
         SetComponentEnabled<Player>(false);
         SetComponentEnabled<PlayerMovement>(false);
         SetComponentEnabled<SpecialSkill>(false);

@@ -35,6 +35,8 @@ using VR;
     private NavMeshAgent navMeshAgent;
     private DissolveEnemy dissoveEffect;
 
+    public float distance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -107,7 +109,9 @@ using VR;
 
     private void SetStatebyDistance()
     {
-        float distance = Vector3.Distance(target.transform.position, transform.position);
+        
+        distance = Vector3.Distance(new Vector3(target.transform.position.x,0, target.transform.position.z), 
+            transform.position);
         if(distance < attackRange)
         {
             animator.SetBool("Pursuit", false);
@@ -168,21 +172,50 @@ using VR;
             yield return null;
         }
     }
-
+    public AnimationClip animationClip; // Inspector에서 애니메이션 클립을 할당하세요.
     private IEnumerator Attack()
+    {
+        float animationLength = animationClip.length;
+        Debug.Log(animationLength);
+        while (true)
+        {
+            nav.enabled = false;
+            FreezeVelocity();
+            LookRotationToTarget();                 // 타겟 방향을 계속 주시
+            animator.SetBool("Attack", true);
+            
+            PlaySound(audioClipAttack);
+            SetStatebyDistance();
+            // ----------------------------------
+            // DeActivateCane();
+            // yield return new WaitForSeconds(0.2f / 2f);
+            ActivateCane();
+            yield return new WaitForSeconds(animationLength / 4f);
+            DeActivateCane();
+            yield return new WaitForSeconds(animationLength / 4f);
+        }
+    }
+
+    /*private IEnumerator Attack()
     {
         while (true)
         {
             nav.enabled = false;
-            candyCane.enabled = true;
+            ActivateCane();
+
             FreezeVelocity();
             LookRotationToTarget();                 // 타겟 방향을 계속 주시
             animator.SetBool("Attack", true);
             PlaySound(audioClipAttack);
             SetStatebyDistance();
+
             yield return new WaitForSeconds(0.75f);
         }
-    }
+    }*/
+
+    private void ActivateCane() => candyCane.enabled = true;
+    private void DeActivateCane() => candyCane.enabled = false;
+
 
     private void LookRotationToTarget()
     {
