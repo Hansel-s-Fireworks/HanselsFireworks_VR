@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Haptics;
 using UnityEngine.XR.Interaction;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.OpenXR.Input;
 
 namespace VR
 {
+    public enum Mode
+    {
+        NULL,
+        normal,
+        burst
+    }
+
     public class FireGun : MonoBehaviour
     {
         [Header("Weapon Setting")]
         public GameObject bullet;
         public float attackRate = 0.1f;            // 공격 속도
-        public bool isAutomaticAttack;      // 연속 공격 여부
+        // public bool ;      // 연속 공격 여부
         [SerializeField] private Transform bulletSpawnPoint;             // 총알 생성 위치
+        [SerializeField] Mode mode;
+
+        public GameObject laser;
 
         [Header("Audio Clips")]
         [SerializeField] private AudioClip audioClipFire;                // 공격 사운드
@@ -22,7 +35,13 @@ namespace VR
         AudioSource audioSource;                // 사운드 재생 컴포넌트
         private MemoryPool bulletMemoryPool;
         float lastAttackTime = 0;
-        bool isAttack;                  // 공격 여부 체크용
+        bool isGrapped;
+        bool isPressed;
+
+        [Header("Key")]
+        public InputActionProperty btnTrigger;
+
+        public HapticInteractable haptic;
 
         private void Awake()
         {
@@ -32,9 +51,12 @@ namespace VR
         private void Start()
         {
             XRGrabInteractable grabbable = GetComponent<XRGrabInteractable>();
-            grabbable.activated.AddListener(StartWeaponAction);
-            isAttack = false;
-            isAutomaticAttack = false;
+            grabbable.selectEntered.AddListener(GrapGun);
+            grabbable.selectExited.AddListener(ReleaseGun);
+            haptic = GetComponent<HapticInteractable>();
+            mode = Mode.normal;
+            laser.SetActive(false);
+            isPressed = false;
             audioSource = GetComponent<AudioSource>();
             animator = GetComponent<GunAnimatorController>();
         }
@@ -50,50 +72,84 @@ namespace VR
             audioSource.Play();             // 사운드 재생
         }
 
-        public void StartWeaponAction(ActivateEventArgs arg)
+
+        public void GrapGun(SelectEnterEventArgs arg)
         {
-            if (isAutomaticAttack == true)
+            isGrapped = true;
+            Debug.Log("잡음");            
+        }
+
+        public void ReleaseGun(SelectExitEventArgs arg)
+        {
+            isGrapped = false;
+            StopCoroutine(OnAttackLoop());
+            Debug.Log("놓음");
+        }
+
+        private void Update()
+        {
+            if (isGrapped)
             {
-                StartCoroutine(OnAttackLoop());     // 연속 공격
-            }            
-            else
+                UpdateMode();
+            }
+
+        }
+
+        public void UpdateMode()
+        {
+            switch (mode)
             {
-                OnAttack();                 // 단발 공격
+                case Mode.NULL:
+                    break;
+                case Mode.normal:
+                    if (btnTrigger.action.WasPressedThisFrame())
+                    {
+                        OnAttack();
+                    }
+                    break;
+                case Mode.burst:                    
+                    if (btnTrigger.action.WasPressedThisFrame())
+                    {
+                        isPressed = true;                        
+                        StartCoroutine(OnAttackLoop());
+                        Debug.Log("트리거 당김");
+                    }
+                    else if (btnTrigger.action.WasReleasedThisFrame())
+                    {
+                        Debug.Log("트리거 놓음");
+                        isPressed = false;
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
+
         public void BurstMode()
         {
+            mode = Mode.burst;            
             GameManager.Instance.leftCase += 100;
-            isAutomaticAttack = true;
         }
 
-        public void AttachLazor()
+        public void AttachLaser()
         {
-
-        }
-
-        public void StopWeaponAction()
-        {
-            // 마우스 왼쪽 클릭 (공격 종료)
-            isAttack = false;
-            StopCoroutine(OnAttackLoop());
+            laser.SetActive(true);
         }
 
         private IEnumerator OnAttackLoop()
         {
-            while (GameManager.Instance.leftCase > 0)
+            while (isPressed)
             {
                 OnAttack();
                 if (GameManager.Instance.leftCase <= 0)
                 {
-                    isAutomaticAttack = false;
+                    mode = Mode.normal;
                     break;
                 }
                 yield return null;
             }
         }
-
 
         public void OnAttack()
         {
@@ -102,20 +158,19 @@ namespace VR
                 // if (animator.MoveSpeed > 0.5f) return;
                 // 공격 주기가 되어야 공격할 수 있도록 하기 위해 현재 시간 저장
                 lastAttackTime = Time.time;
-
                 // 무기 애니메이션 재생
                 // 같은 애니메이션을 반복할 때, 애니메이션을 끊고 처음부터 다시 재생
-                animator.Play("Fire", -1, 0);
-
+                // animator.Play("Fire", -1, 0);
+                haptic.SendHaptics();
                 // 총구 이펙트 재생
                 // StartCoroutine("OnMuzzleFlashEffect");
-                Debug.Log("Shoot Gun Anim");
+                // Debug.Log("Shoot Gun Anim");
                 GameObject clone = bulletMemoryPool.ActivatePoolItem();
 
                 clone.transform.position = bulletSpawnPoint.position;
                 clone.transform.rotation = bulletSpawnPoint.rotation;
                 clone.GetComponent<PlayerBullet>().Setup(bulletMemoryPool);
-                // if (GameManager.Instance.mode == Mode.Burst) GameManager.Instance.leftCase -= 1; // 연사일때만 총알개수 줄이기
+                if (mode == Mode.burst) GameManager.Instance.leftCase -= 1; // 연사일때만 총알개수 줄이기
 
                 // 공격 사운드 재생
                 PlaySound(audioClipFire);

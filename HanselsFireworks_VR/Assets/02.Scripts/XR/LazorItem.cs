@@ -17,8 +17,9 @@ namespace VR
         {
             foreach (var item in fireGun)
             {
-                item.AttachLazor();
+                item.AttachLaser();
             }
+            Destroy(gameObject);
         }
     }
 }

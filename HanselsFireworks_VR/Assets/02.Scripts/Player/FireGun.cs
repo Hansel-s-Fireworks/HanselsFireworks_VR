@@ -69,7 +69,7 @@ using UnityEngine.XR.Interaction.Toolkit;
         public void BurstMode()
         {
             GameManager.Instance.leftCase += 100;
-            StartCoroutine(OnAttackLoop());
+            // StartCoroutine(OnAttackLoop());
         }
 
         public void StopWeaponAction()
