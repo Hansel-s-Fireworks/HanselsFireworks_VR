@@ -65,7 +65,6 @@ namespace Boss
 
         [SerializeField] private Player player;
         [SerializeField] private CharacterController character;
-        [SerializeField] private Polyperfect.Universal.PlayerMovement playerMovement;
 
         private AudioSource audioSource;
         private bool doOnce;
@@ -118,7 +117,6 @@ namespace Boss
         public void GetPhaseTwoPlayer()
         {
             character = FindObjectOfType<CharacterController>();
-            playerMovement = FindObjectOfType<Polyperfect.Universal.PlayerMovement>();
         }
 
         void SetComponentEnabled<T>(bool isEnabled) where T : MonoBehaviour
@@ -137,8 +135,7 @@ namespace Boss
         public void DeActivatePlayer()
         {
             // 필요하면 다른 것도 비활성화하자. 
-            character.enabled = false;
-            playerMovement.enabled = false;            
+            character.enabled = false;       
         }
 
         public void PlayEnd()
