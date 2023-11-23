@@ -6598,7 +6598,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1779022890888287729}
@@ -6668,6 +6668,8 @@ MonoBehaviour:
   animator: {fileID: 6121125441432794729}
   candyCane: {fileID: 5881364618663347801}
   distance: 0
+  animationClip: {fileID: -203655887218126122, guid: 3477a65b5ec6fc94ba86594f8e629ce4,
+    type: 3}
 --- !u!195 &6009529452846109001
 NavMeshAgent:
   m_ObjectHideFlags: 0

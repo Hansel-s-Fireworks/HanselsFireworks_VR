@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Impact : MonoBehaviour
 {
-    private ParticleSystem particle;
+    [SerializeField] private ParticleSystem particle;
+    [SerializeField] private Animator animator;  // Animator ì¶”ê°€
     private MemoryPool memoryPool;
 
     private void Awake()
     {
-        particle = GetComponent<ParticleSystem>();
+        // particle = GetComponent<ParticleSystem>();
+        animator = GetComponent<Animator>();  // Animator ì´ˆê¸°í™”
     }
 
     public void Setup(MemoryPool pool)
@@ -17,10 +19,9 @@ public class Impact : MonoBehaviour
 
     private void Update()
     {
-        // ÆÄÆ¼Å¬ÀÌ Àç»ıÁßÀÌ ¾Æ´Ï¸é »èÁ¦
-        if (particle.isPlaying == false)
+        // ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒì¤‘ì´ ì•„ë‹ˆë©´ ì‚­ì œ
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("ScorePopup")) // ì• ë‹ˆë©”ì´ì…˜ í´ë¦½ ì´ë¦„ìœ¼ë¡œ ë³€ê²½
         {
-            transform.SetParent(null);          // ÄíÅ°¿¡¼­ ¶³¾îÁö±â
             memoryPool.DeactivatePoolItem(gameObject);
         }
     }

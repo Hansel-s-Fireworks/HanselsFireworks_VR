@@ -17,15 +17,14 @@ public class ImpactMemoryPool : MonoBehaviour
         impactMemoryPool.DestroyObjects();
     }
 
-    // ¾ê¸¦ ÃÑ¾Ë¿¡¼­ È£ÃâÇØ¾ß ÇÑ´Ù. 
+    // ì–˜ë¥¼ ì´ì•Œì—ì„œ í˜¸ì¶œí•´ì•¼ í•œë‹¤. 
     public void OnSpawnImpact(Collider other,Vector3 position, Quaternion rotation)
     {
-        // ¸ÂÈù À§Ä¡·Î ÀÌµ¿
+        // ë§íŒ ìœ„ì¹˜ë¡œ ì´ë™
         GameObject item = impactMemoryPool.ActivatePoolItem();
 
         item.transform.position = position;
-        // item.transform.rotation = rotation;       
-        item.transform.SetParent(other.transform);      // ÄíÅ°¿¡ ºÙ¾î ´Ù´Ï±â
+        item.transform.rotation = rotation;
 
         item.GetComponent<Impact>().Setup(impactMemoryPool);
     }

@@ -5,9 +5,9 @@ namespace VR
 {
     public class BurstItem : Item
     {
-        private FireGun[] fireGun;
+        [SerializeField] private FireGun[] fireGun;
 
-        // Start is called before the first frame update
+        // Start is called before the first frame update 
         void Start()
         {
             fireGun = FindObjectsOfType<FireGun>();
@@ -19,6 +19,7 @@ namespace VR
             {
                 item.BurstMode();
             }
+            Destroy(gameObject);
         }
     }
 }

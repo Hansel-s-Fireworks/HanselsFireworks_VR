@@ -67,7 +67,7 @@ namespace VR
         }
         public void ControlStoppedTime()
         {
-            Debug.Log("ControlStoppedTime");
+            // Debug.Log("ControlStoppedTime");
             if (marshmallow.growSpeed <= 0.2f)
             {
                 elapseTime += Time.deltaTime;
