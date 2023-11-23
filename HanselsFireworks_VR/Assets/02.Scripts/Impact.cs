@@ -17,10 +17,10 @@ public class Impact : MonoBehaviour
 
     private void Update()
     {
-        // ÆÄÆ¼Å¬ÀÌ Àç»ıÁßÀÌ ¾Æ´Ï¸é »èÁ¦
+        // íŒŒí‹°í´ì´ ì¬ìƒì¤‘ì´ ì•„ë‹ˆë©´ ì‚­ì œ
         if (particle.isPlaying == false)
         {
-            transform.SetParent(null);          // ÄíÅ°¿¡¼­ ¶³¾îÁö±â
+            // transform.SetParent(null);          // ì¿ í‚¤ì—ì„œ ë–¨ì–´ì§€ê¸°
             memoryPool.DeactivatePoolItem(gameObject);
         }
     }

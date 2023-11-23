@@ -22,8 +22,14 @@ namespace VR
         public GameObject bullet;
         public float attackRate = 0.1f;            // 공격 속도
         // public bool ;      // 연속 공격 여부
+
+        [Header("Spawn Points")]
         [SerializeField] private Transform bulletSpawnPoint;             // 총알 생성 위치
         [SerializeField] Mode mode;
+
+        [Header("Fire Effects")]
+        [SerializeField]
+        private GameObject muzzleFlashEffect;           // 총구 이펙트
 
         public GameObject laser;
 
@@ -41,7 +47,7 @@ namespace VR
         [Header("Key")]
         public InputActionProperty btnTrigger;
 
-        public HapticInteractable haptic;
+        private HapticInteractable haptic;
 
         private void Awake()
         {
@@ -58,7 +64,7 @@ namespace VR
             laser.SetActive(false);
             isPressed = false;
             audioSource = GetComponent<AudioSource>();
-            animator = GetComponent<GunAnimatorController>();
+            // animator = GetComponent<GunAnimatorController>();
         }
         private void OnApplicationQuit()
         {
@@ -150,7 +156,12 @@ namespace VR
                 yield return null;
             }
         }
-
+        private IEnumerator OnMuzzleFlashEffect()
+        {
+            muzzleFlashEffect.SetActive(true);
+            yield return new WaitForSeconds(attackRate * 0.3f);
+            muzzleFlashEffect.SetActive(false);
+        }
         public void OnAttack()
         {
             if (Time.time - lastAttackTime > attackRate)
@@ -163,7 +174,7 @@ namespace VR
                 // animator.Play("Fire", -1, 0);
                 haptic.SendHaptics();
                 // 총구 이펙트 재생
-                // StartCoroutine("OnMuzzleFlashEffect");
+                StartCoroutine(OnMuzzleFlashEffect());
                 // Debug.Log("Shoot Gun Anim");
                 GameObject clone = bulletMemoryPool.ActivatePoolItem();
 
