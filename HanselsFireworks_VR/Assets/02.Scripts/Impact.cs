@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class Impact : MonoBehaviour
 {
-    private ParticleSystem particle;
+    [SerializeField] private ParticleSystem particle;
+    [SerializeField] private Animator animator;  // Animator 추가
     private MemoryPool memoryPool;
 
     private void Awake()
     {
-        particle = GetComponent<ParticleSystem>();
+        // particle = GetComponent<ParticleSystem>();
+        animator = GetComponent<Animator>();  // Animator 초기화
     }
 
     public void Setup(MemoryPool pool)
@@ -17,10 +19,9 @@ public class Impact : MonoBehaviour
 
     private void Update()
     {
-        // 파티클이 재생중이 아니면 삭제
-        if (particle.isPlaying == false)
+        // 애니메이션 재생중이 아니면 삭제
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("ScorePopup")) // 애니메이션 클립 이름으로 변경
         {
-            // transform.SetParent(null);          // 쿠키에서 떨어지기
             memoryPool.DeactivatePoolItem(gameObject);
         }
     }

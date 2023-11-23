@@ -81983,6 +81983,12 @@ PrefabInstance:
       propertyPath: btnTrigger.m_Action.m_Name
       value: Btn Trigger
       objectReference: {fileID: 0}
+    - target: {fileID: 4139179979542116175, guid: 6a8f1c4aaf1ee264299b3f08208b7417,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 8847372282683971104, guid: 826d3f8f42699544bacea904a921639d,
+        type: 3}
     - target: {fileID: 4427565274650888144, guid: 6a8f1c4aaf1ee264299b3f08208b7417,
         type: 3}
       propertyPath: m_LocalPosition.x

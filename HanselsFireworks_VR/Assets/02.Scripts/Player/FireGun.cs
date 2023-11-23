@@ -110,6 +110,7 @@ public class FireGun : MonoBehaviour
             clone.transform.position = bulletSpawnPoint.position;
             clone.transform.rotation = bulletSpawnPoint.rotation;
             clone.GetComponent<PlayerBullet>().Setup(bulletMemoryPool);
+            clone.GetComponent<PlayerBullet>().GetShootPoint(bulletSpawnPoint.position);
             // if (GameManager.Instance.mode == Mode.Burst) GameManager.Instance.leftCase -= 1; // 연사일때만 총알개수 줄이기
 
             // 공격 사운드 재생

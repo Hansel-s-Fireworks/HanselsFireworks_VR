@@ -11,6 +11,12 @@ public class PlayerBullet : MonoBehaviour
     private MemoryPool memoryPool;
     [SerializeField] private ImpactMemoryPool impactMemoryPool;
     [SerializeField] private Mode mode;
+
+    [Header("Debug")]
+    [SerializeField] Vector3 pre;
+    [SerializeField] Vector3 cur;
+    [SerializeField] private Vector3 direction;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,14 +43,28 @@ public class PlayerBullet : MonoBehaviour
         }
     }
 
+    public void GetShootPoint(Vector3 position)
+    {
+        pre = position;        // 총구 위치
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
-        {            
+        {
+            cur = transform.position;        // 맞은 위치
+            direction = (cur - pre).normalized;     // (맞은 위치 - 총구 위치).정규화
             other.GetComponent<Enemy>().TakeDamage(1);
             other.GetComponent<Enemy>().TakeScore();
-            // 플레이어 스크립트에 있는 Impact
-            impactMemoryPool.OnSpawnImpact(other, transform.position, transform.rotation);
+            // 방향 벡터를 바탕으로 평면의 법선 벡터를 얻음
+            Vector3 normal = direction;
+
+            // 평면을 정의하기 위한 Quaternion 생성
+            Quaternion rotation = Quaternion.LookRotation(normal);
+
+            // Quaternion rotation = Quaternion.Euler(direction);
+            // Debug.Log(direction);
+            impactMemoryPool.OnSpawnImpact(other, transform.position, rotation);
             // bool 변수 하나 변화주면 부모 스크립트에서 메모리 풀 실행
             // 이펙트 플레이 끝나고서 메모리 풀 해제
             memoryPool.DeactivatePoolItem(gameObject);
