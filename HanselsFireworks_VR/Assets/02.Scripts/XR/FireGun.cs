@@ -28,14 +28,12 @@ namespace VR
         [SerializeField] Mode mode;
 
         [Header("Fire Effects")]
-        [SerializeField]
-        private GameObject muzzleFlashEffect;           // 총구 이펙트
+        [SerializeField] private GameObject muzzleFlashEffect;           // 총구 이펙트
 
         public GameObject laser;
 
         [Header("Audio Clips")]
         [SerializeField] private AudioClip audioClipFire;                // 공격 사운드
-         // [SerializeField] private AudioClip burstBGM;
 
         GunAnimatorController animator;
         AudioSource audioSource;                // 사운드 재생 컴포넌트
