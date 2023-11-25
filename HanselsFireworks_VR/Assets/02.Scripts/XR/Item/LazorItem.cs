@@ -5,20 +5,17 @@ namespace VR
 {
     public class LazorItem : Item
     {
-        private FireGun[] fireGun;
+        [SerializeField] private PlayerController player;
 
-        // Start is called before the first frame update
+        // Start is called before the first frame update 
         void Start()
         {
-            fireGun = FindObjectsOfType<FireGun>();
+            player = FindObjectOfType<PlayerController>();
         }
 
         public override void GetItem()
         {
-            foreach (var item in fireGun)
-            {
-                item.AttachLaser();
-            }
+            player.GetRifleItem();
             Destroy(gameObject);
         }
     }

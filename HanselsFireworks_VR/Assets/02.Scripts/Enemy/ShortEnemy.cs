@@ -56,7 +56,7 @@ using VR;
 
     public override void TakeScore()
     {
-        GameManager.Instance.score += this.score * GameManager.Instance.combo;        
+        // GameManager.Instance.score += this.score * GameManager.Instance.combo;        
     }   
 
 

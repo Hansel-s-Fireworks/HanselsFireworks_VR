@@ -1,25 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace VR
 {
-    public class BurstItem : Item
+    public class DoublePistolItem : Item
     {
-        [SerializeField] private FireGun[] fireGun;
+        [SerializeField] private PlayerController player;
 
         // Start is called before the first frame update 
         void Start()
         {
-            fireGun = FindObjectsOfType<FireGun>();
+            player = FindObjectOfType<PlayerController>();
         }
 
         public override void GetItem()
         {
-            foreach (var item in fireGun)
-            {
-                item.BurstMode();
-            }
+            player.GetRifleItem();
             Destroy(gameObject);
         }
     }
+
 }

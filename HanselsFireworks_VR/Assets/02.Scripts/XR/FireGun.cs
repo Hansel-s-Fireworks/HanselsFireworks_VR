@@ -132,7 +132,7 @@ namespace VR
 
         public void BurstMode()
         {
-            mode = Mode.burst;            
+            mode = Mode.burst;
             GameManager.Instance.leftCase += 100;
         }
 
@@ -169,8 +169,9 @@ namespace VR
                 lastAttackTime = Time.time;
                 // 무기 애니메이션 재생
                 // 같은 애니메이션을 반복할 때, 애니메이션을 끊고 처음부터 다시 재생
-                // animator.Play("Fire", -1, 0);
+                // animator.Play("Fire", -1, 0);                
                 haptic.SendHaptics();
+                
                 // 총구 이펙트 재생
                 StartCoroutine(OnMuzzleFlashEffect());
                 // Debug.Log("Shoot Gun Anim");
@@ -179,7 +180,8 @@ namespace VR
                 clone.transform.position = bulletSpawnPoint.position;
                 clone.transform.rotation = bulletSpawnPoint.rotation;
                 clone.GetComponent<PlayerBullet>().Setup(bulletMemoryPool);
-                if (mode == Mode.burst) GameManager.Instance.leftCase -= 1; // 연사일때만 총알개수 줄이기
+                clone.GetComponent<PlayerBullet>().GetShootPoint(bulletSpawnPoint.position);
+                // if (mode == Mode.burst) GameManager.Instance.leftCase -= 1; // 연사일때만 총알개수 줄이기
 
                 // 공격 사운드 재생
                 PlaySound(audioClipFire);

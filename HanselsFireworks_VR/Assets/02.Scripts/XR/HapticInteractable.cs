@@ -11,7 +11,8 @@ namespace VR
         public float intensity;
         public float duration;
 
-        public XRBaseController controller;
+        public XRBaseController r_controller;
+        public XRBaseController l_controller;
 
         // Start is called before the first frame update
         void Start()
@@ -35,7 +36,8 @@ namespace VR
 
         public void SendHaptics()
         {
-            controller.SendHapticImpulse(intensity, duration);
+            r_controller.SendHapticImpulse(intensity, duration);
+            // l_controller.SendHapticImpulse(intensity, duration);
         }
 
     }
