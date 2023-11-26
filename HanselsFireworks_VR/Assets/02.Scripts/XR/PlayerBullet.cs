@@ -70,25 +70,22 @@ namespace VR
                 // bool 변수 하나 변화주면 부모 스크립트에서 메모리 풀 실행
                 // 이펙트 플레이 끝나고서 메모리 풀 해제
                 memoryPool.DeactivatePoolItem(gameObject);
-                // Destroy(gameObject);
             }
             else if (other.CompareTag("Wall") || other.CompareTag("Floor"))
             {
-                // impactMemoryPool.OnSpawnImpact(other, transform.position, transform.rotation);
-                // memoryPool.DeactivatePoolItem(gameObject);
+                memoryPool.DeactivatePoolItem(gameObject);
             }
             else if (other.CompareTag("Interactable"))
             {
-                Debug.Log("Interactable");
+                // Debug.Log("Interactable");
                 other.GetComponent<InteractableObject>().TakeDamage(1);
                 other.GetComponent<InteractableObject>().TakeScore();
-
-                // impactMemoryPool.OnSpawnImpact(other, transform.position, transform.rotation);
-                // memoryPool.DeactivatePoolItem(gameObject);
+                memoryPool.DeactivatePoolItem(gameObject);
             }
             else if (other.CompareTag("Item"))
             {
                 other.GetComponent<Item>().GetItem();
+                memoryPool.DeactivatePoolItem(gameObject);
             }
         }
     }

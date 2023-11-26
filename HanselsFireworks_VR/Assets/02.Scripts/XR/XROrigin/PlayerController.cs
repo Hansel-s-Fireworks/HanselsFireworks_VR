@@ -6,17 +6,17 @@ namespace VR
 {
     public class PlayerController : MonoBehaviour
     {
-        public FireGun tuto_pistol;
-        public FireGun r_doublePistol;
-        public FireGun l_doublePistol;
-        public FireGun rifle;
+        public Pistol tuto_pistol;
+        public Pistol r_doublePistol;
+        public Pistol l_doublePistol;
+        public Rifle rifle;
 
-        public FireGun[] currentGun;
+        public Gun[] currentGun;
 
         // Start is called before the first frame update
         void Start()
         {
-            currentGun = new FireGun[2];
+            currentGun = new Gun[2];
         }
 
         // Update is called once per frame

@@ -9,14 +9,8 @@ using UnityEngine.XR.OpenXR.Input;
 
 namespace VR
 {
-    public enum Mode
-    {
-        NULL,
-        normal,
-        burst
-    }
 
-    public class FireGun : MonoBehaviour
+    public class Rifle : Gun
     {
         [Header("Weapon Setting")]
         public GameObject bullet;
@@ -58,7 +52,7 @@ namespace VR
             grabbable.selectEntered.AddListener(GrapGun);
             grabbable.selectExited.AddListener(ReleaseGun);
             haptic = GetComponent<HapticInteractable>();
-            mode = Mode.normal;
+            mode = Mode.burst;
             laser.SetActive(false);
             isPressed = false;
             audioSource = GetComponent<AudioSource>();
@@ -136,7 +130,7 @@ namespace VR
             GameManager.Instance.leftCase += 100;
         }
 
-        public void AttachLaser()
+        public override void AttachLaser()
         {
             laser.SetActive(true);
         }
@@ -146,11 +140,11 @@ namespace VR
             while (isPressed)
             {
                 OnAttack();
-                if (GameManager.Instance.leftCase <= 0)
-                {
-                    mode = Mode.normal;
-                    break;
-                }
+                // if (GameManager.Instance.leftCase <= 0)
+                // {
+                //     mode = Mode.normal;
+                //     break;
+                // }
                 yield return null;
             }
         }
