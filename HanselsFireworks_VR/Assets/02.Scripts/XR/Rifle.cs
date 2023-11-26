@@ -36,10 +36,13 @@ namespace VR
         bool isGrapped;
         bool isPressed;
 
+        [Header("Recoil")]
+        [SerializeField] private Recoil recoil;
+
         [Header("Key")]
         public InputActionProperty btnTrigger;
 
-        private HapticInteractable haptic;
+        [SerializeField] private HapticInteractable haptic;
 
         private void Awake()
         {
@@ -52,10 +55,11 @@ namespace VR
             grabbable.selectEntered.AddListener(GrapGun);
             grabbable.selectExited.AddListener(ReleaseGun);
             haptic = GetComponent<HapticInteractable>();
-            mode = Mode.burst;
+            // mode = Mode.burst;
             laser.SetActive(false);
             isPressed = false;
             audioSource = GetComponent<AudioSource>();
+            // recoil = GetComponent<Recoil>();
             // animator = GetComponent<GunAnimatorController>();
         }
         private void OnApplicationQuit()
@@ -134,6 +138,7 @@ namespace VR
         {
             laser.SetActive(true);
         }
+        
 
         private IEnumerator OnAttackLoop()
         {
@@ -154,6 +159,7 @@ namespace VR
             yield return new WaitForSeconds(attackRate * 0.3f);
             muzzleFlashEffect.SetActive(false);
         }
+        
         public void OnAttack()
         {
             if (Time.time - lastAttackTime > attackRate)
@@ -168,7 +174,7 @@ namespace VR
                 
                 // 총구 이펙트 재생
                 StartCoroutine(OnMuzzleFlashEffect());
-                // Debug.Log("Shoot Gun Anim");
+                recoil.RecoilFire();
                 GameObject clone = bulletMemoryPool.ActivatePoolItem();
 
                 clone.transform.position = bulletSpawnPoint.position;

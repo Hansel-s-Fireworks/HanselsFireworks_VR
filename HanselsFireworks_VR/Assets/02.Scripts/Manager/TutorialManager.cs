@@ -126,7 +126,7 @@ public class TutorialManager : MonoBehaviour
         isGrab = false;
         isPortal = false;
 
-        StartCoroutine(FadeInScene());
+        StartCoroutine(FadeOutImage());
     }
 
     IEnumerator FadeInScene()
