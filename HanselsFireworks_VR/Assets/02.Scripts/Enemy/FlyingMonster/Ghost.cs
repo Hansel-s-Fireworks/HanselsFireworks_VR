@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using VR;
 
-public class Ghost : Enemy
+public interface IMonster
+{
+    void Spawn();
+}
+
+public class Ghost : Enemy, IMonster
 {
     [SerializeField]
     private GameObject bullet;
     private GameObject target;
+    private GameObject[] spawnPoints;
 
     public float rotationSpeed = 5f;
     public Transform bulletSpawner;
@@ -20,9 +26,20 @@ public class Ghost : Enemy
         InvokeRepeating("SpawnBullet", 0f, 2f);
     }
 
+    public void Spawn()
+    {
+        Debug.Log("GhostSpawn!");
+        // 마시멜로우에 붙어있는 스폰 포인트 중 랜덤으로 하나 설정
+        spawnPoints = GameObject.FindGameObjectsWithTag("MarshmallowSP");
+
+        int randomIndex = Random.Range(0, spawnPoints.Length);
+
+        Transform selectedSpawnPoint = spawnPoints[randomIndex].transform;
+        transform.position = selectedSpawnPoint.position;
+    }
+
     void SpawnBullet()
     {
-        Debug.Log("spawnBullet");
         Instantiate(bullet, bulletSpawner);
     }
 

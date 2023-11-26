@@ -53,7 +53,6 @@ using VR;
         navMeshAgent = GetComponent<NavMeshAgent>();
         ChangeState(EnemyState.Idle);
     }
-
     public override void TakeScore()
     {
         GameManager.Instance.score += this.score * GameManager.Instance.combo;        
