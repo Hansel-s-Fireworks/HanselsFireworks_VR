@@ -87,6 +87,11 @@ namespace VR
                 other.GetComponent<Item>().GetItem();
                 memoryPool.DeactivatePoolItem(gameObject);
             }
+            else if(other.CompareTag("target"))
+            {
+                other.GetComponent<Target>().TakeDamage();
+                memoryPool.DeactivatePoolItem(gameObject);
+            }
         }
     }
 }

@@ -39,8 +39,8 @@ namespace VR
         AudioSource audioSource;                // 사운드 재생 컴포넌트
         private MemoryPool bulletMemoryPool;
         float lastAttackTime = 0;
-        bool isGrapped;
-        bool isPressed;
+        public bool isGrapped;
+        public bool isPressed;
 
         [Header("Key")]
         public InputActionProperty btnTrigger;
@@ -146,11 +146,11 @@ namespace VR
             while (isPressed)
             {
                 OnAttack();
-                if (GameManager.Instance.leftCase <= 0)
+                /*if (GameManager.Instance.leftCase <= 0)
                 {
                     mode = Mode.normal;
                     break;
-                }
+                }*/
                 yield return null;
             }
         }
@@ -170,7 +170,7 @@ namespace VR
                 // 무기 애니메이션 재생
                 // 같은 애니메이션을 반복할 때, 애니메이션을 끊고 처음부터 다시 재생
                 // animator.Play("Fire", -1, 0);                
-                haptic.SendHaptics();
+                // haptic.SendHaptics();
                 
                 // 총구 이펙트 재생
                 StartCoroutine(OnMuzzleFlashEffect());

@@ -10,6 +10,8 @@ using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 using tutorial;
+using VR;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -59,13 +61,14 @@ public class TutorialManager : MonoBehaviour
     
     [Header("Tutorial Object")]
     public GameObject vrButton;
-    // public GameObject portal;
     public List<GameObject> grabableCube = new List<GameObject>();
-    public List<TicketGate> toolTip = new List<TicketGate>();
-    public List<TicketGate> ticketGates;
-
     private List<XRGrabInteractable> grabbable = new List<XRGrabInteractable>();
+    public Pistol tutorialPistol;
+    public List<Target> lolipops = new List<Target>();
     public Image loadingImage;
+    public GameObject keyItem;
+    public XRGrabInteractable key;
+
 
     [Header("Key")]
     public InputActionProperty btnA;
@@ -87,7 +90,7 @@ public class TutorialManager : MonoBehaviour
     private void Awake()
     {
         // 빌드 창 설정
-        Screen.SetResolution(960, 540, false);
+        // Screen.SetResolution(960, 540, false);
     }
 
     // Start is called before the first frame update
@@ -114,6 +117,7 @@ public class TutorialManager : MonoBehaviour
             grabbable.Add(VARIABLE.GetComponent<XRGrabInteractable>());
         }
         
+        
         curIndex = 0;
         wellcomeUIIndex = m_wellcomeImgData.Length;
         tutorialUIIndex = m_tutorialImgData.Length;
@@ -129,20 +133,33 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(FadeOutImage());
     }
 
-    IEnumerator FadeInScene()
+    IEnumerator FadeOutScene()
     {
+        Debug.Log("열쇠 잡으면 시작");
         timer = 0;
-        float delay = 5f;
+        float delay = 3f;
         float percent = 50f;
-        Color targetColor = new Color(0, 0, 0, 0); // 목표 알파 값
-        while (timer < delay)
+        Color targetColor = new Color(0, 0, 0, 1); // 목표 알파 값
+        key.selectEntered.AddListener(OnActivateGravity);
+        key.selectEntered.AddListener(OnGrab);
+
+        while (true)
         {
-            timer += Time.deltaTime;
-            lerpValue = Mathf.Clamp01(timer / percent);       // 타이머가 얼마나 진행되었는지 비율로 계산
-            loadingImage.color = Color.Lerp(loadingImage.color, targetColor, lerpValue);    // 색상의 알파 값을 서서히 변경
+            if (isGrab)
+            {
+                timer += Time.deltaTime / delay;
+                loadingImage.color = Color.Lerp(loadingImage.color, targetColor, timer/percent);    // 색상의 알파 값을 서서히 변경
+                if (timer >= delay)
+                {
+                    // lerpValue = timer;      // 타이머가 얼마나 진행되었는지 비율로 계산
+                    
+                    break;
+                }
+            }
             yield return null;
         }
-        yield return StartCoroutine(FadeOutImage());
+        SceneManager.LoadScene(1);
+        // yield return StartCoroutine(FadeOutImage());
     }
 
     IEnumerator FadeOutImage()
@@ -178,9 +195,22 @@ public class TutorialManager : MonoBehaviour
             VARIABLE.SetActive(true);
         }
     }
-
+    void SpawnTarget()
+    {
+        foreach (var item in lolipops)
+        {
+            item.gameObject.SetActive(true);
+        }
+    }
     public void PressBtn() => isPressed = true;
     void OnGrab(SelectEnterEventArgs arg) => isGrab = true;
+    void OnActivateGravity(SelectEnterEventArgs arg) 
+    {
+        // key.transform.SetParent(null);
+        Rigidbody rb = key.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.useGravity = true;
+    }
     void OnRelease(SelectExitEventArgs arg) => isGrab = false;
     public void OnPortal() => isPortal = true;
     void EntranceSentence() => StartCoroutine(EntranceSentence_Play());
@@ -190,7 +220,22 @@ public class TutorialManager : MonoBehaviour
         audioSource.clip = audioClips[index];
         audioSource.Play();
     }
-
+    private bool CheckAllTarget()
+    {
+        int count = 0;
+        foreach (var item in lolipops)
+        {
+            if (item.gameObject.activeSelf == true)
+            {
+                return false;
+            }
+            else
+            {
+                count++;
+            }
+        }
+        return count == 5;
+    }
 
     #region WelcomeFlow
 
@@ -214,6 +259,10 @@ public class TutorialManager : MonoBehaviour
 
         while (idx == wellcomeUIIndex - 1)
         {
+            // yield return new WaitUntil(() => !audioSource.isPlaying);
+            // yield return new WaitForSeconds(1f);
+            // yield return StartCoroutine(tutorialSentence_Play());
+            // break;
             if (btnA.action.IsPressed())
             {
                 audioSource.Stop();
@@ -228,6 +277,7 @@ public class TutorialManager : MonoBehaviour
                 Debug.Log("B누름");
                 break;              
             }
+
             yield return null;      // 입력받을떄까지 대기
         }
         print("WellcomeSentence_Play 코루틴이 끝남");
@@ -603,6 +653,7 @@ public class TutorialManager : MonoBehaviour
             {
                 grabbable[i].selectEntered.AddListener(OnGrab);        // 잡으면 isGrab = true로 바꾸는 함수 등록
             }
+            
             // 여러 개 큐브중 적어도 하나를 잡으면 다음 인덱스로 넘어가기
             if (isGrab)
             {
@@ -622,11 +673,11 @@ public class TutorialManager : MonoBehaviour
 
         PlayVoice(curIndex + 4);
         // 놓으려면 그립 버튼을 때세요.
-        while (curIndex == 10)
+        while (curIndex == 10)      // 15
         {
             for (int i = 0; i < grabbable.Count; i++)
             {
-                grabbable[i].selectExited.AddListener(OnRelease);        // 잡으면 isGrab = true로 바꾸는 함수 등록
+                grabbable[i].selectExited.AddListener(OnRelease);
             }
             // grabbable.selectExited.AddListener(OnRelease);        // 놓으면 isGrab = false로 바꾸는 함수 등록
             // 놓으면 다음 인덱스로 넘어가기
@@ -636,6 +687,8 @@ public class TutorialManager : MonoBehaviour
                 if (temp >= delay)
                 {
                     audioSource.Stop();
+                    
+                    tutorialPistol.gameObject.SetActive(true);
                     // 다음 UI띄우기
                     curIndex++;
                     showUI.sprite = m_tutorialImgData[curIndex];
@@ -646,41 +699,42 @@ public class TutorialManager : MonoBehaviour
             yield return null;
         }
 
+        // 이제 눈 앞에 있는 총을 잡아보겠습니다. 
         PlayVoice(curIndex + 4);
-        // 이동하려면 엄지로 아날로그 스틱을 움직여보세요.
-        // 왼쪽은 이동, 오른쪽은 회전입니다.
-        while (curIndex == tutorialUIIndex - 1)
+        while (curIndex == 11)
         {
-            Debug.Log("이동하려면 엄지로 아날로그 스틱을 움직여보세요.");
-            SetComponentEnabled<ActionBasedContinuousMoveProvider>(true);
-            SetComponentEnabled<ActionBasedContinuousTurnProvider>(true);
-            if (btnLThumbStick.action.WasPressedThisFrame() && !isBtn1Pressed)
-            {
-                Debug.Log("btnLThumbStick 돌림");
-                isBtn1Pressed = true;
-                temp = 0f;
-            }
-            if (btnRThumbStick.action.WasPressedThisFrame() && !isBtn2Pressed)
-            {
-                Debug.Log("btnRThumbStick 돌림");
-                isBtn2Pressed = true;
-                temp = 0f;
-            }
-            // 한번 누르면 카운트를 세고 다음 UI뜨기까지 딜레이를 줌
-            if (isBtn1Pressed && isBtn2Pressed)
+            Debug.Log("이제 눈 앞에 있는 총을 잡아보겠습니다. ");
+            if (tutorialPistol.isGrapped)
             {
                 temp += Time.deltaTime;
-                if (temp >= 5)
+                if (temp >= delay)
                 {
                     audioSource.Stop();
+                    SpawnTarget();
                     // 다음 UI띄우기
-                    // curIndex++;
-                    // showUI.sprite = m_tutorialImgData[curIndex];
+                    curIndex++;
+                    showUI.sprite = m_tutorialImgData[curIndex];
                     temp = 0f;
-                    isBtn1Pressed = false;
-                    isBtn2Pressed = false;
-                    EntranceSentence();
-                    // portal.SetActive(true); // 포탈 활성화
+                    break;
+                }
+            }
+            yield return null;
+        }
+
+        // 총을 잡은 채, 검지로 트리거를 누르면 총알이 나갑니다. 
+        PlayVoice(curIndex + 4);
+        while (curIndex == 12)
+        {
+            Debug.Log("총을 잡은 채, 검지로 트리거를 누르면 총알이 나갑니다.");
+            Debug.Log("한번 앞에 있는 롤리팝 과녁을 맞춰볼까요?");            
+
+            if (CheckAllTarget())
+            {
+                temp += Time.deltaTime;
+                if (temp >= delay)
+                {
+                    audioSource.Stop();
+                    yield return StartCoroutine(EntranceSentence_Play());
                     break;
                 }
             }
@@ -708,23 +762,19 @@ public class TutorialManager : MonoBehaviour
             }
             yield return null;
         }*/
+        // 마지막에 꼭 EntranceSentence(); 넣기
     }
 
     #endregion
-
+    
     #region EntranceFlow
 
     IEnumerator EntranceSentence_Play()
     {
+        tutorialPistol.gameObject.SetActive(false);
+        keyItem.SetActive(true);
         ChangeController();
-        SetComponentEnabled<ActionBasedContinuousMoveProvider>(true);
-        SetComponentEnabled<ActionBasedContinuousTurnProvider>(true);
-        SetComponentEnabled<TeleportationProvider>(true);
-        // SetComponentEnabled<tutorial.ActivateTeleportationRay>(true);
-        foreach (var item in ticketGates)
-        {
-            item.OpenGate();
-        }
+        isGrab = false;
         int idx = 0;
         PlayVoice(audioClips.Count - 1);        // 음성 재생
         while (idx < entranceUIIndex)
@@ -733,8 +783,8 @@ public class TutorialManager : MonoBehaviour
             idx++;
             yield return new WaitUntil(() => !audioSource.isPlaying);
         }
-        
         print("코루틴 끝");
+        yield return StartCoroutine(FadeOutScene());
     }
 
     #endregion   
