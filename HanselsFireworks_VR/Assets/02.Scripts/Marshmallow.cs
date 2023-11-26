@@ -36,7 +36,7 @@ namespace VR
             switch (GameManager.Instance.currentStage)
             {
                 case 1:
-                    StartCoroutine(Ascend(0, 10));
+                    StartCoroutine(Ascend(0, 20));
                     break;
                 case 2:
                     StartCoroutine(Ascend(10, 20));
