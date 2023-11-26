@@ -4,7 +4,7 @@ using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
 using VR;
-    public class ShortEnemy : Enemy
+    public class ShortEnemy : Enemy, IMonster
 {
     [Header("Move Speed")]
     public float pursuitSpeed;
@@ -34,6 +34,8 @@ using VR;
     private CapsuleCollider collider;
     private NavMeshAgent navMeshAgent;
     private DissolveEnemy dissoveEffect;
+    private GameObject[] spawnPoints;
+    private int spawnIndex;
 
     public float distance;
 
@@ -53,6 +55,22 @@ using VR;
         navMeshAgent = GetComponent<NavMeshAgent>();
         ChangeState(EnemyState.Idle);
     }
+
+    public void Spawn(int index)
+    {
+        Debug.Log("ShortEnemySpawn!");
+        //if (GameManager.Instance.currentStage == 1)
+        //spawnPoints = GameObject.FindGameObjectsWithTag("1stFloorSP");
+        //else if (GameManager.Instance.currentStage == 2)
+        //    spawnPoints = GameObject.FindGameObjectsWithTag("2ndFloorSP");
+
+        spawnPoints = GameObject.FindGameObjectsWithTag("3rdFloorSP");
+        spawnIndex = index % spawnPoints.Length;
+
+        Transform selectedSpawnPoint = spawnPoints[spawnIndex].transform;
+        transform.position = selectedSpawnPoint.position;
+    }
+
     public override void TakeScore()
     {
         GameManager.Instance.score += this.score * GameManager.Instance.combo;        

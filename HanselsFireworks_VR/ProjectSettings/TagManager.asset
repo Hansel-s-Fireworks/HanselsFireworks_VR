@@ -17,6 +17,7 @@ TagManager:
   - MarshmallowSP
   - 1stFloorSP
   - 2ndFloorSP
+  - 3rdFloorSP
   layers:
   - Default
   - TransparentFX

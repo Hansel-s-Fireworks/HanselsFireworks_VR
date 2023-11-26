@@ -24,11 +24,11 @@ public class LongEnemy : Enemy, IMonster
     private MemoryPool memoryPool;
     private EnemyState enemyState = EnemyState.None;
     private GameObject[] spawnPoints;
+    private int spawnIndex;
 
     [SerializeField] private XROrigin target;
 
     private DissolveEnemy dissoveEffect;
-    private int spawnIndex;
 
     private void Awake()
     {

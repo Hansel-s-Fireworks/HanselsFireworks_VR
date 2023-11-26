@@ -5,7 +5,7 @@ using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
 using VR;
-public class ShieldedEnemy : Enemy
+public class ShieldedEnemy : Enemy, IMonster
 {
     [Header("Move Speed")]
     public float pursuitSpeed;
@@ -36,6 +36,8 @@ public class ShieldedEnemy : Enemy
     private CapsuleCollider collider;
     private NavMeshAgent navMeshAgent;
     private DissolveEnemy dissoveEffect;
+    private GameObject[] spawnPoints;
+    private int spawnIndex;
 
     public float distance;
 
@@ -52,6 +54,20 @@ public class ShieldedEnemy : Enemy
         audioSource = GetComponent<AudioSource>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         ChangeState(EnemyState.Idle);
+    }
+    public void Spawn(int index)
+    {
+        Debug.Log("SheildedEnemySpawn!");
+        //if (GameManager.Instance.currentStage == 1)
+        //spawnPoints = GameObject.FindGameObjectsWithTag("1stFloorSP");
+        //else if (GameManager.Instance.currentStage == 2)
+        //    spawnPoints = GameObject.FindGameObjectsWithTag("2ndFloorSP");
+
+        spawnPoints = GameObject.FindGameObjectsWithTag("3rdFloorSP");
+        spawnIndex = index % spawnPoints.Length;
+
+        Transform selectedSpawnPoint = spawnPoints[spawnIndex].transform;
+        transform.position = selectedSpawnPoint.position;
     }
 
     public override void TakeScore()

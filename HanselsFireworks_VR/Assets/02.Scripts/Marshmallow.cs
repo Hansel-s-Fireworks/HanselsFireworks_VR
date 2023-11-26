@@ -16,6 +16,8 @@ namespace VR
 
         [SerializeField] private XROrigin player;
         [SerializeField] private float timer;
+        [SerializeField] private int repeatCount;
+        [SerializeField] private int maxRepeatCount;
         [SerializeField] private SpawnManager spawnManager;
         [SerializeField] private GameObject spawnPoints;
 
@@ -25,6 +27,8 @@ namespace VR
             growSpeed = 1;
             spawnDuration = 2;
             nextSpawnHeight = 0.1f;
+            repeatCount = 0;
+            maxRepeatCount = 5;
             player = FindObjectOfType<XROrigin>();
             
         }
@@ -58,9 +62,22 @@ namespace VR
                     StartCoroutine(Ascend(10, 20));
                     break;
                 case 3:
+                    StartCoroutine(RepeatSpawn());
                     break;
                 default:
                     break;
+            }
+        }
+
+        IEnumerator RepeatSpawn()
+        {
+            while (repeatCount < maxRepeatCount)
+            {
+                yield return new WaitForSeconds(10f); // 10초 대기
+
+                spawnManager.SpawnPhaseFinal();
+
+                repeatCount++;
             }
         }
 
