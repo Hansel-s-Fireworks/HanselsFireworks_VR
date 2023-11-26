@@ -13,10 +13,10 @@ namespace VR
 
     public class SpawnManager : MonoBehaviour
     {
-        public SpawnPhaseInfo[] phasesInStage1;
-        public SpawnPhaseInfo[] phasesInStage2;
+        public SpawnPhaseInfo[] phasesInStage;
         public GameObject[] monsterPrefabs;
         private int currentPhase;
+        private int spawnIndex;
         public Transform firstSpawnPoint;
 
         // Start is called before the first frame update
@@ -50,15 +50,17 @@ namespace VR
 
         public void SpawnPhase()
         {
-            foreach (var monsterInfo in phasesInStage1[currentPhase].monsterData)
+            foreach (var monsterInfo in phasesInStage[currentPhase].monsterData)
             {
                 string monsterType = monsterInfo.Item1;
                 int count = monsterInfo.Item2;
 
                 for (int i = 0; i < count; i++)
                 {
-                    IMonster monster = Instantiate(monsterPrefabs[GetMonsterIndex(monsterType)], firstSpawnPoint.position, Quaternion.identity).GetComponent<IMonster>();
-                    monster.Spawn();
+                    GameObject spawnedMonster = Instantiate(monsterPrefabs[GetMonsterIndex(monsterType)], firstSpawnPoint.position, Quaternion.identity);
+                    IMonster monster = spawnedMonster.GetComponent<IMonster>();
+                    monster.Spawn(spawnIndex);
+                    spawnIndex++;
                 }
             }
             currentPhase++;
@@ -87,31 +89,31 @@ namespace VR
         private void CreatePhases()
         {
             // Stage1
-            phasesInStage1 = new SpawnPhaseInfo[]
+            phasesInStage = new SpawnPhaseInfo[]
             {
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 10)}
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 8)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 8)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 6),
+                                                                 Tuple.Create("Ghost", 1)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 3),
+                                                                 Tuple.Create("Ghost", 2)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 3),
+                                                                 Tuple.Create("Pumkin", 1)}
                 }
-                //new SpawnPhaseInfo
-                //{
-                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemey", 10)}
-                //},
-                //new SpawnPhaseInfo
-                //{
-                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 6),
-                //                                                 Tuple.Create("Ghost", 1)}
-                //},
-                //new SpawnPhaseInfo
-                //{
-                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 3),
-                //                                                 Tuple.Create("Ghost", 2)}
-                //},
-                //new SpawnPhaseInfo
-                //{
-                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 3),
-                //                                                 Tuple.Create("Pumkin", 1)}
-                //}
 
             };
         }

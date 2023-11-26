@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class LongEnemy : Enemy
+public class LongEnemy : Enemy, IMonster
 {
     [Header("Pursuit")]
     [SerializeField] private float attackRange;            // 인식 및 공격 범위 (이 범위 안에 들어오면 Attack" 상태로 변경)
@@ -23,10 +23,12 @@ public class LongEnemy : Enemy
     private CapsuleCollider collider;
     private MemoryPool memoryPool;
     private EnemyState enemyState = EnemyState.None;
+    private GameObject[] spawnPoints;
 
     [SerializeField] private XROrigin target;
 
     private DissolveEnemy dissoveEffect;
+    private int spawnIndex;
 
     private void Awake()
     {
@@ -35,6 +37,19 @@ public class LongEnemy : Enemy
     private void OnApplicationQuit()
     {
         memoryPool.DestroyObjects();
+    }
+    public void Spawn(int index)
+    {
+        Debug.Log("LongEnemySpawn!");
+        //if (GameManager.Instance.currentStage == 1)
+            spawnPoints = GameObject.FindGameObjectsWithTag("1stFloorSP");
+        //else if (GameManager.Instance.currentStage == 2)
+        //    spawnPoints = GameObject.FindGameObjectsWithTag("2ndFloorSP");
+
+        spawnIndex = index % spawnPoints.Length;
+
+        Transform selectedSpawnPoint = spawnPoints[spawnIndex].transform;
+        transform.position = selectedSpawnPoint.position;
     }
 
     public override void TakeScore()

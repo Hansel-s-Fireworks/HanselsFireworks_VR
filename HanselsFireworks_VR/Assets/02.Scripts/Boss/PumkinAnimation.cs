@@ -7,9 +7,16 @@ public class PumkinAnimation : MonoBehaviour
     public Transform centerPoint;
     public float radius = 2.3f;
 
+    private GameObject target;
     public float angle;
 
     public float angularSpeed = 30.0f; // 각도 증가 속도 (1초에 몇 도씩 회전할지)
+    public float rotationSpeed = 5f;
+
+    private void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player");
+    }
 
     void Update()
     {
@@ -28,5 +35,9 @@ public class PumkinAnimation : MonoBehaviour
 
         // 물체의 위치를 설정합니다.
         transform.position = new Vector3(x, y, centerPoint.position.z);
+
+        Vector3 directionToPlayer = target.transform.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 }

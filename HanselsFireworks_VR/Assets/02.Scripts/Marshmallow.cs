@@ -24,7 +24,7 @@ namespace VR
         {
             growSpeed = 1;
             spawnDuration = 2;
-            nextSpawnHeight = 4f;
+            nextSpawnHeight = 0.1f;
             player = FindObjectOfType<XROrigin>();
             
         }
@@ -86,7 +86,7 @@ namespace VR
                 // if(speed <= 1) { speed += Time.deltaTime; }
                 timer += Time.deltaTime * growSpeed * fakeLoadingDuration;
                 float value = Mathf.Lerp(startHeight, topHeight, timer);
-                player.transform.position = new Vector3(4, value * 2, -9);
+                player.transform.position = new Vector3(0, value * 2, 0);
                 spawnPoints.transform.position = new Vector3(0, value * 2, 0);
                 transform.position = new Vector3(0, value, 0);
                 transform.localScale = new Vector3(2, value, 2);

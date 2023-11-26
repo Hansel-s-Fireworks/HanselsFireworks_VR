@@ -15,6 +15,7 @@ public class PumkinEnemy : Enemy
     private float approachTime = 1f;
 
     private bool canTakeDamage = false;
+    public float rotationSpeed = 5f;
 
     private void Awake()
     {
@@ -27,7 +28,6 @@ public class PumkinEnemy : Enemy
     {
         animator.SetTrigger("IsAppear");
         PumkinManager.Instance.addPumkin(this.gameObject);
-
         target = GameObject.FindGameObjectWithTag("Player");
         canTakeDamage = true;
     }
