@@ -14,6 +14,10 @@ TagManager:
   - Marshmallow
   - Bomb
   - Item
+  - MarshmallowSP
+  - 1stFloorSP
+  - 2ndFloorSP
+  - 3rdFloorSP
   - target
   layers:
   - Default

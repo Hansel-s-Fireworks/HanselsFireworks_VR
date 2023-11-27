@@ -11,6 +11,7 @@ public enum EnemyState
     Hurt,
     Dead
 }
+
 public abstract class Enemy : MonoBehaviour
 {
     [Header("HP")]

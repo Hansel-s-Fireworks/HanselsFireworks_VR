@@ -11,14 +11,24 @@ namespace VR
         public float loadTime;
         public float growSpeed;
         public float currentHeight;
-        
+        public float spawnDuration;
+        public float nextSpawnHeight;
+
         [SerializeField] private XROrigin player;
         [SerializeField] private float timer;
+        [SerializeField] private int repeatCount;
+        [SerializeField] private int maxRepeatCount;
+        [SerializeField] private SpawnManager spawnManager;
+        [SerializeField] private GameObject spawnPoints;
 
         // Start is called before the first frame update
         void Start()
         {
             growSpeed = 1;
+            spawnDuration = 2;
+            nextSpawnHeight = 0.1f;
+            repeatCount = 0;
+            maxRepeatCount = 5;
             player = FindObjectOfType<XROrigin>();
             
         }
@@ -28,6 +38,16 @@ namespace VR
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 StartCoroutine(Ascend(10, 20));
+            }
+            currentHeight = gameObject.transform.position.y;
+
+            float heightTolerance = 0.01f;
+
+            if (Mathf.Abs(transform.position.y - nextSpawnHeight) < heightTolerance)
+            {
+                Debug.Log("spawnPhase!");
+                spawnManager.SpawnPhase();
+                nextSpawnHeight += spawnDuration;
             }
         }
 
@@ -42,9 +62,22 @@ namespace VR
                     StartCoroutine(Ascend(10, 20));
                     break;
                 case 3:
+                    StartCoroutine(RepeatSpawn());
                     break;
                 default:
                     break;
+            }
+        }
+
+        IEnumerator RepeatSpawn()
+        {
+            while (repeatCount < maxRepeatCount)
+            {
+                yield return new WaitForSeconds(10f); // 10초 대기
+
+                spawnManager.SpawnPhaseFinal();
+
+                repeatCount++;
             }
         }
 
@@ -71,6 +104,7 @@ namespace VR
                 timer += Time.deltaTime * growSpeed * fakeLoadingDuration;
                 float value = Mathf.Lerp(startHeight, topHeight, timer);
                 player.transform.position = new Vector3(0, value * 2, 0);
+                spawnPoints.transform.position = new Vector3(0, value * 2, 0);
                 transform.position = new Vector3(0, value, 0);
                 transform.localScale = new Vector3(2, value, 2);
 

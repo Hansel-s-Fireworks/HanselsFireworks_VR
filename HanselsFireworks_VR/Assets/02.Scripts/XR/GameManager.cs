@@ -39,6 +39,8 @@ namespace VR
         public int leftCase;
         public float elapseTime;
         public float limitedTime;
+        public float spawnDuration;
+        public float nextSpawnHeight;
 
         [Header("Manager")]
         [SerializeField] private Marshmallow marshmallow;
@@ -51,8 +53,11 @@ namespace VR
             spawnManager = FindObjectOfType<SpawnManager>();
             limitedTime = 5;
             elapseTime = 0;
+            nextSpawnHeight = 0.3f;
+            spawnDuration = 2;
             StartStage();
         }
+
 
         public void PlayMainBGM()
         {
@@ -62,7 +67,7 @@ namespace VR
         public void StartStage()
         {
             marshmallow.StartStage();
-            spawnManager.Spawn();
+            currentStage = 1;
             StartCoroutine(CheckObjective());
         }
         public void ControlStoppedTime()
