@@ -1,15 +1,16 @@
+using System.Collections;
 using UnityEngine;
 
 public class Impact : MonoBehaviour
 {
     [SerializeField] private ParticleSystem particle;
-    [SerializeField] private Animator animator;  // Animator 추가
+    public float delay;
     private MemoryPool memoryPool;
 
     private void Awake()
     {
         // particle = GetComponent<ParticleSystem>();
-        animator = GetComponent<Animator>();  // Animator 초기화
+        // animator = GetComponent<Animator>();  // Animator 초기화
     }
 
     public void Setup(MemoryPool pool)
@@ -17,12 +18,16 @@ public class Impact : MonoBehaviour
         memoryPool = pool;
     }
 
-    private void Update()
+
+    private void OnEnable()
     {
-        // 애니메이션 재생중이 아니면 삭제
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("ScorePopup")) // 애니메이션 클립 이름으로 변경
-        {
-            memoryPool.DeactivatePoolItem(gameObject);
-        }
+        StartCoroutine(StartAnimation());
     }
+    IEnumerator StartAnimation()
+    {
+        yield return new WaitForSeconds(delay);
+        Debug.Log("효과 비활성화");
+        memoryPool.DeactivatePoolItem(gameObject);        
+    }
+
 }

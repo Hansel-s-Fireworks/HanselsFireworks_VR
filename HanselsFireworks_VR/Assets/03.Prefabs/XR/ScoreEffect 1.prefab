@@ -5021,7 +5021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particle: {fileID: 7189792572192036594}
-  animator: {fileID: 7060519074960250079}
+  delay: 2
 --- !u!95 &7060519074960250079
 Animator:
   serializedVersion: 5

@@ -13,14 +13,18 @@ namespace VR
         private MemoryPool memoryPool;
         [SerializeField] private ImpactMemoryPool impactMemoryPool;
         [SerializeField] private ScoreEffectMemoryPool scoreEffectMemoryPool;
-        
+
+        [Header("Debug")]
+        [SerializeField] Vector3 pre;
+        [SerializeField] Vector3 cur;
+        [SerializeField] private Vector3 direction;
 
         // [SerializeField] private Mode mode;
         // Start is called before the first frame update
         void Start()
         {
             impactMemoryPool = FindObjectOfType<ImpactMemoryPool>();
-            scoreEffectMemoryPool = FindObjectOfType<ScoreEffectMemoryPool>();
+            // scoreEffectMemoryPool = FindObjectOfType<ScoreEffectMemoryPool>();
             transform.SetParent(null);
 
             // speed = 10;
@@ -43,38 +47,50 @@ namespace VR
             }
         }
 
+        public void GetShootPoint(Vector3 position)
+        {
+            pre = position;        // 총구 위치
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Enemy"))
             {
+                cur = transform.position;        // 맞은 위치
+                direction = (cur - pre).normalized;     // (맞은 위치 - 총구 위치).정규화
                 other.GetComponent<Enemy>().TakeDamage(1);
                 other.GetComponent<Enemy>().TakeScore();
-                // 플레이어 스크립트에 있는 Impact
-                // 총알의 위치로 효과가 이동
-                impactMemoryPool.OnSpawnImpact(other, transform.position, transform.rotation);
-                // scoreEffectMemoryPool.OnSpawnImpact(other, transform.position, transform.rotation);
+                // 방향 벡터를 바탕으로 평면의 법선 벡터를 얻음
+                Vector3 normal = direction;
+
+                // 평면을 정의하기 위한 Quaternion 생성
+                Quaternion rotation = Quaternion.LookRotation(normal);
+
+                impactMemoryPool.OnSpawnImpact(other, transform.position, rotation);
                 // bool 변수 하나 변화주면 부모 스크립트에서 메모리 풀 실행
                 // 이펙트 플레이 끝나고서 메모리 풀 해제
                 memoryPool.DeactivatePoolItem(gameObject);
-                // Destroy(gameObject);
             }
             else if (other.CompareTag("Wall") || other.CompareTag("Floor"))
             {
-                impactMemoryPool.OnSpawnImpact(other, transform.position, transform.rotation);
                 memoryPool.DeactivatePoolItem(gameObject);
             }
             else if (other.CompareTag("Interactable"))
             {
-                Debug.Log("Interactable");
+                // Debug.Log("Interactable");
                 other.GetComponent<InteractableObject>().TakeDamage(1);
                 other.GetComponent<InteractableObject>().TakeScore();
-
-                impactMemoryPool.OnSpawnImpact(other, transform.position, transform.rotation);
                 memoryPool.DeactivatePoolItem(gameObject);
             }
             else if (other.CompareTag("Item"))
             {
                 other.GetComponent<Item>().GetItem();
+                memoryPool.DeactivatePoolItem(gameObject);
+            }
+            else if(other.CompareTag("target"))
+            {
+                other.GetComponent<Target>().TakeDamage();
+                memoryPool.DeactivatePoolItem(gameObject);
             }
         }
     }

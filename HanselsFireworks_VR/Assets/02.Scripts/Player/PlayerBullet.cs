@@ -62,8 +62,6 @@ public class PlayerBullet : MonoBehaviour
             // 평면을 정의하기 위한 Quaternion 생성
             Quaternion rotation = Quaternion.LookRotation(normal);
 
-            // Quaternion rotation = Quaternion.Euler(direction);
-            // Debug.Log(direction);
             impactMemoryPool.OnSpawnImpact(other, transform.position, rotation);
             // bool 변수 하나 변화주면 부모 스크립트에서 메모리 풀 실행
             // 이펙트 플레이 끝나고서 메모리 풀 해제
