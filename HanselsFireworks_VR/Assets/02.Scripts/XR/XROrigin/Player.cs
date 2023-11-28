@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace VR
 {
-    public class PlayerController : MonoBehaviour
+    public class Player : MonoBehaviour
     {
+        [Header("Gun")]
         public Pistol tuto_pistol;
         public Pistol r_doublePistol;
         public Pistol l_doublePistol;
         public Rifle rifle;
-
         public Gun[] currentGun;
 
         // Start is called before the first frame update
@@ -72,7 +72,17 @@ namespace VR
         {
 
         }
+        public void GetHP()
+        {
+            GameManager.Instance.hp += 10;
+        }
 
+
+        public void TakeDamage()
+        {
+            Debug.Log("Player Damaged");
+            GameManager.Instance.hp -= 10;
+        }
 
     }
 

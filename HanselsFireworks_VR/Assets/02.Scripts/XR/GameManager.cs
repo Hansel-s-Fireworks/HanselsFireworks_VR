@@ -42,6 +42,8 @@ namespace VR
         public float spawnDuration;
         public float nextSpawnHeight;
 
+        public float hp;
+
         [Header("Manager")]
         [SerializeField] private Marshmallow marshmallow;
         [SerializeField] private SpawnManager spawnManager;
@@ -56,8 +58,13 @@ namespace VR
             nextSpawnHeight = 0.3f;
             spawnDuration = 2;
             StartStage();
+            Init();
         }
 
+        private void Init()
+        {
+            hp = 100;
+        }
 
         public void PlayMainBGM()
         {

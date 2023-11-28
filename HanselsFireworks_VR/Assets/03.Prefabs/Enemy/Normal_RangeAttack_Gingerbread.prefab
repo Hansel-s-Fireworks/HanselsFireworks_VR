@@ -566,7 +566,7 @@ MonoBehaviour:
   currentHP: 0
   score: 50
   attackRange: 100
-  projectilePrefab: {fileID: 3728249667321437466, guid: ece706151e0a02446b65f7a4833c2f51,
+  projectilePrefab: {fileID: 3728249667321437466, guid: ea9900ae9c749db46881772981a0cc76,
     type: 3}
   projectileSpawnPoint: {fileID: 2322540270159420114}
   audioClipDie: {fileID: 8300000, guid: 7053e670ad40d434ba7955ab7f0cd213, type: 3}

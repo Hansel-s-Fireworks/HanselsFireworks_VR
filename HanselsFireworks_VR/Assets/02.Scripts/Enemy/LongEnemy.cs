@@ -142,9 +142,9 @@ public class LongEnemy : Enemy, IMonster
 
         clone.transform.position = projectileSpawnPoint.position;
         clone.transform.rotation = projectileSpawnPoint.rotation;
-        clone.GetComponent<EnemyProjectile>().moveDirection = CalculateVectorToTarget();
+        clone.GetComponent<VR.EnemyProjectile>().moveDirection = CalculateVectorToTarget();
 
-        clone.GetComponent<EnemyProjectile>().Setup(memoryPool);
+        clone.GetComponent<VR.EnemyProjectile>().Setup(memoryPool);
     }
 
     private IEnumerator Attack()
