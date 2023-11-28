@@ -2539,7 +2539,7 @@ Transform:
   m_GameObject: {fileID: 37828358}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9999999, z: -0, w: -0.00047230668}
-  m_LocalPosition: {x: -24.65992, y: -31.343931, z: 31.409124}
+  m_LocalPosition: {x: -27.959923, y: -31.343931, z: 30.409124}
   m_LocalScale: {x: 83, y: 83, z: 83}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4439,7 +4439,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8e00a3f24d23d4f8427bd6141ddc7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireGun: []
+  innerItem: {fileID: 0}
+  rotationSpeed: 0
+  moveSpeed: 0
+  moveDistance: 0
+  player: {fileID: 0}
 --- !u!135 &71247310
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10724,7 +10728,7 @@ Transform:
   m_GameObject: {fileID: 260368262}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9999999, z: -0, w: -0.00047230668}
-  m_LocalPosition: {x: -54.15992, y: -31.343931, z: 31.809124}
+  m_LocalPosition: {x: -50.459923, y: -31.343931, z: 30.809124}
   m_LocalScale: {x: 83, y: 83, z: 83}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20477,6 +20481,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf860db95da4fc64bb645831bb3eea51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  innerItem: {fileID: 0}
+  rotationSpeed: 0
+  moveSpeed: 0
+  moveDistance: 0
+  player: {fileID: 0}
 --- !u!135 &513589316
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -24135,6 +24144,8 @@ MonoBehaviour:
   muzzleFlashEffect: {fileID: 957389550}
   laser: {fileID: 402488990}
   audioClipFire: {fileID: 8300000, guid: 1004bef70da21fa4da90813842f7af58, type: 3}
+  isGrapped: 0
+  isPressed: 0
   btnTrigger:
     m_UseReference: 1
     m_Action:
@@ -31165,7 +31176,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8e00a3f24d23d4f8427bd6141ddc7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireGun: []
+  innerItem: {fileID: 0}
+  rotationSpeed: 0
+  moveSpeed: 0
+  moveDistance: 0
+  player: {fileID: 0}
 --- !u!1 &761992287
 GameObject:
   m_ObjectHideFlags: 0
@@ -63218,6 +63233,8 @@ MonoBehaviour:
   muzzleFlashEffect: {fileID: 1010006052}
   laser: {fileID: 1133728837}
   audioClipFire: {fileID: 8300000, guid: 1004bef70da21fa4da90813842f7af58, type: 3}
+  isGrapped: 0
+  isPressed: 0
   btnTrigger:
     m_UseReference: 1
     m_Action:
@@ -72532,7 +72549,7 @@ Transform:
   m_GameObject: {fileID: 1647392574}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9999999, z: -0, w: -0.00047230668}
-  m_LocalPosition: {x: -44.5, y: -31.343931, z: 31.8}
+  m_LocalPosition: {x: -40.8, y: -31.343931, z: 30.8}
   m_LocalScale: {x: 83, y: 83, z: 83}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -80022,6 +80039,8 @@ MonoBehaviour:
   muzzleFlashEffect: {fileID: 1871838992}
   laser: {fileID: 7874975}
   audioClipFire: {fileID: 8300000, guid: 1004bef70da21fa4da90813842f7af58, type: 3}
+  isGrapped: 0
+  isPressed: 0
   btnTrigger:
     m_UseReference: 1
     m_Action:
@@ -85547,7 +85566,7 @@ Transform:
   m_GameObject: {fileID: 1943026857}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9999999, z: -0, w: -0.00047230668}
-  m_LocalPosition: {x: -15, y: -31.343931, z: 31.4}
+  m_LocalPosition: {x: -18.3, y: -31.343931, z: 30.4}
   m_LocalScale: {x: 83, y: 83, z: 83}
   m_ConstrainProportionsScale: 0
   m_Children: []

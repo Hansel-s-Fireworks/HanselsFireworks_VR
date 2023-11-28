@@ -67,7 +67,7 @@ namespace VR
         public void StartStage()
         {
             marshmallow.StartStage();
-            currentStage = 1;
+            //currentStage = 1;
             StartCoroutine(CheckObjective());
         }
         public void ControlStoppedTime()

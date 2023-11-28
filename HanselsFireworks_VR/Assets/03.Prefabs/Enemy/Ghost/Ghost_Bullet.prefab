@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 7286683530453027758}
   - component: {fileID: 4014481534560733716}
   - component: {fileID: -7271833009866948927}
-  m_Layer: 0
+  - component: {fileID: -3269466754889519416}
+  m_Layer: 9
   m_Name: Ghost_Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +121,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &-3269466754889519416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4206612312086080430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2395c80a9f4ab24f8c91ef0c25c1476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  time: 0
+  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &4346536152156077021
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +147,7 @@ GameObject:
   - component: {fileID: 8679972317213571198}
   - component: {fileID: 3868535051153986241}
   - component: {fileID: 2567682820546325938}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Barrier
   m_TagString: Wall
   m_Icon: {fileID: 0}
