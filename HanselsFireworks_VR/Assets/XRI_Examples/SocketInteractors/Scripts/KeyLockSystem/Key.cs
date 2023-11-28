@@ -5,6 +5,7 @@ namespace UnityEngine.XR.Content.Interaction
     /// (<see cref="XRLockSocketInteractor"/> and <see cref="Keychain"/>)
     /// </summary>
     [CreateAssetMenuAttribute(menuName = "XR/Key Lock System/Key")]
-    public class Key : ScriptableObject
+    public class Key : MonoBehaviour
     { }
 }
+ 
