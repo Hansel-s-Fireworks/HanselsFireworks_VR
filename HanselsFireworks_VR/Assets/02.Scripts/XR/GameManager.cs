@@ -48,6 +48,7 @@ namespace VR
         [Header("Manager")]
         [SerializeField] private Marshmallow marshmallow;
         [SerializeField] private SpawnManager spawnManager;
+        [SerializeField] private AudioSource mainBGM;
 
         // Start is called before the first frame update
         void Start()
@@ -70,7 +71,7 @@ namespace VR
 
         public void PlayMainBGM()
         {
-
+            mainBGM.Play();
         }
 
         public void StartStage()
