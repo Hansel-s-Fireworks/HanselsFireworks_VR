@@ -56,7 +56,7 @@ public class Ghost : Enemy, IMonster
 
     public override void TakeScore()
     {
-        GameManager.Instance.score += this.score * GameManager.Instance.combo;
+        //GameManager.Instance.score += this.score * GameManager.Instance.combo;
 
     }
 
@@ -78,7 +78,7 @@ public class Ghost : Enemy, IMonster
             gameObject.SetActive(false);
             // 콜라이더도 제거. 안그러면 dissolve하는 동안 쿠키를 밀고 감
             // collider.enabled = false;
-            GameManager.Instance.leftMonster--;         // 남은 몬스터 수 줄기
+            VR.GameManager.Instance.leftMonster--;         // 남은 몬스터 수 줄기
         }
     }
 

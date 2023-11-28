@@ -33,7 +33,7 @@ public class ShortEnemy : Enemy, IMonster
     public Animator animator;
     public BoxCollider candyCane;
     private CapsuleCollider collider;
-    private NavMeshAgent navMeshAgent;
+    //private NavMeshAgent navMeshAgent;
     private DissolveEnemy dissoveEffect;
     private GameObject[] spawnPoints;
     private int spawnIndex;
@@ -53,23 +53,27 @@ public class ShortEnemy : Enemy, IMonster
         dissoveEffect = GetComponent<DissolveEnemy>();
         collider = GetComponent<CapsuleCollider>();
         audioSource = GetComponent<AudioSource>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        ChangeState(EnemyState.Idle);
+        //navMeshAgent = GetComponent<NavMeshAgent>();
+        //ChangeState(EnemyState.Idle);
     }
 
     public void Spawn(int index)
     {
         Debug.Log("ShortEnemySpawn!");
-        //if (GameManager.Instance.currentStage == 1)
-        //spawnPoints = GameObject.FindGameObjectsWithTag("1stFloorSP");
-        //else if (GameManager.Instance.currentStage == 2)
-        //    spawnPoints = GameObject.FindGameObjectsWithTag("2ndFloorSP");
+        if (VR.GameManager.Instance.currentStage == 1)
+            spawnPoints = GameObject.FindGameObjectsWithTag("1stFloorSP");
+        else if (VR.GameManager.Instance.currentStage == 3)
+            spawnPoints = GameObject.FindGameObjectsWithTag("3rdFloorSP");
 
-        spawnPoints = GameObject.FindGameObjectsWithTag("3rdFloorSP");
+        //spawnPoints = GameObject.FindGameObjectsWithTag("3rdFloorSP");
         spawnIndex = index % spawnPoints.Length;
 
         Transform selectedSpawnPoint = spawnPoints[spawnIndex].transform;
         transform.position = selectedSpawnPoint.position;
+
+        nav.enabled = true;
+        //navMeshAgent = GetComponent<NavMeshAgent>();
+        ChangeState(EnemyState.Idle);
     }
 
     public override void TakeScore()
@@ -104,7 +108,7 @@ public class ShortEnemy : Enemy, IMonster
     {
         StopAllCoroutines();
         audioSource.mute = true;
-        navMeshAgent.enabled = false;
+        nav.enabled = false;
         animator.speed = 0;
     }
 
