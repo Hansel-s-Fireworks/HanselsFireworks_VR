@@ -167,7 +167,27 @@ namespace VR
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 1),
                                                                  Tuple.Create("Pumkin", 1)}
-                }
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
+                                                                 Tuple.Create("Ghost", 1)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
+                                                                 Tuple.Create("Ghost", 1)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
+                                                                 Tuple.Create("Pumkin", 1)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
+                                                                 Tuple.Create("Pumkin", 1)}
+                },
 
             };
         }
