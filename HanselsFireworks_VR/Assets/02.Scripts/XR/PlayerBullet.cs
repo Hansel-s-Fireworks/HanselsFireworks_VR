@@ -62,6 +62,11 @@ namespace VR
                 other.GetComponent<Enemy>().TakeScore();
                 // 방향 벡터를 바탕으로 평면의 법선 벡터를 얻음
                 Vector3 normal = direction;
+                ItemSpawn itemSpawnComponent = other.GetComponent<ItemSpawn>();
+                if (itemSpawnComponent != null)
+                {
+                    itemSpawnComponent.Spawn();
+                }
 
                 // 평면을 정의하기 위한 Quaternion 생성
                 Quaternion rotation = Quaternion.LookRotation(normal);
