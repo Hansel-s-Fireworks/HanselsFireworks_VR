@@ -33,11 +33,11 @@ namespace VR
         AudioSource audioSource;                // 사운드 재생 컴포넌트
         private MemoryPool bulletMemoryPool;
         float lastAttackTime = 0;
-        bool isGrapped;
-        bool isPressed;
+        public bool isGrapped;
+        public bool isPressed;
 
         [Header("Recoil")]
-        [SerializeField] private Recoil recoil;
+        // [SerializeField] private Recoil recoil;
 
         [Header("Key")]
         public InputActionProperty btnTrigger;
@@ -83,9 +83,13 @@ namespace VR
 
         public void ReleaseGun(SelectExitEventArgs arg)
         {
-            isGrapped = false;
-            StopCoroutine(OnAttackLoop());
-            Debug.Log("놓음");
+            if(arg.interactorObject.transform.CompareTag("Right Hand"))
+            {
+                isGrapped = false;
+                transform.position = new Vector3(0, 0, 0);
+                //StopCoroutine(OnAttackLoop());
+                Debug.Log("놓음");
+            }
         }
 
         private void Update()
@@ -174,7 +178,7 @@ namespace VR
                 
                 // 총구 이펙트 재생
                 StartCoroutine(OnMuzzleFlashEffect());
-                recoil.RecoilFire();
+                // recoil.RecoilFire();
                 GameObject clone = bulletMemoryPool.ActivatePoolItem();
 
                 clone.transform.position = bulletSpawnPoint.position;
