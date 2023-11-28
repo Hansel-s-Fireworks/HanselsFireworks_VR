@@ -78,7 +78,7 @@ public class ShortEnemy : Enemy, IMonster
 
     public override void TakeScore()
     {
-        // GameManager.Instance.score += this.score * GameManager.Instance.combo;        
+        VR.GameManager.Instance.score += score ;
     }   
 
 

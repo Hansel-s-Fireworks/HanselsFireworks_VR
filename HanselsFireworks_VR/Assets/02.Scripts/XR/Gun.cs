@@ -6,6 +6,7 @@ namespace VR
 {
     public abstract class Gun : MonoBehaviour
     {
+        public abstract void BurstMode();
         public abstract void  AttachLaser();
         // Start is called before the first frame update
         void Start()

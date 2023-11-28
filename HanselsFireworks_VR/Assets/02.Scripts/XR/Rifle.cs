@@ -132,10 +132,10 @@ namespace VR
         }
 
 
-        public void BurstMode()
+        public override void BurstMode()
         {
             mode = Mode.burst;
-            GameManager.Instance.leftCase += 100;
+            // GameManager.Instance.leftCase += 100;
         }
 
         public override void AttachLaser()

@@ -47,12 +47,15 @@ namespace VR
 
         public void GetRifleItem()
         {
-            tuto_pistol.gameObject.SetActive(false);
+            /*tuto_pistol.gameObject.SetActive(false);
             r_doublePistol.laser.SetActive(false);
             l_doublePistol.laser.SetActive(false);
             r_doublePistol.gameObject.SetActive(false);
             l_doublePistol.gameObject.SetActive(false);            
-            rifle.gameObject.SetActive(true);
+            rifle.gameObject.SetActive(true);*/
+            currentGun[0].BurstMode();
+            if (currentGun[1] != null) currentGun[1].BurstMode();
+
         }
 
         public void GetLaserItem()
