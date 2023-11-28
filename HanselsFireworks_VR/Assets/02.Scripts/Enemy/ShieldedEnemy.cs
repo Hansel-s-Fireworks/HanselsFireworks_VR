@@ -76,12 +76,12 @@ public class ShieldedEnemy : Enemy, IMonster
         if (currentHP >= 1)
         {
             // 방패 점수
-            //GameManager.Instance.score += shieldScore * GameManager.Instance.combo;
+            VR.GameManager.Instance.score += score;
             Debug.Log("Shielded_Gingerbread Damaged_1");
         }
         else if (currentHP == 0)
         {
-            //GameManager.Instance.score += this.score * GameManager.Instance.combo;
+            VR.GameManager.Instance.score += score;
             Debug.Log("Shielded_Gingerbread Damaged_2");
         }
         

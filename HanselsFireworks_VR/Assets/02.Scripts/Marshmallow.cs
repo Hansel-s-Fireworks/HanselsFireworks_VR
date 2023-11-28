@@ -40,6 +40,9 @@ namespace VR
                 StartCoroutine(Ascend(10, 20));
             }
             currentHeight = gameObject.transform.position.y;
+            if (currentHeight < 10) { VR.GameManager.Instance.currentStage = 1; }
+            else if (currentHeight < 20) { VR.GameManager.Instance.currentStage = 2; }
+            else { VR.GameManager.Instance.currentStage = 3; }
 
             float heightTolerance = 0.01f;
 
@@ -53,20 +56,21 @@ namespace VR
 
         public void StartStage()
         {
-            switch (GameManager.Instance.currentStage)
+            StartCoroutine(Ascend(0, 20));
+            /*switch (GameManager.Instance.currentStage)
             {
                 case 1:
                     StartCoroutine(Ascend(0, 20));
                     break;
                 case 2:
-                    // StartCoroutine(Ascend(10, 20));
+                    StartCoroutine(Ascend(10, 20));
                     break;
                 case 3:
                     StartCoroutine(RepeatSpawn());
                     break;
                 default:
                     break;
-            }
+            }*/
         }
 
         IEnumerator RepeatSpawn()

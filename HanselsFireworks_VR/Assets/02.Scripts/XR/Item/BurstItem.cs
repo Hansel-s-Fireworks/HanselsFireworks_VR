@@ -22,6 +22,7 @@ namespace VR
 
         public override void GetItem()
         {
+            // BurstMode();
             player.GetRifleItem();
             Destroy(gameObject);
         }

@@ -65,6 +65,7 @@ namespace VR
         private void Init()
         {
             hp = 100;
+            score = 0;
         }
 
         public void PlayMainBGM()
@@ -75,7 +76,7 @@ namespace VR
         public void StartStage()
         {
             marshmallow.StartStage();
-            //currentStage = 1;
+            currentStage = 1;
             StartCoroutine(CheckObjective());
         }
         public void ControlStoppedTime()

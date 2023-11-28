@@ -36,7 +36,7 @@ public class PumkinEnemy : Enemy
     {
         if (canTakeDamage)
         {
-            //GameManager.Instance.score += this.score * GameManager.Instance.combo;            
+            VR.GameManager.Instance.score += this.score;            
         }
     }
 
