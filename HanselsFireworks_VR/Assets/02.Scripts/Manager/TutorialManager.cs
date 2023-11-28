@@ -541,12 +541,13 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
             leftHandTransition.gameObject.SetActive(false);
             rightHandTransition.gameObject.SetActive(false);
+            tutorialPistol.gameObject.SetActive(true);
             curIndex++;
             showUI.sprite = m_tutorialImgData[curIndex];
             temp = 0;
         }
 
-        PlayVoice(curIndex + 4);
+        /* PlayVoice(curIndex + 4);
         // 주먹을 움켜쥐려면 그립 버튼과 트리거 버튼을 모두 쥐고 있으세요.
         while (curIndex == 6)
         {
@@ -697,11 +698,11 @@ public class TutorialManager : MonoBehaviour
                 }
             }
             yield return null;
-        }
+        }*/
 
         // 이제 눈 앞에 있는 총을 잡아보겠습니다. 
         PlayVoice(curIndex + 4);
-        while (curIndex == 11)
+        while (curIndex ==  6)
         {
             Debug.Log("이제 눈 앞에 있는 총을 잡아보겠습니다. ");
             if (tutorialPistol.isGrapped)
@@ -723,7 +724,7 @@ public class TutorialManager : MonoBehaviour
 
         // 총을 잡은 채, 검지로 트리거를 누르면 총알이 나갑니다. 
         PlayVoice(curIndex + 4);
-        while (curIndex == 12)
+        while (curIndex == 7)
         {
             Debug.Log("총을 잡은 채, 검지로 트리거를 누르면 총알이 나갑니다.");
             Debug.Log("한번 앞에 있는 롤리팝 과녁을 맞춰볼까요?");            
