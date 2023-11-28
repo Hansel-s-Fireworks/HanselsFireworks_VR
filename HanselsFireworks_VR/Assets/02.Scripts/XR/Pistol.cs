@@ -130,10 +130,10 @@ namespace VR
         }
 
 
-        public void BurstMode()
+        public override void BurstMode()
         {
             mode = Mode.burst;
-            GameManager.Instance.leftCase += 100;
+            
         }
 
         public override void AttachLaser()
@@ -170,7 +170,7 @@ namespace VR
                 // 무기 애니메이션 재생
                 // 같은 애니메이션을 반복할 때, 애니메이션을 끊고 처음부터 다시 재생
                 // animator.Play("Fire", -1, 0);                
-                // haptic.SendHaptics();
+                haptic.SendHaptics();
                 
                 // 총구 이펙트 재생
                 StartCoroutine(OnMuzzleFlashEffect());
