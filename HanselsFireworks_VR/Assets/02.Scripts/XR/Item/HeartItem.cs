@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Tutorial;
 using UnityEngine;
+
 namespace VR
 {
-    public class LazorItem : Item
+    public class HeartItem : Item
     {
-        [SerializeField] private Player player;
 
-        // Start is called before the first frame update 
+        [SerializeField] private Player player;
+        
+
+        // Start is called before the first frame update
         void Start()
         {
             // 초기 위치 저장
@@ -21,8 +25,9 @@ namespace VR
 
         public override void GetItem()
         {
-            player.GetLaserItem();
+            player.GetHP();
             Destroy(gameObject);
         }
     }
+
 }

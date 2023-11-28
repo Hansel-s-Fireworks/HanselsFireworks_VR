@@ -4,7 +4,8 @@ using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
 using VR;
-    public class ShortEnemy : Enemy, IMonster
+
+public class ShortEnemy : Enemy, IMonster
 {
     [Header("Move Speed")]
     public float pursuitSpeed;

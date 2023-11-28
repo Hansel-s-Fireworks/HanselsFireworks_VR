@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
-
+using VR;
 
 public class LongEnemy : Enemy, IMonster
 {
@@ -54,7 +54,7 @@ public class LongEnemy : Enemy, IMonster
 
     public override void TakeScore()
     {
-        GameManager.Instance.score += this.score * GameManager.Instance.combo;        
+        // GameManager.Instance.score += this.score * GameManager.Instance.combo;        
     }
 
     public override void TakeDamage(int damage)
@@ -70,7 +70,7 @@ public class LongEnemy : Enemy, IMonster
             StopAllCoroutines();
             // 콜라이더도 제거. 안그러면 dissolve하는 동안 쿠키를 밀고 감
             collider.enabled = false;
-            GameManager.Instance.leftMonster--;         // 남은 몬스터 수 줄기
+            // GameManager.Instance.leftMonster--;         // 남은 몬스터 수 줄기
 
             Debug.Log("Shielded_Gingerbread Dead");
         }
@@ -142,9 +142,9 @@ public class LongEnemy : Enemy, IMonster
 
         clone.transform.position = projectileSpawnPoint.position;
         clone.transform.rotation = projectileSpawnPoint.rotation;
-        clone.GetComponent<EnemyProjectile>().moveDirection = CalculateVectorToTarget();
+        clone.GetComponent<VR.EnemyProjectile>().moveDirection = CalculateVectorToTarget();
 
-        clone.GetComponent<EnemyProjectile>().Setup(memoryPool);
+        clone.GetComponent<VR.EnemyProjectile>().Setup(memoryPool);
     }
 
     private IEnumerator Attack()

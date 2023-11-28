@@ -6,7 +6,7 @@ namespace VR
 {
     public class DoublePistolItem : Item
     {
-        [SerializeField] private PlayerController player;
+        [SerializeField] private Player player;
 
         // Start is called before the first frame update 
         void Start()
@@ -17,7 +17,7 @@ namespace VR
             // 코루틴 시작
             StartCoroutine(MoveUpdownCoroutine());
             StartCoroutine(RotateCoroutine());
-            player = FindObjectOfType<PlayerController>();
+            player = FindObjectOfType<Player>();
         }
 
         public override void GetItem()

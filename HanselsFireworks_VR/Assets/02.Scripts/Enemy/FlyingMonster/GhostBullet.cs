@@ -2,36 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostBullet : MonoBehaviour
+namespace VR
 {
-    private Animator animator;
-
-    [SerializeField]
-    private GameObject target;
-
-    private float approachTime = 0.5f;
-
-    // Start is called before the first frame update
-    void Start()
+    public class GhostBullet : MonoBehaviour
     {
-        target = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(ApproachTarget());
-    }
+        private Animator animator;
 
-    IEnumerator ApproachTarget()
-    {
-        Vector3 startPosition = transform.position;
-        Vector3 targetPosition = target.transform.position;
+        [SerializeField]
+        private GameObject target;
 
-        float elapsedTime = 0f;
+        private float approachTime = 0.5f;
 
-        while (elapsedTime < approachTime)
+        // Start is called before the first frame update
+        void Start()
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / approachTime);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            target = GameObject.FindGameObjectWithTag("Player");
+            StartCoroutine(ApproachTarget());
         }
-        Destroy(gameObject);
+
+        IEnumerator ApproachTarget()
+        {
+            Vector3 startPosition = transform.position;
+            Vector3 targetPosition = target.transform.position;
+
+            float elapsedTime = 0f;
+
+            while (elapsedTime < approachTime)
+            {
+                transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / approachTime);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            Destroy(gameObject);
+        }
+
     }
 
 }
