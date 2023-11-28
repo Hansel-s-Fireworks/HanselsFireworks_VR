@@ -40,7 +40,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().TakeScore();
+            //other.GetComponent<Player>().TakeScore();
             memoryPool.DeactivatePoolItem(gameObject);
             // Destroy(gameObject);
         }
