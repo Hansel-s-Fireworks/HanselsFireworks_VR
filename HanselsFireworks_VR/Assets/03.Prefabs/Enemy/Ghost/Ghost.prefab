@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 3
   currentHP: 3
-  score: 70
+  score: 100
   bullet: {fileID: 4206612312086080430, guid: a3d67341712a49345894afa0f3cb907f, type: 3}
   visual: {fileID: 5340184592780612943}
   collisionSound: {fileID: 9193885497656153782}

@@ -31,21 +31,10 @@ namespace VR
             while (true)
             {
                 tScore.text = GameManager.Instance.score.ToString();
-                tLeftCase.text = GameManager.Instance.leftCase.ToString();
-                s_Velocity.value = marshmallow.growSpeed;
+                // tLeftCase.text = GameManager.Instance.leftCase.ToString();
+                /*s_Velocity.value = marshmallow.growSpeed;
                 s_StoppedTime.value = GameManager.Instance.elapseTime 
-                    / GameManager.Instance.limitedTime;
-
-                if(GameManager.Instance.leftCase > 0)
-                {
-                    // 총기 모드 연사(Burst)로 바꾸기
-                    gunImage.sprite = burstGun;
-                }
-                else
-                {
-                    // 총기 모드 일반(Normal)로 바꾸기
-                    gunImage.sprite = normalGun;
-                }
+                    / GameManager.Instance.limitedTime;*/
 
                 yield return null;
             }

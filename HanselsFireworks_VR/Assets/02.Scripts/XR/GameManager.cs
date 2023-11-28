@@ -65,6 +65,7 @@ namespace VR
         private void Init()
         {
             hp = 100;
+            score = 0;
         }
 
         public void PlayMainBGM()
