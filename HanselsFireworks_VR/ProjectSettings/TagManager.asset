@@ -19,6 +19,7 @@ TagManager:
   - 2ndFloorSP
   - 3rdFloorSP
   - target
+  - 1stFloorSP_Range
   layers:
   - Default
   - TransparentFX

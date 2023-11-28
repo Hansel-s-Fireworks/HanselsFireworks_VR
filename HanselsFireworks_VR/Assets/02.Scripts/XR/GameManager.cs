@@ -20,6 +20,7 @@ namespace VR
         }
         private void Awake()
         {
+            Debug.Log("game manager");
             if (instance == null)
             {
                 instance = this;

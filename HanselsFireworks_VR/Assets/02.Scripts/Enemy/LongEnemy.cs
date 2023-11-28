@@ -14,6 +14,7 @@ public class LongEnemy : Enemy, IMonster
     [Header("Attack")]
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform projectileSpawnPoint;
+    [SerializeField] private float attackDelay;
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip audioClipDie;
@@ -40,16 +41,17 @@ public class LongEnemy : Enemy, IMonster
     }
     public void Spawn(int index)
     {
-        Debug.Log("LongEnemySpawn!");
-        //if (GameManager.Instance.currentStage == 1)
-            spawnPoints = GameObject.FindGameObjectsWithTag("1stFloorSP");
-        //else if (GameManager.Instance.currentStage == 2)
-        //    spawnPoints = GameObject.FindGameObjectsWithTag("2ndFloorSP");
+        //Debug.Log("LongEnemySpawn!");
+        if (VR.GameManager.Instance.currentStage == 1)
+            spawnPoints = GameObject.FindGameObjectsWithTag("1stFloorSP_Range");
+        else if (VR.GameManager.Instance.currentStage == 2)
+            spawnPoints = GameObject.FindGameObjectsWithTag("2ndFloorSP");
 
         spawnIndex = index % spawnPoints.Length;
 
         Transform selectedSpawnPoint = spawnPoints[spawnIndex].transform;
         transform.position = selectedSpawnPoint.position;
+        LookRotationToTarget();
     }
 
     public override void TakeScore()
@@ -90,34 +92,37 @@ public class LongEnemy : Enemy, IMonster
         dissoveEffect = GetComponent<DissolveEnemy>();
         collider = GetComponent<CapsuleCollider>();
         audioSource = GetComponent<AudioSource>();
-        ChangeState(EnemyState.Idle);
+        StartCoroutine(Attack());
+        //ChangeState(EnemyState.Idle);
     }
 
-    private void CalculateDistanceToTargetAndSelectState()
-    {
-        float distance = Vector3.Distance(target.transform.position, transform.position);
+    //private void CalculateDistanceToTargetAndSelectState()
+    //{
+    //    float distance = Vector3.Distance(target.transform.position, transform.position);
 
-        if (distance <= attackRange)        // 공격하기
-        {
+    //    if (distance <= attackRange)        // 공격하기
+    //    {
             
-            animator.SetBool("Attack", true);
-            ChangeState(EnemyState.Attack);
-        }        
-        else 
-        { 
-            animator.SetBool("Attack", false);
-            ChangeState(EnemyState.Idle);
-        }
-    }
+    //        animator.SetBool("Attack", true);
+    //        ChangeState(EnemyState.Attack);
+    //    }        
+    //    else 
+    //    { 
+    //        animator.SetBool("Attack", false);
+    //        ChangeState(EnemyState.Idle);
+    //    }
+    //}
 
-    public void ChangeState(EnemyState newState)
-    {
-        // 현재 재생중인 상태와 바꾸려고 하는 상태가 같으면 바꿀 필요가 없기 때문에 return
-        if (enemyState == newState) return;        
-        StopCoroutine(enemyState.ToString());   // 이전에 재생중이던 상태 종료   
-        enemyState = newState;                  // 현재 적의 상태를 newState로 설정        
-        StartCoroutine(enemyState.ToString());  // 새로운 상태 재생
-    }
+
+
+    //public void ChangeState(EnemyState newState)
+    //{
+    //    // 현재 재생중인 상태와 바꾸려고 하는 상태가 같으면 바꿀 필요가 없기 때문에 return
+    //    if (enemyState == newState) return;        
+    //    StopCoroutine(enemyState.ToString());   // 이전에 재생중이던 상태 종료   
+    //    enemyState = newState;                  // 현재 적의 상태를 newState로 설정        
+    //    StartCoroutine(enemyState.ToString());  // 새로운 상태 재생
+    //}
 
     private IEnumerator Idle()
     {
@@ -125,7 +130,7 @@ public class LongEnemy : Enemy, IMonster
         {
             // 대기상태일 때, 하는 행동
             // 타겟과의 거리에 따라 행동 선태개(배회, 추격, 원거리 공격)
-            CalculateDistanceToTargetAndSelectState();
+            // CalculateDistanceToTargetAndSelectState();
 
             yield return null;
         }
@@ -152,9 +157,14 @@ public class LongEnemy : Enemy, IMonster
         // LookRotationToTarget();
         while (true)
         {
+            animator.SetBool("Attack", false);
+            Debug.Log("5초 기다리기 전");
+            yield return new WaitForSeconds(attackDelay);
             LookRotationToTarget();         // 타겟 방향을 계속 주시
             // 타겟과의 거리에 따라 행동 선택 (원거리 공격 / 정지)
-            CalculateDistanceToTargetAndSelectState();
+            //CalculateDistanceToTargetAndSelectState();
+            animator.SetBool("Attack", true);
+            yield return new WaitForSeconds(1f);
             yield return null;
         }
     }

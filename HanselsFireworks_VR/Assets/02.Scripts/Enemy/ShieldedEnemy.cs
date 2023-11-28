@@ -52,22 +52,23 @@ public class ShieldedEnemy : Enemy, IMonster
         dissoveEffect = GetComponent<DissolveEnemy>();
         collider = GetComponent<CapsuleCollider>();
         audioSource = GetComponent<AudioSource>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        ChangeState(EnemyState.Idle);
+        //navMeshAgent = GetComponent<NavMeshAgent>();
+        //ChangeState(EnemyState.Idle);
     }
     public void Spawn(int index)
     {
         Debug.Log("SheildedEnemySpawn!");
-        //if (GameManager.Instance.currentStage == 1)
-        //spawnPoints = GameObject.FindGameObjectsWithTag("1stFloorSP");
-        //else if (GameManager.Instance.currentStage == 2)
-        //    spawnPoints = GameObject.FindGameObjectsWithTag("2ndFloorSP");
+        if (VR.GameManager.Instance.currentStage == 1)
+            spawnPoints = GameObject.FindGameObjectsWithTag("1stFloorSP");
+        else if (VR.GameManager.Instance.currentStage == 3)
+            spawnPoints = GameObject.FindGameObjectsWithTag("3rdFloorSP");
 
-        spawnPoints = GameObject.FindGameObjectsWithTag("3rdFloorSP");
         spawnIndex = index % spawnPoints.Length;
 
         Transform selectedSpawnPoint = spawnPoints[spawnIndex].transform;
         transform.position = selectedSpawnPoint.position;
+        nav.enabled = true;
+        ChangeState(EnemyState.Idle);
     }
 
     public override void TakeScore()
@@ -75,12 +76,12 @@ public class ShieldedEnemy : Enemy, IMonster
         if (currentHP >= 1)
         {
             // 방패 점수
-            GameManager.Instance.score += shieldScore * GameManager.Instance.combo;
+            //GameManager.Instance.score += shieldScore * GameManager.Instance.combo;
             Debug.Log("Shielded_Gingerbread Damaged_1");
         }
         else if (currentHP == 0)
         {
-            GameManager.Instance.score += this.score * GameManager.Instance.combo;
+            //GameManager.Instance.score += this.score * GameManager.Instance.combo;
             Debug.Log("Shielded_Gingerbread Damaged_2");
         }
         
@@ -111,7 +112,7 @@ public class ShieldedEnemy : Enemy, IMonster
             StopAllCoroutines();
             // 콜라이더도 제거. 안그러면 dissolve하는 동안 쿠키를 밀고 감
             collider.enabled = false;
-            navMeshAgent.enabled = false;       // 얘까지 꺼야 땅에 꺼진다. 
+            nav.enabled = false;       // 얘까지 꺼야 땅에 꺼진다. 
             
             // GameManager.Instance.leftMonster--;
 
@@ -124,7 +125,7 @@ public class ShieldedEnemy : Enemy, IMonster
     {
         StopAllCoroutines();
         audioSource.mute = true;
-        navMeshAgent.enabled = false;
+        nav.enabled = false;
         animator.speed = 0;
     }
 

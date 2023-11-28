@@ -569,6 +569,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3728249667321437466, guid: ea9900ae9c749db46881772981a0cc76,
     type: 3}
   projectileSpawnPoint: {fileID: 2322540270159420114}
+  attackDelay: 5
   audioClipDie: {fileID: 8300000, guid: 7053e670ad40d434ba7955ab7f0cd213, type: 3}
   audioClipAttack: {fileID: 8300000, guid: 343af515d1829bf498faa2cbb37a1e5c, type: 3}
   animator: {fileID: 551906524405977400}
