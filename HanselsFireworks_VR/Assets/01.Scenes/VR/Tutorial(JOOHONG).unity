@@ -41200,26 +41200,26 @@ MonoBehaviour:
   - {fileID: 439385506}
   - {fileID: 291509706}
   m_wellcomeImgData:
-  - {fileID: 21300000, guid: 1a7e05cbdf06ce14d854d86537821ee8, type: 3}
-  - {fileID: 21300000, guid: 44419b7cbd655a04697dfce272350b5b, type: 3}
-  - {fileID: 21300000, guid: a31e5f3f9692ce94a84a593296f5fcff, type: 3}
-  - {fileID: 21300000, guid: a7252fbb486c1a7428816d634d829ac1, type: 3}
+  - {fileID: 21300000, guid: 0395897d92a99be4ab50c9fa4e355781, type: 3}
+  - {fileID: 21300000, guid: d05164aa469c22048a9205de582e8c98, type: 3}
+  - {fileID: 21300000, guid: a34d49758120d894e99afa5d0b91cf55, type: 3}
+  - {fileID: 21300000, guid: 4aa9636c3c08a884a8609f558078f09d, type: 3}
   m_tutorialImgData:
-  - {fileID: 21300000, guid: 5b10b19ca71325d4da11a111e55e6f4d, type: 3}
-  - {fileID: 21300000, guid: 0c44a658552114646802006eb19f8481, type: 3}
-  - {fileID: 21300000, guid: a4ce5926b5ee9d24cbb81667f0a9eec9, type: 3}
-  - {fileID: 21300000, guid: 73e9fe9294e1cd74986ee1cd9aa6cde5, type: 3}
-  - {fileID: 21300000, guid: 4d691129bec7e5646b9489d64b38c4f8, type: 3}
-  - {fileID: 21300000, guid: c94efb2aa0cbce040972ae5b135e86ec, type: 3}
-  - {fileID: 21300000, guid: e76f2aac8c2a79c42a59ac6f5de4ed24, type: 3}
-  - {fileID: 21300000, guid: db523ed17a0cbe24980eb3bd108e7440, type: 3}
-  - {fileID: 21300000, guid: c1add8c2b431d384ea6f3466571507dd, type: 3}
-  - {fileID: 21300000, guid: d06913c9887783e4fa1e178cf901467a, type: 3}
-  - {fileID: 21300000, guid: 22b965ff76f0bab408d9c3b4d046fd10, type: 3}
-  - {fileID: 21300000, guid: 21e167ec6e34b4243be4e88911eee0c1, type: 3}
-  - {fileID: 21300000, guid: 22b965ff76f0bab408d9c3b4d046fd10, type: 3}
+  - {fileID: 21300000, guid: ff47a785d5c1d0a48b1edd6bb493fdb4, type: 3}
+  - {fileID: 21300000, guid: 19ce26fece86d754b8f2c1170023b7ab, type: 3}
+  - {fileID: 21300000, guid: 331b455f905e56d4b87538ae1e214cc8, type: 3}
+  - {fileID: 21300000, guid: 8ecb1298143cbdf46bf849449628108c, type: 3}
+  - {fileID: 21300000, guid: 0629839d2be2fd240998213193490a59, type: 3}
+  - {fileID: 21300000, guid: 60d27054cc0757b4788e079c622cd42a, type: 3}
+  - {fileID: 21300000, guid: d9b810315b447cc438b26635df0e7432, type: 3}
+  - {fileID: 21300000, guid: 2213146fd85486e40a77ef2a433f76fc, type: 3}
+  - {fileID: 21300000, guid: 24e3a2dbb9ce38c47bb30fed7a5b0059, type: 3}
+  - {fileID: 21300000, guid: 5b1ac2124e5ba18429e87d79d39d1e35, type: 3}
+  - {fileID: 21300000, guid: 65590814c6cbb8242a438b8b3bc3a670, type: 3}
+  - {fileID: 21300000, guid: 37ad5b270799f864fb5b625080546aa1, type: 3}
+  - {fileID: 21300000, guid: 1352acb75f5ee024d9e33a6a1f491568, type: 3}
   m_entrancetImgData:
-  - {fileID: 21300000, guid: 1b7427160ed4a044fb2ba62d6ee08462, type: 3}
+  - {fileID: 21300000, guid: 1352acb75f5ee024d9e33a6a1f491568, type: 3}
   audioClips:
   - {fileID: 8300000, guid: e5be71d98b54b784eab253d2091307b2, type: 3}
   - {fileID: 8300000, guid: d854207eddfab6a40a2f16a577fb1857, type: 3}
@@ -58814,7 +58814,7 @@ RectTransform:
   m_GameObject: {fileID: 1240952716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.0165, y: 2.0165, z: 2.0165}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 64003004}
