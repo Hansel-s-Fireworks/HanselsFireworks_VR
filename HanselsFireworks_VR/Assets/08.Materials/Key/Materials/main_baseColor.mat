@@ -29,7 +29,6 @@ Material:
   - _NORMALMAP
   - _OUTLINE
   - _RECEIVE_SHADOWS_OFF
-  - _RIMLIGHTING_ON
   m_InvalidKeywords:
   - _OVERRIDESHADOWCOLOR_ON
   - _RECEIVESHADOWS_OFF
@@ -45,7 +44,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 910ea39a16729b94f8a73d9b7cb85064, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -93,7 +92,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 910ea39a16729b94f8a73d9b7cb85064, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -187,12 +186,12 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineEnabled: 1
     - _OutlineMode: 0
-    - _OutlineWidth: 8.85
+    - _OutlineWidth: 15
     - _OverrideShadowColor: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 0
-    - _RimEnabled: 1
+    - _RimEnabled: 0
     - _RimLightAlign: 0.033
     - _RimLightSmoothness: 0.075
     - _RimPower: 0.718
@@ -219,7 +218,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FaceFrontDirection: {r: 0, g: 0, b: 1, a: 0}
@@ -227,7 +226,7 @@ Material:
     - _HairSpecColor: {r: 0, g: 0, b: 0, a: 1}
     - _HalfToneColor: {r: 0, g: 0, b: 0, a: 1}
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
     - _OutlineDistancFade: {r: -25, g: 50, b: 0, a: 0}
     - _RimColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
