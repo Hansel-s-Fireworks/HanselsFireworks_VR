@@ -12,7 +12,6 @@ namespace VR
         public float time;
         private MemoryPool memoryPool;
         [SerializeField] private ImpactMemoryPool impactMemoryPool;
-        [SerializeField] private ScoreEffectMemoryPool scoreEffectMemoryPool;
 
         [Header("Debug")]
         [SerializeField] Vector3 pre;
@@ -23,7 +22,7 @@ namespace VR
         // Start is called before the first frame update
         void Start()
         {
-            impactMemoryPool = FindObjectOfType<ImpactMemoryPool>();
+            // impactMemoryPool = FindObjectOfType<ImpactMemoryPool>();
             // scoreEffectMemoryPool = FindObjectOfType<ScoreEffectMemoryPool>();
             transform.SetParent(null);
 
@@ -58,10 +57,14 @@ namespace VR
             {
                 cur = transform.position;        // 맞은 위치
                 direction = (cur - pre).normalized;     // (맞은 위치 - 총구 위치).정규화
-                other.GetComponent<Enemy>().TakeDamage(1);
-                other.GetComponent<Enemy>().TakeScore();
                 // 방향 벡터를 바탕으로 평면의 법선 벡터를 얻음
                 Vector3 normal = direction;
+                Quaternion rotation = Quaternion.LookRotation(normal);
+
+                other.GetComponent<Enemy>().TakeDamage(1);
+                other.GetComponent<Enemy>().TakeScore();
+
+
                 ItemSpawn itemSpawnComponent = other.GetComponent<ItemSpawn>();
                 if (itemSpawnComponent != null)
                 {
@@ -69,9 +72,11 @@ namespace VR
                 }
 
                 // 평면을 정의하기 위한 Quaternion 생성
-                Quaternion rotation = Quaternion.LookRotation(normal);
+                other.GetComponent<Target>().OnSpawnImpact(transform.position, rotation);
 
-                impactMemoryPool.OnSpawnImpact(other, transform.position, rotation);
+                // impactMemoryPool.OnSpawnImpact(other, transform.position, rotation);
+                // 임펙트가 소환되는데 구분하고 싶다.
+                
                 // bool 변수 하나 변화주면 부모 스크립트에서 메모리 풀 실행
                 // 이펙트 플레이 끝나고서 메모리 풀 해제
                 memoryPool.DeactivatePoolItem(gameObject);

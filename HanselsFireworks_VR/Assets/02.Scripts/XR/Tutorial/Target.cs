@@ -23,4 +23,15 @@ public class Target : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void OnSpawnImpact(Vector3 position, Quaternion rotation)
+    {
+        // 맞힌 위치로 이동
+        GameObject item = Instantiate(effect);
+        // item.transform.SetParent(null);
+
+        item.transform.position = position;
+        item.transform.rotation = rotation;
+        // gameObject.SetActive(false);
+    }
+
 }

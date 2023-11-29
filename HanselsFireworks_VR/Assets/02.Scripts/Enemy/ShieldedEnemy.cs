@@ -25,6 +25,10 @@ public class ShieldedEnemy : Enemy, IMonster
     public int shieldScore;
     [SerializeField] private Marshmallow target;                           // 적의 공격 대상(플레이어)
 
+    [Header("Effect")]
+    public GameObject shieldScoreEffect;
+    public GameObject scoreEffect;
+
     private Vector3 moveDirection = Vector3.zero;
     private EnemyState enemyState = EnemyState.None;    // 현재 적 행동
     public GameObject shield;
@@ -38,8 +42,9 @@ public class ShieldedEnemy : Enemy, IMonster
     private DissolveEnemy dissoveEffect;
     private GameObject[] spawnPoints;
     private int spawnIndex;
-
     public float distance;
+
+    [SerializeField] Target temp;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +59,7 @@ public class ShieldedEnemy : Enemy, IMonster
         audioSource = GetComponent<AudioSource>();
         //navMeshAgent = GetComponent<NavMeshAgent>();
         //ChangeState(EnemyState.Idle);
+        temp = GetComponent<Target>();
     }
     public void Spawn(int index)
     {
@@ -76,13 +82,16 @@ public class ShieldedEnemy : Enemy, IMonster
         if (currentHP >= 1)
         {
             // 방패 점수
-            VR.GameManager.Instance.score += score;
+            VR.GameManager.Instance.score += shieldScore;
             Debug.Log("Shielded_Gingerbread Damaged_1");
+            // 이미지 변경            
+            temp.effect = shieldScoreEffect;
         }
         else if (currentHP == 0)
         {
             VR.GameManager.Instance.score += score;
             Debug.Log("Shielded_Gingerbread Damaged_2");
+            temp.effect = scoreEffect;
         }
         
     }
