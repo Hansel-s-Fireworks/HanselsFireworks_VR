@@ -25,6 +25,11 @@ public class PumkinManager : MonoBehaviour, IMonster
         target = GameObject.FindGameObjectWithTag("Player");
     }
 
+    void Start()
+    {
+        StartCoroutine(CheckPumpkin()); 
+    }
+
     //private void Update()
     //{
     //    Vector3 directionToPlayer = target.transform.position - barrier.transform.position;
@@ -35,6 +40,21 @@ public class PumkinManager : MonoBehaviour, IMonster
     //        barrier.SetActive(false);
     //    }
     //}
+
+    IEnumerator CheckPumpkin()
+    {
+        while (true)
+        {
+            if (pumkins.Count == 0)
+            {
+                Debug.Log("모든 호박 제거 성공");
+                GetComponent<Target>().TakeDamage();
+                break;
+            }
+            yield return null;
+        }
+       
+    }
 
     public void Spawn(int index)
     {

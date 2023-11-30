@@ -21,6 +21,10 @@ public class Ghost : Enemy, IMonster
     public float rotationSpeed = 5f;
     public Transform bulletSpawner;
 
+    [Header("Effect")]
+    public GameObject hideEffect;
+    public GameObject scoreEffect;
+    [SerializeField] Target temp;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,7 @@ public class Ghost : Enemy, IMonster
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player");
         InvokeRepeating("SpawnBullet", 0f, 2f);
+        temp = GetComponent<Target>();
     }
 
     public void Spawn(int index)
@@ -56,7 +61,18 @@ public class Ghost : Enemy, IMonster
 
     public override void TakeScore()
     {
-        VR.GameManager.Instance.score += score;
+        if (currentHP >= 1)
+        {
+            Debug.Log("ghost 피함");
+            // 이미지 변경            
+            // temp.effect = effect;
+        }
+        else if (currentHP == 0)
+        {
+            VR.GameManager.Instance.score += score;
+            Debug.Log("Ghost Score!");
+            temp.effect = scoreEffect;
+        }
 
     }
 

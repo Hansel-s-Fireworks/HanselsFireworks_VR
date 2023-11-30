@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8f3f5dee8335ebd4891049f2e97272bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa4827ffaae70784bbdcc8df25a67ee0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4985,7 +4985,7 @@ GameObject:
   - component: {fileID: -2328161027119604668}
   - component: {fileID: 7060519074960250079}
   m_Layer: 0
-  m_Name: ScoreEffect 100
+  m_Name: ScoreEffect 30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

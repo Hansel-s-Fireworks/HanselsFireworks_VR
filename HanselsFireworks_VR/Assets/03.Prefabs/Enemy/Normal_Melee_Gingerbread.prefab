@@ -6581,6 +6581,7 @@ GameObject:
   - component: {fileID: 8575064077514928201}
   - component: {fileID: 7521202174756880475}
   - component: {fileID: 6818478480787512717}
+  - component: {fileID: 6193664964338547568}
   m_Layer: 0
   m_Name: Normal_Melee_Gingerbread
   m_TagString: Enemy
@@ -6838,6 +6839,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6193664964338547568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811367503579928193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50453a3a2f4a49647bd109484c1a45c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: {fileID: 8847372282683971104, guid: 67558a99641ecfe45aab7d7f181f36c3, type: 3}
 --- !u!1 &8861187505154549073
 GameObject:
   m_ObjectHideFlags: 0

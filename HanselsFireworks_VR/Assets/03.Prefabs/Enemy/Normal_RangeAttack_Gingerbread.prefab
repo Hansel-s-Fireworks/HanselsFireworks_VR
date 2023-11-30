@@ -490,6 +490,7 @@ GameObject:
   - component: {fileID: 7567953527057332974}
   - component: {fileID: 6670462505564320376}
   - component: {fileID: 4692097823665519091}
+  - component: {fileID: 4698690882096129510}
   m_Layer: 0
   m_Name: Normal_RangeAttack_Gingerbread
   m_TagString: Enemy
@@ -507,7 +508,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1049421210961620478}
@@ -735,6 +736,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4698690882096129510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3246502035714595544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50453a3a2f4a49647bd109484c1a45c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: {fileID: 8847372282683971104, guid: d18dc946e9137b7408e9f992ad48c75b, type: 3}
 --- !u!1 &3272777571993803238
 GameObject:
   m_ObjectHideFlags: 0
