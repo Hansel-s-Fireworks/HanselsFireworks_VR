@@ -59,8 +59,8 @@ namespace VR
             elapseTime = 0;
             nextSpawnHeight = 0.3f;
             spawnDuration = 2;
-            StartStage();
             Init();
+            StartStage();
         }
 
         private void Init()
@@ -98,34 +98,16 @@ namespace VR
         {
             while (true)
             {
-                ControlStoppedTime();
-                // if (marshmallow.currentHeight <= 0)
-                // {
-                //     Debug.Log("Lose");
-                //     yield break;
-                // }
-
-                if (elapseTime / limitedTime >= 1)
-                {
+                if(hp <= 0) 
+                { 
                     Debug.Log("Lose");
+                    // 마시멜로 멈추고 GameOver UI 띄우기
                     yield break;
                 }
+
                 yield return null;
             }
         }
 
-        IEnumerator CheckObjectiveInStage3()
-        {
-            while (true)
-            {
-                // hp바 체력이 조건
-                if (true)
-                {
-                    Debug.Log("Lose");
-                    yield break;
-                }
-                yield return null;
-            }
-        }
     }
 }

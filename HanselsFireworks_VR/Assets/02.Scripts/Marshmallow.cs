@@ -35,10 +35,6 @@ namespace VR
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                StartCoroutine(Ascend(10, 20));
-            }
             currentHeight = gameObject.transform.position.y;
             if (currentHeight < 10) { VR.GameManager.Instance.currentStage = 1; }
             else if (currentHeight < 20) { VR.GameManager.Instance.currentStage = 2; }
