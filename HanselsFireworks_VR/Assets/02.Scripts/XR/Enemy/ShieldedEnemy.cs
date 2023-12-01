@@ -31,16 +31,17 @@ namespace VR
         public GameObject shieldScoreEffect;
         public GameObject scoreEffect;
 
-        private Vector3 moveDirection = Vector3.zero;
-        private EnemyState enemyState = EnemyState.None;    // 현재 적 행동
+        private EnemyState enemyState;    // 현재 적 행동
         public GameObject shield;
-        NavMeshAgent nav;
-        Rigidbody rb;
 
-        public Animator animator;
-        public BoxCollider candyCane;
-        private CapsuleCollider collider;
-        private NavMeshAgent navMeshAgent;
+        [Header("Component For Debug")]
+        [SerializeField] NavMeshAgent nav;
+        [SerializeField] Rigidbody rb;
+        [SerializeField] Animator animator;
+        [SerializeField] BoxCollider candyCane;
+        [SerializeField] private CapsuleCollider collider;
+
+
         private DissolveEnemy dissoveEffect;
         private GameObject[] spawnPoints;
         private int spawnIndex;
@@ -51,6 +52,7 @@ namespace VR
         // Start is called before the first frame update
         void Start()
         {
+            enemyState = EnemyState.None;
             target = FindObjectOfType<Player>();        // 플레이어 인식
             animator = GetComponent<Animator>();
             animator.SetInteger("HP", currentHP);

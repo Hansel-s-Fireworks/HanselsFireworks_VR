@@ -25,15 +25,15 @@ namespace VR
         [SerializeField] private AudioClip audioClipDie;
         [SerializeField] private AudioClip audioClipAttack;
 
-        private Vector3 moveDirection = Vector3.zero;
-        private EnemyState enemyState = EnemyState.None;
-        NavMeshAgent nav;
-        Rigidbody rb;
+        
+        [Header("Component For Debug")]
+        [SerializeField] NavMeshAgent nav;
+        [SerializeField] Rigidbody rb;
+        [SerializeField] Animator animator;
+        [SerializeField] BoxCollider candyCane;
+        [SerializeField] private CapsuleCollider collider;
 
-        public Animator animator;
-        public BoxCollider candyCane;
-        private CapsuleCollider collider;
-        //private NavMeshAgent navMeshAgent;
+        private EnemyState enemyState;
         private DissolveEnemy dissoveEffect;
         private GameObject[] spawnPoints;
         private int spawnIndex;

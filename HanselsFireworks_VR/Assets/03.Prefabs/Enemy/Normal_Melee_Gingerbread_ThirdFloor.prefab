@@ -6665,8 +6665,11 @@ MonoBehaviour:
   audioClipRun: {fileID: 8300000, guid: 9fee2d74dc7d6c042ba8fdcd06877821, type: 3}
   audioClipDie: {fileID: 8300000, guid: 7053e670ad40d434ba7955ab7f0cd213, type: 3}
   audioClipAttack: {fileID: 8300000, guid: 6e80bf2fc38ceba4e8853bfd59fb5fca, type: 3}
+  nav: {fileID: 6009529452846109001}
+  rb: {fileID: 7521202174756880475}
   animator: {fileID: 6121125441432794729}
   candyCane: {fileID: 5881364618663347801}
+  collider: {fileID: 8575064077514928201}
   distance: 0
   animationClip: {fileID: -203655887218126122, guid: 3477a65b5ec6fc94ba86594f8e629ce4,
     type: 3}

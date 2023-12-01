@@ -24,7 +24,7 @@ namespace VR
             while (repeatCount < maxRepeatCount)
             {
                 yield return new WaitForSeconds(5f); // 5초 대기
-
+                Debug.Log("마지막꺼 소환");
                 spawnManager.SpawnPhaseFinal();
 
                 repeatCount++;

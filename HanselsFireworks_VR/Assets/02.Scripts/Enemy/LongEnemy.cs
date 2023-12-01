@@ -23,7 +23,7 @@ public class LongEnemy : Enemy, IMonster
     public Animator animator;
     private CapsuleCollider collider;
     private MemoryPool memoryPool;
-    private EnemyState enemyState = EnemyState.None;
+    private EnemyState enemyState;
     private GameObject[] spawnPoints;
     private int spawnIndex;
 
@@ -87,6 +87,7 @@ public class LongEnemy : Enemy, IMonster
 
     private void Start()
     {
+        enemyState = EnemyState.None;
         target = FindObjectOfType<XROrigin>();        // 플레이어 인식
         animator = GetComponent<Animator>();
         dissoveEffect = GetComponent<DissolveEnemy>();
@@ -157,6 +158,7 @@ public class LongEnemy : Enemy, IMonster
         // LookRotationToTarget();
         while (true)
         {
+            LookRotationToTarget();         // 타겟 방향을 계속 주시
             animator.SetBool("Attack", false);
             Debug.Log("5초 기다리기 전");
             yield return new WaitForSeconds(attackDelay);

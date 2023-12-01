@@ -14,6 +14,7 @@ public class ShieldedEnemy : Enemy, IMonster
     [Header("Info")]
     [SerializeField] private float attackRange;
     [SerializeField] private float recognitionRange;            // 인식 및 공격 범위 (이 범위 안에 들어오면 Attack" 상태로 변경)
+    public int shieldScore;
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip audioClipWalk;
@@ -22,23 +23,22 @@ public class ShieldedEnemy : Enemy, IMonster
     [SerializeField] private AudioClip audioClipShieldBreak;
     [SerializeField] private AudioClip audioClipAttack;
 
-    public int shieldScore;
-    [SerializeField] private Marshmallow target;                           // 적의 공격 대상(플레이어)
 
     [Header("Effect")]
     public GameObject shieldScoreEffect;
     public GameObject scoreEffect;
 
-    private Vector3 moveDirection = Vector3.zero;
-    private EnemyState enemyState = EnemyState.None;    // 현재 적 행동
-    public GameObject shield;
-    NavMeshAgent nav;
-    Rigidbody rb;
+    private EnemyState enemyState;    // 현재 적 행동
     
-    public Animator animator;
-    public BoxCollider candyCane;
-    private CapsuleCollider collider;
-    private NavMeshAgent navMeshAgent;
+    [Header("Component For Debug")]
+    [SerializeField] NavMeshAgent nav;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] Animator animator;
+    [SerializeField] BoxCollider candyCane;
+    [SerializeField] private CapsuleCollider collider;    
+    
+    [SerializeField] private Marshmallow target;                           // 적의 공격 대상(플레이어)
+    public GameObject shield;
     private DissolveEnemy dissoveEffect;
     private GameObject[] spawnPoints;
     private int spawnIndex;
@@ -49,15 +49,13 @@ public class ShieldedEnemy : Enemy, IMonster
     // Start is called before the first frame update
     void Start()
     {
+        enemyState = EnemyState.None;
         target = FindObjectOfType<Marshmallow>();        // 플레이어 인식
         animator = GetComponent<Animator>();
         animator.SetInteger("HP", currentHP);
-        nav = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
         dissoveEffect = GetComponent<DissolveEnemy>();
         collider = GetComponent<CapsuleCollider>();
         audioSource = GetComponent<AudioSource>();
-        //navMeshAgent = GetComponent<NavMeshAgent>();
         //ChangeState(EnemyState.Idle);
         temp = GetComponent<Target>();
     }

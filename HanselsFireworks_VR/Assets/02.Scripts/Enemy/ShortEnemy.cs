@@ -25,15 +25,14 @@ public class ShortEnemy : Enemy, IMonster
     [SerializeField] private AudioClip audioClipDie;
     [SerializeField] private AudioClip audioClipAttack;
 
-    private Vector3 moveDirection = Vector3.zero;
-    private EnemyState enemyState = EnemyState.None;
-    NavMeshAgent nav;
-    Rigidbody rb;
-    
-    public Animator animator;
-    public BoxCollider candyCane;
-    private CapsuleCollider collider;
-    //private NavMeshAgent navMeshAgent;
+    private EnemyState enemyState;
+    [Header("Component For Debug")]
+    [SerializeField] NavMeshAgent nav;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] Animator animator;
+    [SerializeField] BoxCollider candyCane;
+    [SerializeField] private CapsuleCollider collider;
+
     private DissolveEnemy dissoveEffect;
     private GameObject[] spawnPoints;
     private int spawnIndex;
@@ -43,17 +42,13 @@ public class ShortEnemy : Enemy, IMonster
     // Start is called before the first frame update
     void Start()
     {
-        // target = FindObjectOfType<XROrigin>();        // 플레이어 인식
+        enemyState = EnemyState.None;
         target = FindObjectOfType<Marshmallow>();
-
         animator = GetComponent<Animator>();
         animator.SetInteger("HP", currentHP);
-        nav = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
         dissoveEffect = GetComponent<DissolveEnemy>();
         collider = GetComponent<CapsuleCollider>();
         audioSource = GetComponent<AudioSource>();
-        //navMeshAgent = GetComponent<NavMeshAgent>();
         //ChangeState(EnemyState.Idle);
     }
 
