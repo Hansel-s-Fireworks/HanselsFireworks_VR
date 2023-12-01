@@ -6,15 +6,38 @@ namespace VR
 {
     public class StageManager : MonoBehaviour
     {
+        [SerializeField] private int repeatCount;
+        [SerializeField] private int maxRepeatCount;
+        [SerializeField] private SpawnManager spawnManager;
 
-
-        private void OnTriggerEnter(Collider other)
+        private void Start()
         {
-            if (other.CompareTag("Bomb"))
+            repeatCount = 0;
+            maxRepeatCount = 5;
+
+            StartCoroutine(RepeatSpawn());
+            spawnManager.currentPhase = 0;
+        }
+
+        IEnumerator RepeatSpawn()
+        {
+            while (repeatCount < maxRepeatCount)
             {
-                GameManager.Instance.currentStage++;
-                GameManager.Instance.StartStage();
+                yield return new WaitForSeconds(5f); // 5초 대기
+
+                spawnManager.SpawnPhaseFinal();
+
+                repeatCount++;
             }
         }
+
+        //private void OnTriggerEnter(Collider other)
+        //{
+        //    if (other.CompareTag("Bomb"))
+        //    {
+        //        GameManager.Instance.currentStage++;
+        //        GameManager.Instance.StartStage();
+        //    }
+        //}
     }
 }

@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VR
-{
+    namespace VR
+    {
     // 페이즈 정보를 담고있음 (몬스터 이름과 마리수)
     public class SpawnPhaseInfo
     {
@@ -16,7 +16,7 @@ namespace VR
         public SpawnPhaseInfo[] phasesInStage;
         public SpawnPhaseInfo[] phasesInStageFinal;
         public GameObject[] monsterPrefabs;
-        private int currentPhase;
+        public int currentPhase;
         private int spawnIndex;
         public Transform firstSpawnPoint;
 
@@ -114,11 +114,11 @@ namespace VR
             {
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy", 4)}
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy", 2),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 2),
                                                                  Tuple.Create("SheildEnemy", 3)}
                 },
                 new SpawnPhaseInfo
@@ -188,6 +188,10 @@ namespace VR
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
                                                                  Tuple.Create("Pumkin", 1)}
                 },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Pumkin", 1)}
+                }
 
             };
         }

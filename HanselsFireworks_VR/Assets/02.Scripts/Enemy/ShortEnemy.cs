@@ -71,7 +71,7 @@ public class ShortEnemy : Enemy, IMonster
         Transform selectedSpawnPoint = spawnPoints[spawnIndex].transform;
         transform.position = selectedSpawnPoint.position;
 
-        nav.enabled = true;
+        // nav.enabled = true;
         //navMeshAgent = GetComponent<NavMeshAgent>();
         ChangeState(EnemyState.Idle);
     }
@@ -160,8 +160,8 @@ public class ShortEnemy : Enemy, IMonster
 
     private IEnumerator Idle()
     {
-        audioSource.Stop();
-        nav.speed = 0;
+        //audioSource.Stop();
+        //nav.speed = 0;
         while (true)
         {
             // 대기상태일 때, 하는 행동

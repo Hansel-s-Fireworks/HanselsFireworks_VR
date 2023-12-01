@@ -16,10 +16,9 @@ namespace VR
 
         [SerializeField] private XROrigin player;
         [SerializeField] private float timer;
-        [SerializeField] private int repeatCount;
-        [SerializeField] private int maxRepeatCount;
         [SerializeField] private SpawnManager spawnManager;
         [SerializeField] private GameObject spawnPoints;
+        [SerializeField] private GameObject stageMng;
 
         // Start is called before the first frame update
         void Start()
@@ -27,8 +26,6 @@ namespace VR
             growSpeed = 1;
             spawnDuration = 2;
             nextSpawnHeight = 0.1f;
-            repeatCount = 0;
-            maxRepeatCount = 5;
             player = FindObjectOfType<XROrigin>();
             
         }
@@ -38,7 +35,9 @@ namespace VR
             currentHeight = gameObject.transform.position.y;
             if (currentHeight < 10) { VR.GameManager.Instance.currentStage = 1; }
             else if (currentHeight < 20) { VR.GameManager.Instance.currentStage = 2; }
-            else { VR.GameManager.Instance.currentStage = 3; }
+            else { VR.GameManager.Instance.currentStage = 3;
+                stageMng.SetActive(true);
+            }
 
             float heightTolerance = 0.01f;
 
@@ -69,17 +68,17 @@ namespace VR
             }*/
         }
 
-        IEnumerator RepeatSpawn()
-        {
-            while (repeatCount < maxRepeatCount)
-            {
-                yield return new WaitForSeconds(10f); // 10초 대기
+        //IEnumerator RepeatSpawn()
+        //{
+        //    while (repeatCount < maxRepeatCount)
+        //    {
+        //        yield return new WaitForSeconds(10f); // 10초 대기
 
-                spawnManager.SpawnPhaseFinal();
+        //        spawnManager.SpawnPhaseFinal();
 
-                repeatCount++;
-            }
-        }
+        //        repeatCount++;
+        //    }
+        //}
 
         public void Descend()
         {

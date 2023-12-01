@@ -31,7 +31,7 @@ public class Ghost : Enemy, IMonster
     {
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player");
-        InvokeRepeating("SpawnBullet", 0f, 2f);
+        InvokeRepeating("SpawnBullet", 0f, 4f);
         temp = GetComponent<Target>();
     }
 
