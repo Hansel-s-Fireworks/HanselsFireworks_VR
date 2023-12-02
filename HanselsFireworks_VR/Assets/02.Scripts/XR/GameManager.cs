@@ -19,12 +19,13 @@ namespace VR
                 return instance;
             }
         }
+
         private void Awake()
         {
-            Debug.Log("game manager");
             if (instance == null)
             {
                 instance = this;
+                DontDestroyOnLoad(this.gameObject);
             }
             else
             {
@@ -33,18 +34,15 @@ namespace VR
         }
 
         [Header("Info")]
-        public int[] stageScores;
         public int score;
-        public int totalScore;
         public int currentStage;
         public int leftMonster;
-        public int leftCase;
-        public float elapseTime;
-        public float limitedTime;
+        public float hp;
+        public float takenTime;
+        public float elapseTime;        
         public float spawnDuration;
         public float nextSpawnHeight;
 
-        public float hp;
 
         [Header("Countdown")]
         public float delay;
@@ -67,13 +65,12 @@ namespace VR
         {
             marshmallow = FindObjectOfType<Marshmallow>();
             spawnManager = FindObjectOfType<SpawnManager>();
-            limitedTime = 5;
+            // limitedTime = 5;
             elapseTime = 0;
             nextSpawnHeight = 0.3f;
             spawnDuration = 2;
             Init();
-            StartCoroutine(FadeOutImage());
-            
+            StartCoroutine(FadeOutImage());            
         }
 
         private void Init()
@@ -143,6 +140,15 @@ namespace VR
             mainBGM.Play();
             StartStage();
             yield return StartCoroutine(CheckObjective());
+        }
+
+        IEnumerator CheckTime()
+        {
+            while (leftMonster == 0)
+            {
+                takenTime += Time.deltaTime;
+                yield return true;
+            }
         }
 
         IEnumerator CheckObjective()
