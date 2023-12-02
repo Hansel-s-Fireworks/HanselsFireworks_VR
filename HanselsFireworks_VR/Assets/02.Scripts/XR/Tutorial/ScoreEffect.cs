@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target : MonoBehaviour
+public class ScoreEffect : MonoBehaviour
 {
     public GameObject effect;
+    private Vector3 pos;
+    private Quaternion rot;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class Target : MonoBehaviour
     }
     public void TakeDamage()
     {
-        GameObject clone = Instantiate(effect,transform);
+        GameObject clone = Instantiate(effect, transform);
         clone.transform.SetParent(null);
         gameObject.SetActive(false);
     }
@@ -31,6 +33,19 @@ public class Target : MonoBehaviour
 
         item.transform.position = position;
         item.transform.rotation = rotation;
+        pos = position;
+        rot = rotation;
+        // gameObject.SetActive(false);
+    }
+
+    public void OnSpawnImpactComplete()
+    {
+        // 맞힌 위치로 이동
+        GameObject item = Instantiate(effect);
+        // item.transform.SetParent(null);
+
+        item.transform.position = pos;
+        item.transform.rotation = rot;
         // gameObject.SetActive(false);
     }
 

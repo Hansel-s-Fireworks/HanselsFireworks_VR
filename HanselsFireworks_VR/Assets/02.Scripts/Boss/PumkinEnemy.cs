@@ -27,7 +27,7 @@ public class PumkinEnemy : Enemy
     private void Start()
     {
         animator.SetTrigger("IsAppear");
-        PumkinManager.Instance.addPumkin(this.gameObject);
+        // PumkinManager.Instance.addPumkin(this.gameObject);
         target = GameObject.FindGameObjectWithTag("Player");
         canTakeDamage = true;
     }
@@ -49,6 +49,7 @@ public class PumkinEnemy : Enemy
             bool isDie = DecreaseHP(damage);
             if (isDie)
             {
+
                 PumkinManager.Instance.DeletePumkin(this.gameObject);
                 gameObject.SetActive(false);
             }
@@ -79,15 +80,16 @@ public class PumkinEnemy : Enemy
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        PumkinManager.Instance.DeletePumkin(this.gameObject);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        // PumkinManager.Instance.DeletePumkin(this.gameObject);
+        // Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<Player>().TakeScore();
+            other.GetComponent<VR.Player>().TakeDamage();
         }
     }
 }

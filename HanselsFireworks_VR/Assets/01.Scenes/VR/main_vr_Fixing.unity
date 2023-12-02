@@ -11206,6 +11206,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8436836592971270744, guid: 5434c1984aeb911439e6226eda8aac8c,
         type: 3}
+      propertyPath: m_TagString
+      value: Marshmallow
+      objectReference: {fileID: 0}
+    - target: {fileID: 8436836592971270744, guid: 5434c1984aeb911439e6226eda8aac8c,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
@@ -26946,8 +26951,8 @@ Transform:
   m_GameObject: {fileID: 746684016}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 0, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 290675875}

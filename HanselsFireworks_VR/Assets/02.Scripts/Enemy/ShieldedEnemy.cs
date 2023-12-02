@@ -44,7 +44,7 @@ public class ShieldedEnemy : Enemy, IMonster
     private int spawnIndex;
     public float distance;
 
-    [SerializeField] Target temp;
+    [SerializeField] ScoreEffect temp;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +57,7 @@ public class ShieldedEnemy : Enemy, IMonster
         collider = GetComponent<CapsuleCollider>();
         audioSource = GetComponent<AudioSource>();
         //ChangeState(EnemyState.Idle);
-        temp = GetComponent<Target>();
+        temp = GetComponent<ScoreEffect>();
     }
     public void Spawn(int index)
     {

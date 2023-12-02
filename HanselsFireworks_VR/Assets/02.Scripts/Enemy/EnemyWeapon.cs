@@ -18,7 +18,7 @@ public class EnemyWeapon : MonoBehaviour
         // }
         if (other.CompareTag("Marshmallow"))
         {
-            other.GetComponent<Marshmallow>().Descend();
+            other.GetComponentInParent<Marshmallow>().Descend();
         }
     }
 }

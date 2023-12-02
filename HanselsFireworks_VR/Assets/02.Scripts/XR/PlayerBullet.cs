@@ -72,7 +72,7 @@ namespace VR
                 }
 
                 // 평면을 정의하기 위한 Quaternion 생성
-                other.GetComponent<Target>().OnSpawnImpact(transform.position, rotation);
+                other.GetComponent<ScoreEffect>().OnSpawnImpact(transform.position, rotation);
 
                 // impactMemoryPool.OnSpawnImpact(other, transform.position, rotation);
                 // 임펙트가 소환되는데 구분하고 싶다.
@@ -99,7 +99,7 @@ namespace VR
             }
             else if(other.CompareTag("target"))
             {
-                other.GetComponent<Target>().TakeDamage();
+                other.GetComponent<ScoreEffect>().TakeDamage();
                 memoryPool.DeactivatePoolItem(gameObject);
             }
         }

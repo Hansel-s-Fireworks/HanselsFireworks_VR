@@ -25,7 +25,7 @@ namespace VR
         {
             growSpeed = 1;
             spawnDuration = 2;
-            nextSpawnHeight = 0.1f;
+            nextSpawnHeight = 1f;
             player = FindObjectOfType<XROrigin>();
             
         }

@@ -24,7 +24,7 @@ public class Ghost : Enemy, IMonster
     [Header("Effect")]
     public GameObject hideEffect;
     public GameObject scoreEffect;
-    [SerializeField] Target temp;
+    [SerializeField] ScoreEffect temp;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class Ghost : Enemy, IMonster
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player");
         InvokeRepeating("SpawnBullet", 0f, 4f);
-        temp = GetComponent<Target>();
+        temp = GetComponent<ScoreEffect>();
     }
 
     public void Spawn(int index)

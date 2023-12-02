@@ -47,7 +47,7 @@ namespace VR
         private int spawnIndex;
         public float distance;
 
-        [SerializeField] Target temp;
+        [SerializeField] ScoreEffect temp;
 
         // Start is called before the first frame update
         void Start()
@@ -63,7 +63,7 @@ namespace VR
             audioSource = GetComponent<AudioSource>();
             //navMeshAgent = GetComponent<NavMeshAgent>();
             // ChangeState(EnemyState.Idle);
-            temp = GetComponent<Target>();
+            temp = GetComponent<ScoreEffect>();
         }
         public void Spawn(int index)
         {

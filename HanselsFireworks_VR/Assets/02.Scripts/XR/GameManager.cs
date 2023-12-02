@@ -125,27 +125,24 @@ namespace VR
 
         IEnumerator CountDown()
         {
-            while (true)
-            {
-                yield return new WaitForSeconds(1f);
-                countUI.color = new Color(1, 1, 1, 1);
-                countUI.sprite = sprites[3];
-                PlaySound(0);
-                yield return new WaitForSeconds(1f);
-                countUI.sprite = sprites[2];
-                PlaySound(0);
-                yield return new WaitForSeconds(1f);
-                countUI.sprite = sprites[1];
-                PlaySound(0);
-                yield return new WaitForSeconds(1f);
-                countUI.sprite = sprites[0];
-                PlaySound(3);
-                yield return new WaitForSeconds(1f);
-                countUI.color = new Color(1, 1, 1, 0);
-                mainBGM.Play();
-                StartStage();
-                // yield return StartCoroutine(CheckObjective());
-            }
+            yield return new WaitForSeconds(1f);
+            countUI.color = new Color(1, 1, 1, 1);
+            countUI.sprite = sprites[3];
+            PlaySound(0);
+            yield return new WaitForSeconds(1f);
+            countUI.sprite = sprites[2];
+            PlaySound(0);
+            yield return new WaitForSeconds(1f);
+            countUI.sprite = sprites[1];
+            PlaySound(0);
+            yield return new WaitForSeconds(1f);
+            countUI.sprite = sprites[0];
+            PlaySound(3);
+            yield return new WaitForSeconds(1f);
+            countUI.color = new Color(1, 1, 1, 0);
+            mainBGM.Play();
+            StartStage();
+            yield return StartCoroutine(CheckObjective());
         }
 
         IEnumerator CheckObjective()

@@ -64,7 +64,7 @@ public class TutorialManager : MonoBehaviour
     public List<GameObject> grabableCube = new List<GameObject>();
     private List<XRGrabInteractable> grabbable = new List<XRGrabInteractable>();
     public Pistol tutorialPistol;
-    public List<Target> lolipops = new List<Target>();
+    public List<ScoreEffect> lolipops = new List<ScoreEffect>();
     public Image loadingImage;
     public GameObject keyItem;
     public XRGrabInteractable key;
@@ -158,7 +158,7 @@ public class TutorialManager : MonoBehaviour
             }
             yield return null;
         }
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         // yield return StartCoroutine(FadeOutImage());
     }
 

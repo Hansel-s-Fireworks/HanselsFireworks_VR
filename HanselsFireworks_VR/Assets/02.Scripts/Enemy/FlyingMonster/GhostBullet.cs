@@ -36,6 +36,16 @@ namespace VR
             Destroy(gameObject);
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                other.GetComponent<Player>().TakeDamage();
+                Destroy(gameObject);
+            }
+            else Destroy(gameObject);
+        }
+
     }
 
 }

@@ -146,16 +146,16 @@ using UnityEngine;
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
-                                                                 Tuple.Create("ShortEnemy", 4)}
+                                                                 Tuple.Create("ShortEnemy", 0)}
                 },
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
-                                                                 Tuple.Create("ShortEnemy", 4)}
+                                                                 Tuple.Create("ShortEnemy", 0)}
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy", 2),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy", 0),
                                                                  Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
