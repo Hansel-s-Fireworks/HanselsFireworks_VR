@@ -149,7 +149,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9147883217960945511}
@@ -211,6 +211,11 @@ MonoBehaviour:
   particle: {fileID: 5697752550617355758}
   rotationSpeed: 5
   bulletSpawner: {fileID: 9147883217960945511}
+  hideEffect: {fileID: 8847372282683971104, guid: 6c5599973b9ffb540ad057f9f810c7bb,
+    type: 3}
+  scoreEffect: {fileID: 8847372282683971104, guid: 6c5599973b9ffb540ad057f9f810c7bb,
+    type: 3}
+  temp: {fileID: 0}
 --- !u!136 &8031347364759949491
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -230,10 +235,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.1652852
-  m_Height: 3.1871762
+  m_Radius: 1.498105
+  m_Height: 3.7547626
   m_Direction: 1
-  m_Center: {x: 0.020710826, y: 0.10263562, z: 0}
+  m_Center: {x: 0.020710828, y: 0.10263563, z: 0}
 --- !u!54 &-7258203746478510312
 Rigidbody:
   m_ObjectHideFlags: 0

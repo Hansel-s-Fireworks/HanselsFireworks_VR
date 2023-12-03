@@ -4,6 +4,8 @@ using UnityEngine;
 using Unity.XR.CoreUtils;
 using UnityEditor;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
+
 namespace VR
 {
     public class Marshmallow : MonoBehaviour
@@ -27,15 +29,17 @@ namespace VR
             spawnDuration = 2;
             nextSpawnHeight = 1f;
             player = FindObjectOfType<XROrigin>();
-            
         }
+
 
         private void Update()
         {
             currentHeight = gameObject.transform.position.y;
             if (currentHeight < 10) { VR.GameManager.Instance.currentStage = 1; }
             else if (currentHeight < 20) { VR.GameManager.Instance.currentStage = 2; }
-            else { VR.GameManager.Instance.currentStage = 3;
+            else 
+            { 
+                VR.GameManager.Instance.currentStage = 3; 
                 stageMng.SetActive(true);
             }
 

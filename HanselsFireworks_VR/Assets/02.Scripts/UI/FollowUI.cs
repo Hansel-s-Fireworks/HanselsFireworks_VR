@@ -10,6 +10,7 @@ public class FollowUI : MonoBehaviour
     void Start()
     {
         XRPlayer = FindObjectOfType<XROrigin>().gameObject;
+        head = FindObjectOfType<Camera>().transform;
     }
 
     // Update is called once per frame

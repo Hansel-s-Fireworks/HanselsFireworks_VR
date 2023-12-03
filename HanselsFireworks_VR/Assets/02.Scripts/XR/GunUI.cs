@@ -26,12 +26,8 @@ namespace VR
         private void UpdateHPUI(int previous, int current)
         {
             // 체력이 증가했을 때는 화면에 빨간색 이미지를 출력하지 않도록 return
-            if (previous <= current) return;
-            
-            if (previous - current > 0)
-            {
-                s_Hp.value = current; //  GameManager.Instance.hp;
-            }
+            if (current <= 0) return;
+            s_Hp.value = current;
         }
     }
 

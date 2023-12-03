@@ -65,7 +65,7 @@ public class Ghost : Enemy, IMonster
         {
             Debug.Log("ghost 피함");
             // 이미지 변경            
-            // temp.effect = effect;
+            temp.effect = scoreEffect;
         }
         else if (currentHP == 0)
         {

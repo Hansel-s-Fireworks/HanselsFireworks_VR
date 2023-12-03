@@ -14,12 +14,12 @@ namespace VR
         {
             repeatCount = 0;
             maxRepeatCount = 5;
-
-            StartCoroutine(RepeatSpawn());
             spawnManager.currentPhase = 0;
+            // spawnManager.SpawnPhaseFinal();
+            StartCoroutine(spawnManager.SpawnPhaseFinal_());
         }
 
-        IEnumerator RepeatSpawn()
+        /*IEnumerator RepeatSpawn()
         {
             while (repeatCount < maxRepeatCount)
             {
@@ -29,7 +29,7 @@ namespace VR
 
                 repeatCount++;
             }
-        }
+        }*/
 
         //private void OnTriggerEnter(Collider other)
         //{

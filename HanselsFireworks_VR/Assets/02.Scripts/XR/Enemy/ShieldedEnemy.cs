@@ -16,6 +16,7 @@ namespace VR
         [Header("Info")]
         [SerializeField] private float attackRange;
         [SerializeField] private float recognitionRange;            // 인식 및 공격 범위 (이 범위 안에 들어오면 Attack" 상태로 변경)
+        public int shieldScore;
 
         [Header("Audio Clips")]
         [SerializeField] private AudioClip audioClipWalk;
@@ -24,15 +25,12 @@ namespace VR
         [SerializeField] private AudioClip audioClipShieldBreak;
         [SerializeField] private AudioClip audioClipAttack;
 
-        public int shieldScore;
-        [SerializeField] private Player target;                           // 적의 공격 대상(플레이어)
 
         [Header("Effect")]
         public GameObject shieldScoreEffect;
         public GameObject scoreEffect;
 
         private EnemyState enemyState;    // 현재 적 행동
-        public GameObject shield;
 
         [Header("Component For Debug")]
         [SerializeField] NavMeshAgent nav;
@@ -41,7 +39,8 @@ namespace VR
         [SerializeField] BoxCollider candyCane;
         [SerializeField] private CapsuleCollider collider;
 
-
+        [SerializeField] private Player target;                           // 적의 공격 대상(플레이어)
+        public GameObject shield;
         private DissolveEnemy dissoveEffect;
         private GameObject[] spawnPoints;
         private int spawnIndex;
@@ -56,13 +55,10 @@ namespace VR
             target = FindObjectOfType<Player>();        // 플레이어 인식
             animator = GetComponent<Animator>();
             animator.SetInteger("HP", currentHP);
-            nav = GetComponent<NavMeshAgent>();
-            rb = GetComponent<Rigidbody>();
             dissoveEffect = GetComponent<DissolveEnemy>();
             collider = GetComponent<CapsuleCollider>();
             audioSource = GetComponent<AudioSource>();
-            //navMeshAgent = GetComponent<NavMeshAgent>();
-            // ChangeState(EnemyState.Idle);
+            //ChangeState(EnemyState.Idle);
             temp = GetComponent<ScoreEffect>();
         }
         public void Spawn(int index)
@@ -148,9 +144,15 @@ namespace VR
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
+        private void FixedUpdate()
+        {
+            // FreezeVelocity();
+        }
+
         private void SetStatebyDistance()
         {
-            distance = Vector3.Distance(target.transform.position, transform.position);
+            distance = Vector3.Distance(new Vector3(target.transform.position.x, 0, target.transform.position.z),
+                transform.position);
             if (distance < attackRange)
             {
                 animator.SetBool("Pursuit", false);
@@ -200,8 +202,8 @@ namespace VR
             while (true)
             {
                 animator.SetBool("Attack", false);
-                // LookRotationToTarget();         // 타겟 방향을 계속 주시
-                // MoveToTarget();                 // 타겟 방향을 계속 이동
+                LookRotationToTarget();         // 타겟 방향을 계속 주시
+                                                // MoveToTarget();                 // 타겟 방향을 계속 이동
                 candyCane.enabled = false;
                 nav.enabled = true;
                 nav.speed = pursuitSpeed;
@@ -216,7 +218,7 @@ namespace VR
             while (true)
             {
                 nav.enabled = false;
-                // FreezeVelocity();
+                FreezeVelocity();
                 LookRotationToTarget();                 // 타겟 방향을 계속 주시
                 animator.SetBool("Attack", true);
 

@@ -54,7 +54,7 @@ namespace VR
             collider = GetComponent<CapsuleCollider>();
             audioSource = GetComponent<AudioSource>();
             //navMeshAgent = GetComponent<NavMeshAgent>();
-            ChangeState(EnemyState.Idle);
+            // ChangeState(EnemyState.Idle);
         }
 
         public void Spawn(int index)
@@ -71,7 +71,7 @@ namespace VR
             Transform selectedSpawnPoint = spawnPoints[spawnIndex].transform;
             transform.position = selectedSpawnPoint.position;
 
-            nav.enabled = true;
+            // nav.enabled = true;
             //navMeshAgent = GetComponent<NavMeshAgent>();
             ChangeState(EnemyState.Idle);
         }

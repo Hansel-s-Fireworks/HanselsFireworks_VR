@@ -20,11 +20,17 @@ using UnityEngine;
         private int spawnIndex;
         public Transform firstSpawnPoint;
 
+        [SerializeField] private int repeatCount;
+        [SerializeField] private int maxRepeatCount;
+
         // Start is called before the first frame update
         void Start()
         {
             CreatePhases();
             currentPhase = 0;
+
+            repeatCount = 0;
+            maxRepeatCount = 5;
         }
 
 
@@ -45,7 +51,7 @@ using UnityEngine;
             }
         }
 
-        public void SpawnPhaseFinal()
+        /*public void SpawnPhaseFinal()
         {
             foreach (var monsterInfo in phasesInStageFinal[currentPhase].monsterData)
             {
@@ -61,6 +67,30 @@ using UnityEngine;
                 }
             }
             currentPhase++;
+        }*/
+        
+        public IEnumerator SpawnPhaseFinal_()
+        {
+            while (repeatCount < maxRepeatCount)
+            {
+                foreach (var monsterInfo in phasesInStageFinal[currentPhase].monsterData)
+                {
+                    string monsterType = monsterInfo.Item1;
+                    int count = monsterInfo.Item2;
+
+                    for (int i = 0; i < count; i++)
+                    {
+                        GameObject spawnedMonster = Instantiate(monsterPrefabs[GetMonsterIndex(monsterType)], firstSpawnPoint.position, Quaternion.identity);
+                        IMonster monster = spawnedMonster.GetComponent<IMonster>();
+                        yield return new WaitForSeconds(0.5f);
+                        monster.Spawn(spawnIndex);
+                        spawnIndex++;
+                    }
+                    yield return new WaitForSeconds(5f);
+                    currentPhase++;
+                }
+                repeatCount++;
+            }
         }
 
         public void SpawnPhase()
@@ -99,6 +129,10 @@ using UnityEngine;
                 return 3;
             else if (monsterType == "Pumkin")
                 return 4;
+            else if (monsterType == "ShortEnemy_3")
+                return 5;
+            else if (monsterType == "SheildEnemy_3")
+                return 6;
             else
             {
                 Debug.Log("Wrong monsterType!");
@@ -119,22 +153,22 @@ using UnityEngine;
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 2),
-                                                                 Tuple.Create("SheildEnemy", 3)}
+                                                                 Tuple.Create("SheildEnemy_3", 3)}
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy", 6),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 6),
                                                                  Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy", 5),
-                                                                 Tuple.Create("SheildEnemy", 2),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 5),
+                                                                 Tuple.Create("SheildEnemy_3", 2),
                                                                  Tuple.Create("Ghost", 2)}
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy", 20),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 20),
                                                                  Tuple.Create("Ghost", 1)}
                 }
 
@@ -146,7 +180,7 @@ using UnityEngine;
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
-                                                                 Tuple.Create("ShortEnemy", 0)}
+                                                                 Tuple.Create("ShortEnemy", 2)}
                 },
                 new SpawnPhaseInfo
                 {

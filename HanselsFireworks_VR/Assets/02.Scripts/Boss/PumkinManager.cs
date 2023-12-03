@@ -14,7 +14,10 @@ public class PumkinManager : MonoBehaviour, IMonster
     private GameObject[] spawnPoints;
     [SerializeField] private GameObject barrier;
     [SerializeField] private int spawnIndex;
-    [SerializeField] ScoreEffect scoreEffect;
+    [SerializeField] ScoreEffect scoreEffect;       // 자식중 마지막 호박의 위치로 
+    
+
+    public GameObject completeScoreEffect;
 
     public float rotationSpeed = 5f;
 
@@ -29,7 +32,7 @@ public class PumkinManager : MonoBehaviour, IMonster
 
     void Start()
     {
-        scoreEffect = GetComponent<ScoreEffect>();
+        // scoreEffect = GetComponent<ScoreEffect>();
         StartCoroutine(CheckPumpkin()); 
     }
 
@@ -52,7 +55,8 @@ public class PumkinManager : MonoBehaviour, IMonster
             {
                 VR.GameManager.Instance.score += completeScore;
                 Debug.Log("모든 호박 제거 성공");
-                scoreEffect.OnSpawnImpactComplete();
+                // scoreEffect.OnSpawnImpactComplete();
+                completeScoreEffect.SetActive(true);
                 break;
             }
             yield return null;
@@ -96,7 +100,7 @@ public class PumkinManager : MonoBehaviour, IMonster
     {
         foreach (GameObject pumkin in pumkins)
         {
-            pumkin.GetComponent<PumkinEnemy>().Attack();
+            if(pumkin.activeSelf) pumkin.GetComponent<PumkinEnemy>().Attack();
         }
     }
 

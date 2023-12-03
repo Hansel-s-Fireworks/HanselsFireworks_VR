@@ -9,6 +9,7 @@ public class PumkinEnemy : Enemy
     [SerializeField] private GameObject target;
     [SerializeField] private AudioSource damageSound;
     public int damage;
+    [SerializeField] ScoreEffect scoreEffect;
 
     private float approachTime = 1f;
 
@@ -27,6 +28,7 @@ public class PumkinEnemy : Enemy
         animator.SetTrigger("IsAppear");
         // PumkinManager.Instance.addPumkin(this.gameObject);
         target = GameObject.FindGameObjectWithTag("Player");
+        scoreEffect = GetComponent<ScoreEffect>();
         canTakeDamage = true;
     }
 
@@ -34,7 +36,8 @@ public class PumkinEnemy : Enemy
     {
         if (canTakeDamage)
         {
-            VR.GameManager.Instance.score += this.score;            
+            VR.GameManager.Instance.score += score;
+            // scoreEffect.effect = ;
         }
     }
 
@@ -47,7 +50,6 @@ public class PumkinEnemy : Enemy
             bool isDie = DecreaseHP(damage);
             if (isDie)
             {
-
                 PumkinManager.Instance.DeletePumkin(this.gameObject);
                 gameObject.SetActive(false);
             }
@@ -59,7 +61,9 @@ public class PumkinEnemy : Enemy
         Debug.Log("Attack!");
         canTakeDamage = false;
         animator.SetTrigger("IsAttack");
-        StartCoroutine(ApproachTarget());
+        StartCoroutine(ApproachTarget());   // 아마 여기 오류뜰텐데 bullet에 닿으면 비활성화되지만
+                                            // PumkinManager의 리스트에는 남아있어서
+                                            // 비활성화된 object의 함수를 호출할 수 없어서 생긴 오류. 무시해도 될듯
     }
 
     IEnumerator ApproachTarget()

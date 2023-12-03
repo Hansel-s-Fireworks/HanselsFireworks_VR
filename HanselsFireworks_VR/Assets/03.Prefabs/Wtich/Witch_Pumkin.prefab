@@ -147,10 +147,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 2
   currentHP: 2
-  score: 100
+  score: 50
   target: {fileID: 0}
   damageSound: {fileID: 1300008668023153290}
   damage: 10
+  scoreEffect: {fileID: 0}
   rotationSpeed: 5
 --- !u!82 &-5986918853378593323
 AudioSource:
@@ -357,6 +358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 67558a99641ecfe45aab7d7f181f36c3, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2374468238951769227
 GameObject:
   m_ObjectHideFlags: 0

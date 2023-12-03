@@ -25,6 +25,7 @@ namespace VR
 
         public override void GetItem()
         {
+            Debug.Log("Get Heal Item");
             player.GetComponent<Status>().IncreaseHP(increasHP);
             Instantiate(hpEffectPrefab, player.transform.position, Quaternion.identity);
             Destroy(gameObject);

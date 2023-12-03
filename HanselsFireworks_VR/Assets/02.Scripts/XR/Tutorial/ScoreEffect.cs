@@ -5,8 +5,8 @@ using UnityEngine;
 public class ScoreEffect : MonoBehaviour
 {
     public GameObject effect;
-    private Vector3 pos;
-    private Quaternion rot;
+    [SerializeField] private Vector3 pos;
+    [SerializeField] private Quaternion rot;
     // Start is called before the first frame update
     void Start()
     {
