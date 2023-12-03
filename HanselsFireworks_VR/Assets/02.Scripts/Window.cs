@@ -16,7 +16,7 @@ public class Window : InteractableObject
 
     public override void TakeScore()
     {
-        GameManager.Instance.score += this.score;
+        // GameManager.Instance.score += this.score;
     }
 
     public override void TakeDamage(int damage)

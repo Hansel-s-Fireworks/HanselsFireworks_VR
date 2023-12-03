@@ -5420,6 +5420,8 @@ MonoBehaviour:
   moveSpeed: 3
   moveDistance: 0.25
   player: {fileID: 0}
+  burstEffectPrefab: {fileID: 8807036561733036820, guid: 80e7017c78772134bbc42c3d485bbeff,
+    type: 3}
 --- !u!1 &7367522210333951466
 GameObject:
   m_ObjectHideFlags: 0

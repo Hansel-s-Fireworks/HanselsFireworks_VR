@@ -72,6 +72,7 @@ namespace VR
                 }
 
                 // 평면을 정의하기 위한 Quaternion 생성
+                // 메모리 풀 안씀
                 other.GetComponent<ScoreEffect>().OnSpawnImpact(transform.position, rotation);
 
                 // impactMemoryPool.OnSpawnImpact(other, transform.position, rotation);

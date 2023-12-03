@@ -27,7 +27,7 @@ public class Impact : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         Debug.Log("효과 비활성화");
-        memoryPool.DeactivatePoolItem(gameObject);        
+        // memoryPool.DeactivatePoolItem(gameObject);        
     }
 
 }

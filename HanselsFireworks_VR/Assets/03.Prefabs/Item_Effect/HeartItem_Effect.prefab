@@ -10013,3 +10013,6 @@ MonoBehaviour:
   moveSpeed: 3
   moveDistance: 0.25
   player: {fileID: 0}
+  hpEffectPrefab: {fileID: 8791842884292356551, guid: d1d48ac8dbe16784cacaf90d3313b80a,
+    type: 3}
+  increasHP: 50

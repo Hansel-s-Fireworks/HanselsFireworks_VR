@@ -7,9 +7,9 @@ namespace VR
 {
     public class HeartItem : Item
     {
-
         [SerializeField] private Player player;
-        
+        [SerializeField] private GameObject hpEffectPrefab;
+        [SerializeField] private int increasHP = 50;
 
         // Start is called before the first frame update
         void Start()
@@ -25,7 +25,8 @@ namespace VR
 
         public override void GetItem()
         {
-            player.GetHP();
+            player.GetComponent<Status>().IncreaseHP(increasHP);
+            Instantiate(hpEffectPrefab, player.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

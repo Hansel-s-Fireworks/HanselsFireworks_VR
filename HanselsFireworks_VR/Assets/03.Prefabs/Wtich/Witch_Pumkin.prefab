@@ -150,6 +150,7 @@ MonoBehaviour:
   score: 100
   target: {fileID: 0}
   damageSound: {fileID: 1300008668023153290}
+  damage: 10
   rotationSpeed: 5
 --- !u!82 &-5986918853378593323
 AudioSource:

@@ -7,6 +7,7 @@ namespace VR
     public class BurstItem : Item
     {
         [SerializeField] private Player player;
+        [SerializeField] private GameObject burstEffectPrefab;
 
         // Start is called before the first frame update 
         void Start()
@@ -24,6 +25,7 @@ namespace VR
         {
             // BurstMode();
             player.GetRifleItem();
+            Instantiate(burstEffectPrefab, player.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

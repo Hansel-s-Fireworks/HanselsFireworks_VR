@@ -6,11 +6,9 @@ public class PumkinEnemy : Enemy
 {
     private Animator animator;
 
-    [SerializeField]
-    private GameObject target;
-
-    [SerializeField]
-    private AudioSource damageSound;
+    [SerializeField] private GameObject target;
+    [SerializeField] private AudioSource damageSound;
+    public int damage;
 
     private float approachTime = 1f;
 
@@ -89,7 +87,7 @@ public class PumkinEnemy : Enemy
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<VR.Player>().TakeDamage();
+            other.GetComponent<VR.Player>().TakeDamage(damage);
         }
     }
 }

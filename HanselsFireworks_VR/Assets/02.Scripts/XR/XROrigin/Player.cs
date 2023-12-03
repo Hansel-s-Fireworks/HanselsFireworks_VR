@@ -13,9 +13,12 @@ namespace VR
         public Rifle rifle;
         public Gun[] currentGun;
 
+        [SerializeField] private Status status;      // 이동속도 등의 플레이어 정보
+
         // Start is called before the first frame update
         void Start()
         {
+            status = GetComponent<Status>();
             currentGun = new Gun[2];
         }
 
@@ -77,14 +80,25 @@ namespace VR
         }
         public void GetHP()
         {
-            GameManager.Instance.hp += 10;
+            
+            // GameManager.Instance.hp += 10;
         }
 
 
-        public void TakeDamage()
+        public void TakeDamage(int damage)
         {
+            bool isDie = status.DecreaseHP(damage);
             Debug.Log("Player Damaged");
-            GameManager.Instance.hp -= 10;
+            if (isDie == true)
+            {
+                // 죽으면 호출할 거 여기에 하기
+                // 1. 마시멜로 성장 멈춤
+                // 2. 플레이어 조작 멈추기
+                // 3. 화면 빨개지기 + GameOver화면 만들기
+                // 4. Retry 버튼 만들기
+                Debug.Log("Dead");
+            }            
+            // GameManager.Instance.hp -= 10;
         }
 
     }

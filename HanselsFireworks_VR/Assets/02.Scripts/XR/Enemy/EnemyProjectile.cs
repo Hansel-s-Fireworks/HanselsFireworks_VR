@@ -13,6 +13,8 @@ namespace VR
         private MemoryPool memoryPool;
         public Vector3 moveDirection = Vector3.zero;        // 적이 방향을 전달
 
+        public int damage;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -41,7 +43,7 @@ namespace VR
         {
             if (other.CompareTag("Player"))
             {
-                other.GetComponent<Player>().TakeDamage();
+                other.GetComponent<VR.Player>().TakeDamage(damage);
                 memoryPool.DeactivatePoolItem(gameObject);
             }
             else if (other.CompareTag("Wall"))

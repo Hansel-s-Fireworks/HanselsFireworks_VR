@@ -10,7 +10,7 @@ namespace VR
 
         [SerializeField]
         private GameObject target;
-
+        public int damage;
         private float approachTime = 0.5f;
 
         // Start is called before the first frame update
@@ -40,7 +40,7 @@ namespace VR
         {
             if (other.CompareTag("Player"))
             {
-                other.GetComponent<Player>().TakeDamage();
+                other.GetComponent<VR.Player>().TakeDamage(damage);
                 Destroy(gameObject);
             }
             else Destroy(gameObject);
