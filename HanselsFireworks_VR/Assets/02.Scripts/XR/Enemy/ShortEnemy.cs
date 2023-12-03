@@ -25,7 +25,7 @@ namespace VR
         [SerializeField] private AudioClip audioClipDie;
         [SerializeField] private AudioClip audioClipAttack;
 
-        
+        private EnemyState enemyState;
         [Header("Component For Debug")]
         [SerializeField] NavMeshAgent nav;
         [SerializeField] Rigidbody rb;
@@ -33,7 +33,6 @@ namespace VR
         [SerializeField] BoxCollider candyCane;
         [SerializeField] private CapsuleCollider collider;
 
-        private EnemyState enemyState;
         private DissolveEnemy dissoveEffect;
         private GameObject[] spawnPoints;
         private int spawnIndex;
@@ -43,18 +42,14 @@ namespace VR
         // Start is called before the first frame update
         void Start()
         {
-            // target = FindObjectOfType<XROrigin>();        // 플레이어 인식
+            enemyState = EnemyState.None;
             target = FindObjectOfType<Player>();
-
             animator = GetComponent<Animator>();
             animator.SetInteger("HP", currentHP);
-            nav = GetComponent<NavMeshAgent>();
-            rb = GetComponent<Rigidbody>();
             dissoveEffect = GetComponent<DissolveEnemy>();
             collider = GetComponent<CapsuleCollider>();
             audioSource = GetComponent<AudioSource>();
-            //navMeshAgent = GetComponent<NavMeshAgent>();
-            // ChangeState(EnemyState.Idle);
+            //ChangeState(EnemyState.Idle);
         }
 
         public void Spawn(int index)
@@ -129,7 +124,7 @@ namespace VR
         private void SetStatebyDistance()
         {
 
-            distance = Vector3.Distance(target.transform.position,
+            distance = Vector3.Distance(new Vector3(target.transform.position.x, 0, target.transform.position.z),
                 transform.position);
             if (distance < attackRange)
             {
@@ -160,8 +155,8 @@ namespace VR
 
         private IEnumerator Idle()
         {
-            audioSource.Stop();
-            nav.speed = 0;
+            //audioSource.Stop();
+            //nav.speed = 0;
             while (true)
             {
                 // 대기상태일 때, 하는 행동

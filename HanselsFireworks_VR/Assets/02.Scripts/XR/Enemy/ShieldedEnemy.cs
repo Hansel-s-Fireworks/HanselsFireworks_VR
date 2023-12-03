@@ -202,7 +202,7 @@ namespace VR
             while (true)
             {
                 animator.SetBool("Attack", false);
-                LookRotationToTarget();         // 타겟 방향을 계속 주시
+                // LookRotationToTarget();         // 타겟 방향을 계속 주시
                                                 // MoveToTarget();                 // 타겟 방향을 계속 이동
                 candyCane.enabled = false;
                 nav.enabled = true;

@@ -180,7 +180,7 @@ using UnityEngine;
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
-                                                                 Tuple.Create("ShortEnemy", 2)}
+                                                                 Tuple.Create("ShortEnemy", 0)}
                 },
                 new SpawnPhaseInfo
                 {
