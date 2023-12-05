@@ -93,7 +93,9 @@ public class ShieldedEnemy : Enemy, IMonster
         }
         else if (currentHP == 1)
         {
-            this.gameObject.GetComponent<ItemSpawn>().enabled = true;
+            ItemSpawn itemSpawn = GetComponent<ItemSpawn>();
+            if (itemSpawn)
+                this.gameObject.GetComponent<ItemSpawn>().enabled = true;
         }
         else if (currentHP == 0)
         {

@@ -158,7 +158,7 @@ public class TutorialManager : MonoBehaviour
             }
             yield return null;
         }
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
         // yield return StartCoroutine(FadeOutImage());
     }
 

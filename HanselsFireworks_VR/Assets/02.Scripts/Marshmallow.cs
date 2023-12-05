@@ -27,7 +27,7 @@ namespace VR
         {
             growSpeed = 1;
             spawnDuration = 2;
-            nextSpawnHeight = 1f;
+            nextSpawnHeight = 0.2f;
             player = FindObjectOfType<XROrigin>();
         }
 
@@ -56,7 +56,7 @@ namespace VR
 
             float heightTolerance = 0.01f;
 
-            if (Mathf.Abs(currentHeight - nextSpawnHeight) < heightTolerance && currentHeight < 16)
+            if (Mathf.Abs(currentHeight - nextSpawnHeight) < heightTolerance && currentHeight < 18)
             {
                 Debug.Log("spawnPhase!");
                 spawnManager.SpawnPhase();

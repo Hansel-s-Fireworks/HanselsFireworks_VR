@@ -79,6 +79,7 @@ namespace VR
         
         public IEnumerator SpawnPhaseFinal_()
         {
+            yield return new WaitForSeconds(5f);
             while (currentPhase < phasesInStageFinal.Length)
             {
                 foreach (var monsterInfo in phasesInStageFinal[currentPhase].monsterData)
@@ -137,7 +138,6 @@ namespace VR
 
         private IEnumerator SpawnPhaseWithDelay()
         {
-            yield return new WaitForSeconds(1.0f);
             foreach (var monsterInfo in phasesInStage[currentPhase].monsterData)
             {
                 string monsterType = monsterInfo.Item1;
@@ -204,31 +204,43 @@ namespace VR
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 1)}
                 },
-                //new SpawnPhaseInfo
-                //{
-                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 2),
-                //                                                 Tuple.Create("SheildEnemy_3", 3)}
-                //},
-                //new SpawnPhaseInfo
-                //{
-                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 4),
-                //                                                 Tuple.Create("Ghost", 1)}
-                //},
-                //new SpawnPhaseInfo
-                //{
-                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 2),
-                //                                                 Tuple.Create("SheildEnemy_3", 2),
-                //                                                 Tuple.Create("Ghost", 1)}
-                //},
-                //new SpawnPhaseInfo
-                //{
-                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 4),
-                //                                                 Tuple.Create("Ghost", 1)}
-                //},
-                //new SpawnPhaseInfo
-                //{
-                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 3)}
-                //},
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 2),
+                                                                 Tuple.Create("SheildEnemy_3", 3)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 4),
+                                                                 Tuple.Create("Ghost", 1)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 2),
+                                                                 Tuple.Create("SheildEnemy_3", 2),
+                                                                 Tuple.Create("Ghost", 1)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 4),
+                                                                 Tuple.Create("Ghost", 1)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 3),
+                                                                 Tuple.Create("SheildEnemy_3", 2),
+                                                                 Tuple.Create("Ghost", 1)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 2),
+                                                                 Tuple.Create("SheildEnemy_3", 3),
+                                                                 Tuple.Create("Ghost", 1)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 3)}
+                },
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("GrandSheildEnemy", 3)
@@ -242,50 +254,57 @@ namespace VR
                 // 1
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 2),
-                                                                 Tuple.Create("ShortEnemy", 2)}
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 0),
+                                                                 Tuple.Create("ShortEnemy", 8)}
                 },
                 // 3
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
-                                                                 Tuple.Create("SheildEnemy", 2)}
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 3),
+                                                                 Tuple.Create("SheildEnemy", 3)}
                 },
                 // 5
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy", 0),
-                                                                 Tuple.Create("Ghost", 1)}
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 3),
+                                                                 Tuple.Create("Ghost", 2)}
                 },
                 // 7
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
-                                                                 Tuple.Create("Ghost", 2)}
+                                                                 Tuple.Create("Pumkin", 1),
+                                                                 Tuple.Create("Ghost", 1) }
                 },
                 // 9
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 1),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 2),
                                                                  Tuple.Create("Pumkin", 1)}
                 },
                 // 11
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 3),
                                                                  Tuple.Create("Ghost", 1)}
                 },
                 // 13
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
-                                                                 Tuple.Create("Ghost", 1)}
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 4),
+                                                                 Tuple.Create("Ghost", 2)}
                 },
                 // 15
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 3),
+                                                                 Tuple.Create("Ghost", 1),
                                                                  Tuple.Create("Pumkin", 1)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 2),
+                                                                 Tuple.Create("Pumkin", 2)}
                 }
 
             };
