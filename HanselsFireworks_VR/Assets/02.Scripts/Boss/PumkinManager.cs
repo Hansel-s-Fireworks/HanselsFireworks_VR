@@ -57,6 +57,7 @@ public class PumkinManager : MonoBehaviour, IMonster
                 Debug.Log("모든 호박 제거 성공");
                 // scoreEffect.OnSpawnImpactComplete();
                 completeScoreEffect.SetActive(true);
+                Destroy(this.gameObject, 1f);
                 break;
             }
             yield return null;

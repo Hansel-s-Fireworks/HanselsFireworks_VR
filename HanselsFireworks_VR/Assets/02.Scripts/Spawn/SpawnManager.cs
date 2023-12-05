@@ -22,6 +22,8 @@ using UnityEngine;
 
         [SerializeField] private int repeatCount;
         [SerializeField] private int maxRepeatCount;
+        [SerializeField] private int itemSpawnDuration;
+        public ItemManager itemMng;
 
         // Start is called before the first frame update
         void Start()
@@ -100,6 +102,7 @@ using UnityEngine;
 
         private IEnumerator SpawnPhaseWithDelay()
         {
+            yield return new WaitForSeconds(4.5f);
             foreach (var monsterInfo in phasesInStage[currentPhase].monsterData)
             {
                 string monsterType = monsterInfo.Item1;
@@ -108,6 +111,12 @@ using UnityEngine;
                 for (int i = 0; i < count; i++)
                 {
                     GameObject spawnedMonster = Instantiate(monsterPrefabs[GetMonsterIndex(monsterType)], firstSpawnPoint.position, Quaternion.identity);
+                    
+                    if (spawnIndex % itemSpawnDuration == 1)
+                    {
+                        AddItemToMonster(spawnedMonster, itemMng.GetCurrentItem());
+                    }
+
                     IMonster monster = spawnedMonster.GetComponent<IMonster>();
                     yield return new WaitForSeconds(0.5f);
                     monster.Spawn(spawnIndex);
@@ -116,6 +125,13 @@ using UnityEngine;
             }
             currentPhase++;
         }
+
+        private void AddItemToMonster(GameObject monster, GameObject item_)
+        {
+            ItemSpawn itemSpawn = monster.AddComponent<ItemSpawn>();
+            itemSpawn.item = item_;
+        }
+
 
         int GetMonsterIndex(string monsterType)
         {

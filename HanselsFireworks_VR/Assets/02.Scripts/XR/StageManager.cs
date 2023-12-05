@@ -6,6 +6,7 @@ namespace VR
 {
     public class StageManager : MonoBehaviour
     {
+        [SerializeField] private Bridge bridge;
         [SerializeField] private int repeatCount;
         [SerializeField] private int maxRepeatCount;
         [SerializeField] private SpawnManager spawnManager;
@@ -16,7 +17,19 @@ namespace VR
             maxRepeatCount = 5;
             spawnManager.currentPhase = 0;
             // spawnManager.SpawnPhaseFinal();
+            DestroyAllMonster();
             StartCoroutine(spawnManager.SpawnPhaseFinal_());
+            bridge.PlayBridgeAnimation();
+        }
+
+        private void DestroyAllMonster()
+        {
+            GameObject[] monsters = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach(var monster in monsters)
+            {
+                monster.SetActive(false);
+            }
         }
 
         /*IEnumerator RepeatSpawn()
