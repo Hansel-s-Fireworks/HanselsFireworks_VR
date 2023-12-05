@@ -123,7 +123,8 @@ using UnityEngine;
                     spawnIndex++;
                 }
             }
-            currentPhase++;
+            if (currentPhase < phasesInStage.Length)
+                currentPhase++;
         }
 
         private void AddItemToMonster(GameObject monster, GameObject item_)
@@ -193,54 +194,53 @@ using UnityEngine;
             //Stage1,2
             phasesInStage = new SpawnPhaseInfo[]
             {
+                // 1
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 2),
+                                                                 Tuple.Create("ShortEnemy", 0)}
+                },
+                // 3
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
                                                                  Tuple.Create("ShortEnemy", 0)}
                 },
-                new SpawnPhaseInfo
-                {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
-                                                                 Tuple.Create("ShortEnemy", 0)}
-                },
+                // 5
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy", 0),
                                                                  Tuple.Create("Ghost", 1)}
                 },
+                // 7
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
                                                                  Tuple.Create("Ghost", 2)}
                 },
+                // 9
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 1),
                                                                  Tuple.Create("Pumkin", 1)}
                 },
+                // 11
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
                                                                  Tuple.Create("Ghost", 1)}
                 },
+                // 13
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
                                                                  Tuple.Create("Ghost", 1)}
                 },
+                // 15
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
                                                                  Tuple.Create("Pumkin", 1)}
-                },
-                new SpawnPhaseInfo
-                {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
-                                                                 Tuple.Create("Pumkin", 1)}
-                },
-                new SpawnPhaseInfo
-                {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Pumkin", 1)}
                 }
 
             };

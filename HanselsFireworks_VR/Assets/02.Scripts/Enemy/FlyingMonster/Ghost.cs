@@ -16,7 +16,7 @@ public class Ghost : Enemy, IMonster
     [SerializeField]
     private AudioSource collisionSound;
     [SerializeField]
-    private ParticleSystem particle;
+    private GameObject particle;
 
     public float rotationSpeed = 5f;
     public Transform bulletSpawner;
@@ -37,6 +37,11 @@ public class Ghost : Enemy, IMonster
 
     public void Spawn(int index)
     {
+        if (this.gameObject.GetComponent<ItemSpawn>())
+        {
+            this.gameObject.GetComponent<ItemSpawn>().enabled = false;
+        }
+
         Debug.Log("GhostSpawn!");
         // 마시멜로우에 붙어있는 스폰 포인트 중 랜덤으로 하나 설정
         spawnPoints = GameObject.FindGameObjectsWithTag("MarshmallowSP");
@@ -61,11 +66,9 @@ public class Ghost : Enemy, IMonster
 
     public override void TakeScore()
     {
-        if (currentHP >= 1)
+        if (currentHP == 1)
         {
-            Debug.Log("ghost 피함");
-            // 이미지 변경            
-            temp.effect = scoreEffect;
+            this.gameObject.GetComponent<ItemSpawn>().enabled = true;
         }
         else if (currentHP == 0)
         {
@@ -82,8 +85,10 @@ public class Ghost : Enemy, IMonster
 
         collisionSound.Play();
         visual.SetActive(false);
-        particle.Play();
-        Invoke("MoveMonster", 1f);
+        GameObject ghostParticle = Instantiate(particle, this.transform);
+        ghostParticle.transform.SetParent(null);
+
+        MoveMonster();
 
         bool isDie = DecreaseHP(damage);
 

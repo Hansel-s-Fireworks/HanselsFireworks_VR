@@ -6584,6 +6584,7 @@ GameObject:
   - component: {fileID: 1187962760942512216}
   - component: {fileID: 625336080411779706}
   - component: {fileID: 5870038815404390882}
+  - component: {fileID: 5722059143277368924}
   m_Layer: 0
   m_Name: Shielded_Gingerbread_ThirdFloor
   m_TagString: Enemy
@@ -6880,6 +6881,19 @@ MonoBehaviour:
   effect: {fileID: 8847372282683971104, guid: 16e2c87a9db9e1a4585e9af6f734ff95, type: 3}
   pos: {x: 0, y: 0, z: 0}
   rot: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5722059143277368924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8811367503579928193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c7c9c7450084e46a77491946258248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
 --- !u!1 &8861187505154549073
 GameObject:
   m_ObjectHideFlags: 0

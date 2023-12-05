@@ -160,7 +160,6 @@ public class LongEnemy : Enemy, IMonster
         {
             LookRotationToTarget();         // 타겟 방향을 계속 주시
             animator.SetBool("Attack", false);
-            Debug.Log("5초 기다리기 전");
             yield return new WaitForSeconds(attackDelay);
             LookRotationToTarget();         // 타겟 방향을 계속 주시
             // 타겟과의 거리에 따라 행동 선택 (원거리 공격 / 정지)
