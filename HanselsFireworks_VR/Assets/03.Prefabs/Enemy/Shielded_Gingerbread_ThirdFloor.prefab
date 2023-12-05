@@ -6662,24 +6662,24 @@ MonoBehaviour:
   runSpeed: 0
   attackRange: 3
   recognitionRange: 100
+  shieldScore: 10
   audioClipWalk: {fileID: 8300000, guid: 9fee2d74dc7d6c042ba8fdcd06877821, type: 3}
   audioClipRun: {fileID: 8300000, guid: 9fee2d74dc7d6c042ba8fdcd06877821, type: 3}
   audioClipDie: {fileID: 8300000, guid: 7053e670ad40d434ba7955ab7f0cd213, type: 3}
   audioClipShieldBreak: {fileID: 8300000, guid: f318634301424b44d9bcd67bacc0e69c,
     type: 3}
   audioClipAttack: {fileID: 8300000, guid: 6e80bf2fc38ceba4e8853bfd59fb5fca, type: 3}
-  shieldScore: 10
-  target: {fileID: 0}
   shieldScoreEffect: {fileID: 8847372282683971104, guid: 16e2c87a9db9e1a4585e9af6f734ff95,
     type: 3}
   scoreEffect: {fileID: 8847372282683971104, guid: e778e21e226c37b4284004755f47a9ea,
     type: 3}
-  shield: {fileID: 2075498011116959667}
   nav: {fileID: 6009529452846109001}
   rb: {fileID: 7521202174756880475}
   animator: {fileID: 6121125441432794729}
   candyCane: {fileID: 5881364618663347801}
   collider: {fileID: 0}
+  target: {fileID: 0}
+  shield: {fileID: 2075498011116959667}
   distance: 0
   temp: {fileID: 0}
 --- !u!195 &6009529452846109001
@@ -6788,11 +6788,11 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 100
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -6825,7 +6825,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
