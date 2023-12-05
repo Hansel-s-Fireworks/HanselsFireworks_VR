@@ -64,7 +64,7 @@ public class TutorialManager : MonoBehaviour
     public List<GameObject> grabableCube = new List<GameObject>();
     private List<XRGrabInteractable> grabbable = new List<XRGrabInteractable>();
     public Pistol tutorialPistol;
-    public List<ScoreEffect> lolipops = new List<ScoreEffect>();
+    public List<GameObject> lolipops = new List<GameObject>();
     public Image loadingImage;
     public GameObject keyItem;
     public XRGrabInteractable key;

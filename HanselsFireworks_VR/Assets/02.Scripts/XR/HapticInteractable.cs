@@ -18,6 +18,7 @@ namespace VR
         {
             XRBaseInteractable interactable = GetComponent<XRBaseInteractable>();
             interactable.activated.AddListener(TriggerHaptic);
+            controller = GetComponentInParent<ActionBasedController>();
         }
 
         public void TriggerHaptic(BaseInteractionEventArgs eventArgs)

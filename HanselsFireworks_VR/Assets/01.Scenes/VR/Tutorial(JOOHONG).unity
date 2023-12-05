@@ -837,6 +837,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &46335674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,6 +1618,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &77102635
 GameObject:
   m_ObjectHideFlags: 0
@@ -13179,6 +13183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &365422225
 GameObject:
   m_ObjectHideFlags: 0
@@ -23978,6 +23984,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3728249667321437466, guid: 02faa29af4373ce49939d62899d51c7d,
         type: 3}
+    - target: {fileID: 427248550683491692, guid: 191b8667a134eb24ca112bd4fb1f3815,
+        type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 787787559828004258, guid: 191b8667a134eb24ca112bd4fb1f3815,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24437,6 +24448,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &555371058
 GameObject:
   m_ObjectHideFlags: 0
@@ -24562,39 +24575,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561025785}
   m_Mesh: {fileID: 150581138598605843, guid: 94695e8a334ae884ebf1c3cd8d20aa8e, type: 3}
---- !u!1 &563500155
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 563500156}
-  m_Layer: 0
-  m_Name: Lollipop3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &563500156
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 563500155}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.11046549, y: 0.4833283, z: -0.10464783, w: 0.8621137}
-  m_LocalPosition: {x: 26.03, y: 0.16, z: -144.38}
-  m_LocalScale: {x: 3.2697608, y: 3.2697608, z: 3.2697604}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1504552597}
-  - {fileID: 1128608269}
-  m_Father: {fileID: 725654704}
-  m_LocalEulerAnglesHint: {x: 16.955, y: 57.894, z: -4.416}
 --- !u!1 &566081119
 GameObject:
   m_ObjectHideFlags: 0
@@ -39311,6 +39291,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &664561778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40018,7 +40000,7 @@ GameObject:
   - component: {fileID: 713428626}
   - component: {fileID: 713428627}
   m_Layer: 0
-  m_Name: NurbsPath
+  m_Name: Lollipop4
   m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40032,12 +40014,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713428622}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.17163639, y: 0.26849523, z: -0.012720897, w: 0.9477813}
-  m_LocalPosition: {x: -0.50486016, y: 0.69157094, z: 0.30769923}
-  m_LocalScale: {x: 17.564503, y: 17.564503, z: 17.564503}
+  m_LocalRotation: {x: -0.021323882, y: 0.70892954, z: 0.0024660602, w: 0.7049526}
+  m_LocalPosition: {x: 26.651318, y: 3.7877383, z: -143.9027}
+  m_LocalScale: {x: 57.431717, y: 57.431732, z: 57.431713}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 757719831}
+  m_Children:
+  - {fileID: 1265330233}
+  m_Father: {fileID: 725654704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &713428624
 MeshRenderer:
@@ -40102,6 +40085,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!136 &713428627
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -40284,11 +40269,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3730036741946942051}
-  - {fileID: 1226260274}
-  - {fileID: 563500156}
-  - {fileID: 757719831}
-  - {fileID: 2062530798}
+  - {fileID: 8125967580646665359}
+  - {fileID: 1613768586}
+  - {fileID: 1128608269}
+  - {fileID: 713428623}
+  - {fileID: 1521586149}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &739232627
@@ -40462,39 +40447,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2115502331}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &757719830
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 757719831}
-  m_Layer: 0
-  m_Name: Lollipop4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &757719831
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757719830}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.11046549, y: 0.4833283, z: -0.10464783, w: 0.8621137}
-  m_LocalPosition: {x: 26.03, y: 1.803, z: -146.03}
-  m_LocalScale: {x: 3.2697608, y: 3.2697608, z: 3.2697604}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1265330233}
-  - {fileID: 713428623}
-  m_Father: {fileID: 725654704}
-  m_LocalEulerAnglesHint: {x: 16.955, y: 57.894, z: -4.416}
 --- !u!1 &759213570
 GameObject:
   m_ObjectHideFlags: 0
@@ -40819,6 +40771,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &810085266
 GameObject:
   m_ObjectHideFlags: 0
@@ -41237,11 +41191,11 @@ MonoBehaviour:
   - {fileID: 55093131}
   tutorialPistol: {fileID: 307547883}
   lolipops:
-  - {fileID: 8125967580646665360}
-  - {fileID: 1521586152}
-  - {fileID: 1128608272}
-  - {fileID: 713428626}
-  - {fileID: 1613768589}
+  - {fileID: 7284919914626848002}
+  - {fileID: 1613768585}
+  - {fileID: 1128608268}
+  - {fileID: 713428622}
+  - {fileID: 1521586148}
   loadingImage: {fileID: 348106541}
   keyItem: {fileID: 4678529}
   key: {fileID: 4678530}
@@ -41416,12 +41370,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 814617580}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.791548, y: 0.19884987, z: 0.18085985, w: 0.5488172}
-  m_LocalPosition: {x: -0.48405275, y: 0.40393502, z: 0.4092625}
-  m_LocalScale: {x: 17.564503, y: 17.564505, z: 17.564503}
+  m_LocalRotation: {x: -0.7071069, y: 0.00000007450579, z: 0.00000006705521, w: 0.70710665}
+  m_LocalPosition: {x: 0, y: -0.017407218, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1226260274}
+  m_Father: {fileID: 1521586149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &814617582
 MeshRenderer:
@@ -43171,6 +43125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!136 &1023689944
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -53035,6 +52991,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!4 &1104883943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4131437023405378, guid: 78e8b38d431ddef4fa2994a3f2d6e2ff,
@@ -53190,6 +53148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &1128183911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53305,7 +53265,7 @@ GameObject:
   - component: {fileID: 1128608272}
   - component: {fileID: 1128608273}
   m_Layer: 0
-  m_Name: NurbsPath
+  m_Name: Lollipop3
   m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53319,12 +53279,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128608268}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.17163639, y: 0.26849523, z: -0.012720897, w: 0.9477813}
-  m_LocalPosition: {x: -0.50486016, y: 0.69157094, z: 0.30769923}
-  m_LocalScale: {x: 17.564503, y: 17.564503, z: 17.564503}
+  m_LocalRotation: {x: -0.021323882, y: 0.70892954, z: 0.0024660602, w: 0.7049526}
+  m_LocalPosition: {x: 26.651318, y: 2.1447384, z: -142.2527}
+  m_LocalScale: {x: 57.431717, y: 57.431732, z: 57.431713}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 563500156}
+  m_Children:
+  - {fileID: 1504552597}
+  m_Father: {fileID: 725654704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1128608270
 MeshRenderer:
@@ -53389,6 +53350,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!136 &1128608273
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -58514,39 +58477,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1558940548}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1226260273
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1226260274}
-  m_Layer: 0
-  m_Name: Lollipop2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1226260274
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226260273}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.11046549, y: 0.4833283, z: -0.10464783, w: 0.8621137}
-  m_LocalPosition: {x: 26.03, y: 0.16, z: -147.606}
-  m_LocalScale: {x: 3.2697608, y: 3.2697608, z: 3.2697604}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 814617581}
-  - {fileID: 1521586149}
-  m_Father: {fileID: 725654704}
-  m_LocalEulerAnglesHint: {x: 16.955, y: 57.894, z: -4.416}
 --- !u!1 &1227288651 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1888272381637576, guid: 26255240385821a4185c7163c7a7aec6,
@@ -58683,12 +58613,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265330232}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.791548, y: 0.19884987, z: 0.18085985, w: 0.5488172}
-  m_LocalPosition: {x: -0.48405275, y: 0.40393502, z: 0.4092625}
-  m_LocalScale: {x: 17.564503, y: 17.564505, z: 17.564503}
+  m_LocalRotation: {x: -0.7071069, y: 0.00000007450579, z: 0.00000006705521, w: 0.70710665}
+  m_LocalPosition: {x: 0, y: -0.01740722, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 757719831}
+  m_Father: {fileID: 713428623}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1265330234
 MeshRenderer:
@@ -64302,12 +64232,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418187292}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.791548, y: 0.19884987, z: 0.18085985, w: 0.5488172}
-  m_LocalPosition: {x: -0.48405275, y: 0.40393502, z: 0.4092625}
-  m_LocalScale: {x: 17.564503, y: 17.564505, z: 17.564503}
+  m_LocalRotation: {x: -0.7071069, y: 0.00000007450579, z: 0.00000006705521, w: 0.70710665}
+  m_LocalPosition: {x: 0, y: -0.01740722, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2062530798}
+  m_Father: {fileID: 1613768586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1418187294
 MeshRenderer:
@@ -64976,12 +64906,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504552596}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.791548, y: 0.19884987, z: 0.18085985, w: 0.5488172}
-  m_LocalPosition: {x: -0.48405275, y: 0.40393502, z: 0.4092625}
-  m_LocalScale: {x: 17.564503, y: 17.564505, z: 17.564503}
+  m_LocalRotation: {x: -0.7071069, y: 0.00000007450579, z: 0.00000006705521, w: 0.70710665}
+  m_LocalPosition: {x: 0, y: -0.017407218, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 563500156}
+  m_Father: {fileID: 1128608269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1504552598
 MeshRenderer:
@@ -65047,7 +64977,7 @@ GameObject:
   - component: {fileID: 1521586152}
   - component: {fileID: 1521586153}
   m_Layer: 0
-  m_Name: NurbsPath
+  m_Name: Lollipop5
   m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65061,12 +64991,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521586148}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.17163639, y: 0.26849523, z: -0.012720897, w: 0.9477813}
-  m_LocalPosition: {x: -0.50486016, y: 0.69157094, z: 0.30769923}
-  m_LocalScale: {x: 17.564503, y: 17.564503, z: 17.564503}
+  m_LocalRotation: {x: -0.021323882, y: 0.70892954, z: 0.0024660602, w: 0.7049526}
+  m_LocalPosition: {x: 26.651318, y: 2.1447384, z: -145.4787}
+  m_LocalScale: {x: 57.431717, y: 57.431732, z: 57.431713}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1226260274}
+  m_Children:
+  - {fileID: 814617581}
+  m_Father: {fileID: 725654704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1521586150
 MeshRenderer:
@@ -65131,6 +65062,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!136 &1521586153
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -70279,7 +70212,7 @@ GameObject:
   - component: {fileID: 1613768589}
   - component: {fileID: 1613768590}
   m_Layer: 0
-  m_Name: NurbsPath
+  m_Name: Lollipop2
   m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70293,12 +70226,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613768585}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.17163639, y: 0.26849523, z: -0.012720897, w: 0.9477813}
-  m_LocalPosition: {x: -0.50486016, y: 0.69157094, z: 0.30769923}
-  m_LocalScale: {x: 17.564503, y: 17.564503, z: 17.564503}
+  m_LocalRotation: {x: -0.021323882, y: 0.70892954, z: 0.0024660602, w: 0.7049526}
+  m_LocalPosition: {x: 26.651318, y: 3.7877383, z: -140.7397}
+  m_LocalScale: {x: 57.431717, y: 57.431732, z: 57.431713}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2062530798}
+  m_Children:
+  - {fileID: 1418187293}
+  m_Father: {fileID: 725654704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1613768587
 MeshRenderer:
@@ -70363,6 +70297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!136 &1613768590
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -75774,6 +75710,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!136 &1750803246
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -88462,39 +88400,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058709806}
   m_Mesh: {fileID: 289301614986012343, guid: 86e4d1de87b406149a9c4a7e4401198d, type: 3}
---- !u!1 &2062530797
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2062530798}
-  m_Layer: 0
-  m_Name: Lollipop5
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2062530798
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062530797}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.11046549, y: 0.4833283, z: -0.10464783, w: 0.8621137}
-  m_LocalPosition: {x: 26.03, y: 1.803, z: -142.867}
-  m_LocalScale: {x: 3.2697608, y: 3.2697608, z: 3.2697604}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1418187293}
-  - {fileID: 1613768586}
-  m_Father: {fileID: 725654704}
-  m_LocalEulerAnglesHint: {x: 16.955, y: 57.894, z: -4.416}
 --- !u!1 &2075377141
 GameObject:
   m_ObjectHideFlags: 0
@@ -94329,39 +94234,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7284919914626848002}
   m_Mesh: {fileID: -2073062303095333546, guid: be48dbe118777574bab4edbb53f367be, type: 3}
---- !u!4 &3730036741946942051
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4073523506151127257}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.11046549, y: 0.4833283, z: -0.10464783, w: 0.8621137}
-  m_LocalPosition: {x: 26.03, y: 0.16, z: -141.3}
-  m_LocalScale: {x: 3.2697608, y: 3.2697608, z: 3.2697604}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7526584046493458361}
-  - {fileID: 8125967580646665359}
-  m_Father: {fileID: 725654704}
-  m_LocalEulerAnglesHint: {x: 16.955, y: 57.894, z: -4.416}
---- !u!1 &4073523506151127257
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3730036741946942051}
-  m_Layer: 0
-  m_Name: Lollipop1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1001 &5444435994076081591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94538,7 +94410,7 @@ GameObject:
   - component: {fileID: 8125967580646665360}
   - component: {fileID: 8125967580646665361}
   m_Layer: 0
-  m_Name: NurbsPath
+  m_Name: Lollipop1
   m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94552,12 +94424,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499990008339450760}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.791548, y: 0.19884987, z: 0.18085985, w: 0.5488172}
-  m_LocalPosition: {x: -0.48405275, y: 0.40393502, z: 0.4092625}
-  m_LocalScale: {x: 17.564503, y: 17.564505, z: 17.564503}
+  m_LocalRotation: {x: -0.7071069, y: 0.00000007450579, z: 0.00000006705521, w: 0.70710665}
+  m_LocalPosition: {x: 0, y: -0.017407218, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3730036741946942051}
+  m_Father: {fileID: 8125967580646665359}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8125967580646665359
 Transform:
@@ -94567,12 +94439,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7284919914626848002}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.17163639, y: 0.26849523, z: -0.012720897, w: 0.9477813}
-  m_LocalPosition: {x: -0.50486016, y: 0.69157094, z: 0.30769923}
-  m_LocalScale: {x: 17.564503, y: 17.564503, z: 17.564503}
+  m_LocalRotation: {x: -0.021323882, y: 0.70892954, z: 0.0024660602, w: 0.7049526}
+  m_LocalPosition: {x: 26.651318, y: 2.1447384, z: -139.1727}
+  m_LocalScale: {x: 57.431717, y: 57.431732, z: 57.431713}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3730036741946942051}
+  m_Children:
+  - {fileID: 7526584046493458361}
+  m_Father: {fileID: 725654704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8125967580646665360
 MonoBehaviour:
@@ -94587,6 +94460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 8847372282683971104, guid: 068daed2539619d4d80108c520950417, type: 3}
+  pos: {x: 0, y: 0, z: 0}
+  rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!136 &8125967580646665361
 CapsuleCollider:
   m_ObjectHideFlags: 0
