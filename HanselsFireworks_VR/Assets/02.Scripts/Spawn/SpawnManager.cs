@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-    namespace VR
+namespace VR
     {
     // 페이즈 정보를 담고있음 (몬스터 이름과 마리수)
     public class SpawnPhaseInfo
@@ -19,11 +20,15 @@ using UnityEngine;
         public int currentPhase;
         private int spawnIndex;
         public Transform firstSpawnPoint;
+        public Bridge bridge;
 
         [SerializeField] private int repeatCount;
         [SerializeField] private int maxRepeatCount;
         [SerializeField] private int itemSpawnDuration;
         public ItemManager itemMng;
+
+        private GameObject[] lastEnemies;
+
 
         // Start is called before the first frame update
         void Start()
@@ -32,7 +37,6 @@ using UnityEngine;
             currentPhase = 0;
 
             repeatCount = 0;
-            maxRepeatCount = 5;
         }
 
 
@@ -72,7 +76,7 @@ using UnityEngine;
         
         public IEnumerator SpawnPhaseFinal_()
         {
-            while (repeatCount < maxRepeatCount)
+            while (currentPhase < phasesInStageFinal.Length)
             {
                 foreach (var monsterInfo in phasesInStageFinal[currentPhase].monsterData)
                 {
@@ -87,10 +91,36 @@ using UnityEngine;
                         monster.Spawn(spawnIndex);
                         spawnIndex++;
                     }
-                    yield return new WaitForSeconds(5f);
-                    currentPhase++;
                 }
-                repeatCount++;
+                yield return new WaitForSeconds(5f);
+                currentPhase++;
+
+                if (currentPhase == phasesInStageFinal.Length)
+                {
+                    // 다리 부수기 이벤트 출력
+                    yield return StartCoroutine(BrokeBridge());
+
+                }
+
+            }
+        }
+
+        public IEnumerator BrokeBridge()
+        {
+            yield return new WaitForSeconds(3f);
+            // 화면 효과
+            // 시간 느려짐
+            // UI 띄우기
+
+            bridge.setCanDestroy();
+            GameObject[] finalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach(var enemy in finalEnemies)
+            {
+                NavMeshAgent navMesh = enemy.GetComponent<NavMeshAgent>();
+                if (navMesh != null)
+                {
+                    enemy.GetComponent<Enemy>().DeActivate();
+                }
             }
         }
 
@@ -149,6 +179,8 @@ using UnityEngine;
                 return 5;
             else if (monsterType == "SheildEnemy_3")
                 return 6;
+            else if (monsterType == "GrandSheildEnemy")
+                return 7;
             else
             {
                 Debug.Log("Wrong monsterType!");
@@ -173,21 +205,29 @@ using UnityEngine;
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 6),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 4),
                                                                  Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 5),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 2),
                                                                  Tuple.Create("SheildEnemy_3", 2),
-                                                                 Tuple.Create("Ghost", 2)}
+                                                                 Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 20),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 4),
                                                                  Tuple.Create("Ghost", 1)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 3)}
+                },
+                new SpawnPhaseInfo
+                {
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("GrandSheildEnemy", 3)
                 }
-
+                }
             };
 
             //Stage1,2

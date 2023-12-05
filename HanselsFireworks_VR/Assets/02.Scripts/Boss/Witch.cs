@@ -109,7 +109,7 @@ public class Witch : Enemy
         BossManager.instance.goToNextPhase();
     }
 
-    public void DeActivate()
+    public override void DeActivate()
     {
         StopAllCoroutines();
         attackSound.mute = true;

@@ -48,5 +48,6 @@ public abstract class Enemy : MonoBehaviour
     public abstract void TakeScore();
     public abstract void TakeDamage(int damage);
 
+    public abstract void DeActivate();
     // public abstract void TakeScore();
 }

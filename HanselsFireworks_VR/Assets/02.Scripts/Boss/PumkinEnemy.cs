@@ -31,7 +31,10 @@ public class PumkinEnemy : Enemy
         scoreEffect = GetComponent<ScoreEffect>();
         canTakeDamage = true;
     }
+    public override void DeActivate()
+    {
 
+    }
     public override void TakeScore()
     {
         if (canTakeDamage)

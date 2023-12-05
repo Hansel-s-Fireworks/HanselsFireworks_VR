@@ -66,6 +66,11 @@ public class Ghost : Enemy, IMonster
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 
+    public override void DeActivate()
+    {
+
+    }
+
     public override void TakeScore()
     {
         if(currentHP > 1)

@@ -130,7 +130,7 @@ namespace VR
             }
         }
 
-        public void DeActivate()
+        public override void DeActivate()
         {
             StopAllCoroutines();
             audioSource.mute = true;
@@ -262,8 +262,6 @@ namespace VR
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, recognitionRange);
         }
-
-
 
     }
 }

@@ -12,6 +12,10 @@ public class BreakableWall : Enemy
         maxHP = 2;
         currentHP = 2;
     }
+    public override void DeActivate()
+    {
+
+    }
 
     public override void TakeScore()
     {

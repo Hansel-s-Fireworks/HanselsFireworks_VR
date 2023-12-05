@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Barrier : Enemy
+public class Barrier : InteractableObject
 {
     [SerializeField]
     private AudioSource damageSound;

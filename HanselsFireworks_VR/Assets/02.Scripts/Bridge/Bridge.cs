@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bridge : MonoBehaviour
 {
     [SerializeField]
-    public List<Animator> bridgeAnimator;
+    public List<GameObject> bridges;
     [SerializeField] private AudioSource bridgeAudio;
 
     public void PlayBridgeAnimation()
@@ -15,11 +15,19 @@ public class Bridge : MonoBehaviour
 
     public IEnumerator PlayBridgeAnimationWithDelay()
     {
-        foreach (var animator in bridgeAnimator)
+        foreach (var bridge in bridges)
         {
             yield return new WaitForSeconds(1.5f);
-            animator.enabled = true;
+            bridge.GetComponent<Animator>().enabled = true;
             bridgeAudio.Play();
+        }
+    }
+
+    public void setCanDestroy()
+    {
+        foreach (var bridge in bridges)
+        {
+            bridge.GetComponent<Animator>().enabled = true;
         }
     }
 

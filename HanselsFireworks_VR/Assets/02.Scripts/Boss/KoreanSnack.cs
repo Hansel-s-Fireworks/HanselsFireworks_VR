@@ -31,7 +31,7 @@ public class KoreanSnack : Enemy
         }
     }
 
-    public void DeActivate()
+    public override void DeActivate()
     {
         // audioSource.mute = true;
         navMeshAgent.enabled = false;

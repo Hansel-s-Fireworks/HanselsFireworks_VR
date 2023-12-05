@@ -128,7 +128,7 @@ public class ShieldedEnemy : Enemy, IMonster
         }
     }
 
-    public void DeActivate()
+    public override void DeActivate()
     {
         StopAllCoroutines();
         audioSource.mute = true;

@@ -99,7 +99,7 @@ public class ShortEnemy : Enemy, IMonster
             Debug.Log("Short_Gingerbread Dead");
         }
     }
-    public void DeActivate()
+    public override void DeActivate()
     {
         StopAllCoroutines();
         audioSource.mute = true;
