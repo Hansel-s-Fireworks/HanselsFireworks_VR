@@ -7,7 +7,7 @@ public class Wafer : InteractableObject
     [Header("Audio Clips")]
     [SerializeField] private AudioClip audioClipBreak;
 
-    [SerializeField] private AudioSource ccc;
+    [SerializeField] private AudioSource audioSource;
 
 
     private void Start()
@@ -26,10 +26,10 @@ public class Wafer : InteractableObject
         if (isDie)
         {
             // PlaySound(audioClipBreak);
-            ccc.Play();
+            // audioSource.Play();
             gameObject.SetActive(false);                // 비활성화
             GetComponent<BreakFruit>().Run();
-            Debug.Log("Window Breaked");
+            Debug.Log("Wafer Breaked");
         }
     }
 }
