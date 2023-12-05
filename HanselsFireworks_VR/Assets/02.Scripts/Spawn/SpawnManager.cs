@@ -102,7 +102,7 @@ using UnityEngine;
 
         private IEnumerator SpawnPhaseWithDelay()
         {
-            yield return new WaitForSeconds(4.5f);
+            yield return new WaitForSeconds(1.0f);
             foreach (var monsterInfo in phasesInStage[currentPhase].monsterData)
             {
                 string monsterType = monsterInfo.Item1;
@@ -118,7 +118,7 @@ using UnityEngine;
                     }
 
                     IMonster monster = spawnedMonster.GetComponent<IMonster>();
-                    yield return new WaitForSeconds(0.5f);
+                    yield return new WaitForSeconds(0.2f);
                     monster.Spawn(spawnIndex);
                     spawnIndex++;
                 }

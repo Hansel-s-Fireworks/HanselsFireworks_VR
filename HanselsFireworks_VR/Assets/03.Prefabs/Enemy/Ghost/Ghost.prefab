@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: -7258203746478510312}
   - component: {fileID: 9193885497656153782}
   - component: {fileID: 499367689992817243}
-  - component: {fileID: 8186726353413850230}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -188,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50453a3a2f4a49647bd109484c1a45c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 8847372282683971104, guid: 6c5599973b9ffb540ad057f9f810c7bb, type: 3}
+  effect: {fileID: 8847372282683971104, guid: 4045d43352383b04591174a086ebe96b, type: 3}
   pos: {x: 0, y: 0, z: 0}
   rot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &1129127655670175214
@@ -212,7 +211,7 @@ MonoBehaviour:
   particle: {fileID: 338754849272508492, guid: b8b1d58209e97774390d56e5dc4d2720, type: 3}
   rotationSpeed: 5
   bulletSpawner: {fileID: 9147883217960945511}
-  hideEffect: {fileID: 8847372282683971104, guid: 6c5599973b9ffb540ad057f9f810c7bb,
+  hideEffect: {fileID: 8847372282683971104, guid: 4045d43352383b04591174a086ebe96b,
     type: 3}
   scoreEffect: {fileID: 8847372282683971104, guid: 6c5599973b9ffb540ad057f9f810c7bb,
     type: 3}
@@ -459,19 +458,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8186726353413850230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1346630419938374195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5c7c9c7450084e46a77491946258248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 0}
 --- !u!1 &1363787444038715890
 GameObject:
   m_ObjectHideFlags: 0

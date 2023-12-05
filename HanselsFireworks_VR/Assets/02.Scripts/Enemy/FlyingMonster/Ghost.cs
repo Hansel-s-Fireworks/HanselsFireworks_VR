@@ -37,9 +37,11 @@ public class Ghost : Enemy, IMonster
 
     public void Spawn(int index)
     {
-        if (this.gameObject.GetComponent<ItemSpawn>())
+        ItemSpawn itemSpawnComponent = GetComponent<ItemSpawn>();
+        if (itemSpawnComponent!=null)
         {
-            this.gameObject.GetComponent<ItemSpawn>().enabled = false;
+            Debug.Log("아이템 스폰");
+            itemSpawnComponent.enabled = false;
         }
 
         Debug.Log("GhostSpawn!");
@@ -66,9 +68,13 @@ public class Ghost : Enemy, IMonster
 
     public override void TakeScore()
     {
-        if (currentHP == 1)
+        if(currentHP > 1)
         {
-            this.gameObject.GetComponent<ItemSpawn>().enabled = true;
+            temp.effect = hideEffect;
+        }
+        else if (currentHP == 1)
+        {
+            this.gameObject.GetComponent<ItemSpawn>().enabled = true; // 이자식 바꿔야 함
         }
         else if (currentHP == 0)
         {
@@ -87,9 +93,7 @@ public class Ghost : Enemy, IMonster
         visual.SetActive(false);
         GameObject ghostParticle = Instantiate(particle, this.transform);
         ghostParticle.transform.SetParent(null);
-
-        MoveMonster();
-
+        
         bool isDie = DecreaseHP(damage);
 
         if (isDie)
@@ -100,7 +104,9 @@ public class Ghost : Enemy, IMonster
             // 콜라이더도 제거. 안그러면 dissolve하는 동안 쿠키를 밀고 감
             // collider.enabled = false;
             VR.GameManager.Instance.leftMonster--;         // 남은 몬스터 수 줄기
+            return;
         }
+        MoveMonster();
     }
 
     private void MoveMonster()

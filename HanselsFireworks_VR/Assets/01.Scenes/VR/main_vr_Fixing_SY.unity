@@ -26456,11 +26456,23 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1129127655670175214, guid: 0f46fb44a193b48448a289ccdeb5c283,
+        type: 3}
+      propertyPath: hideEffect
+      value: 
+      objectReference: {fileID: 8847372282683971104, guid: 4045d43352383b04591174a086ebe96b,
+        type: 3}
     - target: {fileID: 1346630419938374195, guid: 0f46fb44a193b48448a289ccdeb5c283,
         type: 3}
       propertyPath: m_Name
       value: Ghost (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4132791826660703229, guid: 0f46fb44a193b48448a289ccdeb5c283,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 8847372282683971104, guid: 4045d43352383b04591174a086ebe96b,
+        type: 3}
     - target: {fileID: 5392613870170864398, guid: 0f46fb44a193b48448a289ccdeb5c283,
         type: 3}
       propertyPath: m_LocalPosition.x

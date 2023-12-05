@@ -51,6 +51,8 @@ namespace VR
             pre = position;        // 총구 위치
         }
 
+        // [SerializeField] ItemSpawn itemSpawnComponent;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Enemy"))
@@ -62,14 +64,16 @@ namespace VR
                 Quaternion rotation = Quaternion.LookRotation(normal);
 
                 other.GetComponent<Enemy>().TakeDamage(1);
-                other.GetComponent<Enemy>().TakeScore();
 
 
                 ItemSpawn itemSpawnComponent = other.GetComponent<ItemSpawn>();
-                if (itemSpawnComponent != null)
+                if (itemSpawnComponent != null && itemSpawnComponent.enabled)
                 {
+                    Debug.Log("컴포넌트 존재");
                     itemSpawnComponent.Spawn();
                 }
+
+                other.GetComponent<Enemy>().TakeScore();
 
                 // 평면을 정의하기 위한 Quaternion 생성
                 // 메모리 풀 안씀
