@@ -6,6 +6,9 @@ public class Bridge : MonoBehaviour
 {
     [SerializeField]
     public List<GameObject> bridges;
+    public List<Animator> brigeAnimators;
+    public GameObject pointsUI;
+
     [SerializeField] private AudioSource bridgeAudio;
 
     public void PlayBridgeAnimation()
@@ -15,10 +18,10 @@ public class Bridge : MonoBehaviour
 
     public IEnumerator PlayBridgeAnimationWithDelay()
     {
-        foreach (var bridge in bridges)
+        foreach (var bridge in brigeAnimators)
         {
             yield return new WaitForSeconds(1.5f);
-            bridge.GetComponent<Animator>().enabled = true;
+            bridge.enabled = true;
             bridgeAudio.Play();
         }
     }
@@ -27,7 +30,7 @@ public class Bridge : MonoBehaviour
     {
         foreach (var bridge in bridges)
         {
-            bridge.GetComponent<Animator>().enabled = true;
+            pointsUI.SetActive(true);
         }
     }
 

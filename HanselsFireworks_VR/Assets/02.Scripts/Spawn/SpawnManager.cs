@@ -114,7 +114,7 @@ namespace VR
             // 화면 효과
             globalVolume.profile.TryGet<ColorAdjustments>(out var colorAdjustments);
             colorAdjustments.active = true;
-            colorAdjustments.saturation.Override(-100f);
+            colorAdjustments.saturation.Override(-40f);
             // 시간 느려짐
             // UI 띄우기
 
