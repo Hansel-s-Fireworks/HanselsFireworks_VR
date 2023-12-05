@@ -26936,7 +26936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cb5e26e171a4c4aa64fc63144cb295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadTime: 10
+  loadTime: 2
   growSpeed: 1
   currentHeight: 0
   spawnDuration: 0

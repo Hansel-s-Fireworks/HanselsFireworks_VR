@@ -124,8 +124,7 @@ namespace VR
         private void SetStatebyDistance()
         {
 
-            distance = Vector3.Distance(new Vector3(target.transform.position.x, 0, target.transform.position.z),
-                transform.position);
+            distance = Vector3.Distance(target.transform.position, transform.position);
             if (distance < attackRange)
             {
                 animator.SetBool("Pursuit", false);
