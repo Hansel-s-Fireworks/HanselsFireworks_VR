@@ -79,7 +79,7 @@ public class Ghost : Enemy, IMonster
         }
         else if (currentHP == 1)
         {
-            this.gameObject.GetComponent<ItemSpawn>().enabled = true; // 이자식 바꿔야 함
+            this.gameObject.GetComponent<ItemSpawn>().enabled = true;
         }
         else if (currentHP == 0)
         {
