@@ -79,15 +79,13 @@ namespace VR
 
         public void GrapGun(SelectEnterEventArgs arg)
         {
-            isGrapped = true;
-            Debug.Log("잡음");            
+            isGrapped = true;         
         }
 
         public void ReleaseGun(SelectExitEventArgs arg)
         {
             isGrapped = false;
             StopCoroutine(OnAttackLoop());
-            Debug.Log("놓음");
         }
 
         private void Update()
@@ -116,11 +114,9 @@ namespace VR
                     {
                         isPressed = true;                        
                         StartCoroutine(OnAttackLoop());
-                        Debug.Log("트리거 당김");
                     }
                     else if (btnTrigger.action.WasReleasedThisFrame())
                     {
-                        Debug.Log("트리거 놓음");
                         isPressed = false;
                     }
                     break;

@@ -39,7 +39,6 @@ using UnityEngine;
 
         public void Spawn()
         {
-            Debug.Log("Spawn Enemy");
             switch (GameManager.Instance.currentStage)
             {
                 case 1:

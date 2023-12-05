@@ -87,7 +87,6 @@ public class Ghost : Enemy, IMonster
 
     public override void TakeDamage(int damage)
     {
-        Debug.Log("ghost damage!");
 
         collisionSound.Play();
         visual.SetActive(false);

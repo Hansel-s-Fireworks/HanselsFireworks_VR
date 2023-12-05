@@ -26,7 +26,6 @@ public class Impact : MonoBehaviour
     IEnumerator StartAnimation()
     {
         yield return new WaitForSeconds(delay);
-        Debug.Log("효과 비활성화");
         gameObject.SetActive(false);
         // memoryPool.DeactivatePoolItem(gameObject);        
     }

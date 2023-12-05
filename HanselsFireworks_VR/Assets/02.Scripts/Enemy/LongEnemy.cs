@@ -41,7 +41,7 @@ public class LongEnemy : Enemy, IMonster
     }
     public void Spawn(int index)
     {
-        //Debug.Log("LongEnemySpawn!");
+        Debug.Log("LongEnemySpawn!");
         if (VR.GameManager.Instance.currentStage == 1)
             spawnPoints = GameObject.FindGameObjectsWithTag("1stFloorSP_Range");
         else if (VR.GameManager.Instance.currentStage == 2)
@@ -56,15 +56,18 @@ public class LongEnemy : Enemy, IMonster
 
     public override void TakeScore()
     {
+        Debug.Log("LongEnemyScore!");
         VR.GameManager.Instance.score += score;
     }
 
     public override void TakeDamage(int damage)
     {
         // bool isDead;
-        Debug.Log("LongEnemy Damaged");
         bool isDie = DecreaseHP(damage);
-        if(isDie)
+
+        Debug.Log("LongEnemyDamage!");
+
+        if (isDie)
         {
             PlaySound(audioClipDie);
             dissoveEffect.StartDissolve();

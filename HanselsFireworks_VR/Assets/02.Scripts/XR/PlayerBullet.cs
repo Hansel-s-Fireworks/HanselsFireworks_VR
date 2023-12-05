@@ -69,7 +69,7 @@ namespace VR
                 ItemSpawn itemSpawnComponent = other.GetComponent<ItemSpawn>();
                 if (itemSpawnComponent != null && itemSpawnComponent.enabled)
                 {
-                    Debug.Log("컴포넌트 존재");
+                    Debug.Log("아이템 컴포넌트 존재");
                     itemSpawnComponent.Spawn();
                 }
 

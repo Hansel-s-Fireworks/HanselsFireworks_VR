@@ -58,7 +58,6 @@ public class PumkinEnemy : Enemy
 
     public void Attack()
     {
-        Debug.Log("Attack!");
         canTakeDamage = false;
         animator.SetTrigger("IsAttack");
         StartCoroutine(ApproachTarget());   // 아마 여기 오류뜰텐데 bullet에 닿으면 비활성화되지만
