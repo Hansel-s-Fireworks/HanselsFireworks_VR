@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace VR
     {
@@ -26,6 +28,7 @@ namespace VR
         [SerializeField] private int maxRepeatCount;
         [SerializeField] private int itemSpawnDuration;
         public ItemManager itemMng;
+        public Volume globalVolume;
 
         private GameObject[] lastEnemies;
 
@@ -109,6 +112,9 @@ namespace VR
         {
             yield return new WaitForSeconds(3f);
             // 화면 효과
+            globalVolume.profile.TryGet<ColorAdjustments>(out var colorAdjustments);
+            colorAdjustments.active = true;
+            colorAdjustments.saturation.Override(-100f);
             // 시간 느려짐
             // UI 띄우기
 
@@ -198,31 +204,31 @@ namespace VR
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 1)}
                 },
-                new SpawnPhaseInfo
-                {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 2),
-                                                                 Tuple.Create("SheildEnemy_3", 3)}
-                },
-                new SpawnPhaseInfo
-                {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 4),
-                                                                 Tuple.Create("Ghost", 1)}
-                },
-                new SpawnPhaseInfo
-                {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 2),
-                                                                 Tuple.Create("SheildEnemy_3", 2),
-                                                                 Tuple.Create("Ghost", 1)}
-                },
-                new SpawnPhaseInfo
-                {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 4),
-                                                                 Tuple.Create("Ghost", 1)}
-                },
-                new SpawnPhaseInfo
-                {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 3)}
-                },
+                //new SpawnPhaseInfo
+                //{
+                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 2),
+                //                                                 Tuple.Create("SheildEnemy_3", 3)}
+                //},
+                //new SpawnPhaseInfo
+                //{
+                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 4),
+                //                                                 Tuple.Create("Ghost", 1)}
+                //},
+                //new SpawnPhaseInfo
+                //{
+                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 2),
+                //                                                 Tuple.Create("SheildEnemy_3", 2),
+                //                                                 Tuple.Create("Ghost", 1)}
+                //},
+                //new SpawnPhaseInfo
+                //{
+                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 4),
+                //                                                 Tuple.Create("Ghost", 1)}
+                //},
+                //new SpawnPhaseInfo
+                //{
+                //    monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 3)}
+                //},
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("GrandSheildEnemy", 3)
