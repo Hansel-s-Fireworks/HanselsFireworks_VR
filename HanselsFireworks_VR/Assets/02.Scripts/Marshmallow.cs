@@ -45,7 +45,7 @@ namespace VR
 
             float heightTolerance = 0.01f;
 
-            if (Mathf.Abs(currentHeight - nextSpawnHeight) < heightTolerance)
+            if (Mathf.Abs(currentHeight - nextSpawnHeight) < heightTolerance && currentHeight < 16)
             {
                 Debug.Log("spawnPhase!");
                 spawnManager.SpawnPhase();
