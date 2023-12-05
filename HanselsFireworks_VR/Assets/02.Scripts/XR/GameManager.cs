@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace VR
 {
@@ -60,11 +61,20 @@ namespace VR
         [SerializeField] private SpawnManager spawnManager;
         [SerializeField] private AudioSource mainBGM;
 
+
+        [Header("UI")]
+        public GameObject warningScreen;
+        public GameObject gameoverScreen;
+        public Player player;
+        public Status status;
+
         // Start is called before the first frame update
         void Start()
         {
             marshmallow = FindObjectOfType<Marshmallow>();
             spawnManager = FindObjectOfType<SpawnManager>();
+            status = FindObjectOfType<Status>();
+            player = FindObjectOfType<Player>();
             // limitedTime = 5;
             elapseTime = 0;
             nextSpawnHeight = 0.3f;
@@ -156,15 +166,32 @@ namespace VR
             Debug.Log("호출 시작");
             while (true)
             {
-                if(hp <= 0) 
+                if(status.CurrentHP <= 0) 
                 { 
                     Debug.Log("Lose");
+                    GameOver();
                     // 마시멜로 멈추고 GameOver UI 띄우기
                     yield break;
                 }
 
                 yield return null;
             }
+        }
+
+        public void Restart()
+        {
+            SceneManager.LoadScene(1);
+            Destroy(this);
+        }
+
+        public void GameOver()
+        {
+            gameoverScreen.SetActive(true);
+            warningScreen.SetActive(false);
+            player.TakeOffGun();
+            player.ActivateGrabRay();
+            marshmallow.StopGrowing();
+            marshmallow.enabled = false;
         }
 
     }

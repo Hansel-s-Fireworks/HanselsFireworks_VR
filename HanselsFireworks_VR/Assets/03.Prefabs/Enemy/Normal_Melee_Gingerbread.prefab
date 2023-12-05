@@ -6599,7 +6599,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1779022890888287729}
@@ -6659,7 +6659,7 @@ MonoBehaviour:
   score: 100
   pursuitSpeed: 3
   runSpeed: 0
-  attackRange: 3
+  attackRange: 5
   recognitionRange: 100
   target: {fileID: 0}
   audioClipWalk: {fileID: 8300000, guid: 9fee2d74dc7d6c042ba8fdcd06877821, type: 3}
