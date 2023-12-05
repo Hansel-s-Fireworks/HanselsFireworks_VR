@@ -63,6 +63,12 @@ namespace VR
         }
         public void Spawn(int index)
         {
+            ItemSpawn itemSpawnComponent = GetComponent<ItemSpawn>();
+            if (itemSpawnComponent != null)
+            {
+                Debug.Log("아이템 스폰");
+                itemSpawnComponent.enabled = false;
+            }
             Debug.Log("SheildedEnemySpawn!");
             if (VR.GameManager.Instance.currentStage == 1)
                 spawnPoints = GameObject.FindGameObjectsWithTag("1stFloorSP");
@@ -79,13 +85,17 @@ namespace VR
 
         public override void TakeScore()
         {
-            if (currentHP >= 1)
+            if (currentHP > 1)
             {
                 // 방패 점수
                 VR.GameManager.Instance.score += shieldScore;
                 Debug.Log("Shielded_Gingerbread Damaged_1");
                 // 이미지 변경            
                 temp.effect = shieldScoreEffect;
+            }
+            else if (currentHP == 1)
+            {
+                this.gameObject.GetComponent<ItemSpawn>().enabled = true;
             }
             else if (currentHP == 0)
             {
@@ -121,7 +131,7 @@ namespace VR
                 StopAllCoroutines();
                 // 콜라이더도 제거. 안그러면 dissolve하는 동안 쿠키를 밀고 감
                 collider.enabled = false;
-                nav.enabled = false;       // 얘까지 꺼야 땅에 꺼진다. 
+                // nav.enabled = false;       // 얘까지 꺼야 땅에 꺼진다. 
 
                 // GameManager.Instance.leftMonster--;
 

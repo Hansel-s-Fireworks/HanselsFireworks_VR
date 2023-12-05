@@ -82,7 +82,7 @@ namespace VR
             Debug.Log("Short_Gingerbread Damaged");
             bool isDie = DecreaseHP(damage);
             animator.SetInteger("HP", currentHP);
-            nav.enabled = false;
+            // nav.enabled = false;
 
             if (isDie)
             {

@@ -28,6 +28,11 @@ namespace VR
         // Update is called once per frame
         void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Time.timeScale = 0.5f;
+            }
+
             if (rifle.isActiveAndEnabled) { ClearCurrentGun();  currentGun[0] = rifle; }
             else if (r_doublePistol.isActiveAndEnabled && l_doublePistol.isActiveAndEnabled)
             {
