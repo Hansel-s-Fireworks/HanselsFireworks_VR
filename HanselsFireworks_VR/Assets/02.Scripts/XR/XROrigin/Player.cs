@@ -14,6 +14,9 @@ namespace VR
         public Gun[] currentGun;
 
         [SerializeField] private Status status;      // 이동속도 등의 플레이어 정보
+        [SerializeField] private GameObject r_grabRay;
+        [SerializeField] private GameObject l_grabRay;
+
 
         // Start is called before the first frame update
         void Start()
@@ -59,6 +62,18 @@ namespace VR
             currentGun[0].BurstMode();
             if (currentGun[1] != null) currentGun[1].BurstMode();
 
+        }
+
+        public void ActivateGrabRay()
+        {
+            r_grabRay.SetActive(true);
+            l_grabRay.SetActive(true);
+        }
+
+        public void TakeOffGun()
+        {
+            currentGun[0].gameObject.SetActive(false);
+            if (currentGun[1] != null) currentGun[1].gameObject.SetActive(false);
         }
 
         public void GetLaserItem()

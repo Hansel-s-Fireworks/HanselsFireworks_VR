@@ -9,11 +9,8 @@ EditorBuildSettings:
     path: Assets/01.Scenes/VR/Tutorial(JOOHONG).unity
     guid: c70e2a8a32bf9bb43a66511d9c390039
   - enabled: 1
-    path: Assets/01.Scenes/VR/main_vr.unity
-    guid: fb77dfcf1fc45f7499febb3df556075a
-  - enabled: 1
-    path: Assets/01.Scenes/VR/main_vr_Fixing.unity
-    guid: d7aa9120a6ddbd14cbb35583de79fa6c
+    path: Assets/01.Scenes/VR/main_vr_Fixing_SY.unity
+    guid: a12b5f9a644a417448a630a83e5a330f
   - enabled: 1
     path: Assets/01.Scenes/VR/main_key.unity
     guid: 10e78ff7afa2c8142a3689acefa85af1

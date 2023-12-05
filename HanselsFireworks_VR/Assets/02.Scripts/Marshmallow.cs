@@ -43,6 +43,17 @@ namespace VR
                 stageMng.SetActive(true);
             }
 
+            if(growSpeed < 1)
+            {
+                // StartCoroutine(OnActivateWarning());
+                VR.GameManager.Instance.warningScreen.SetActive(true);
+            }
+            else
+            {
+                VR.GameManager.Instance.warningScreen.SetActive(false);
+                // StopCoroutine(OnActivateWarning());
+            }
+
             float heightTolerance = 0.01f;
 
             if (Mathf.Abs(currentHeight - nextSpawnHeight) < heightTolerance && currentHeight < 16)
@@ -56,33 +67,7 @@ namespace VR
         public void StartStage()
         {
             StartCoroutine(Ascend(0, 20));
-            /*switch (GameManager.Instance.currentStage)
-            {
-                case 1:
-                    StartCoroutine(Ascend(0, 20));
-                    break;
-                case 2:
-                    StartCoroutine(Ascend(10, 20));
-                    break;
-                case 3:
-                    StartCoroutine(RepeatSpawn());
-                    break;
-                default:
-                    break;
-            }*/
         }
-
-        //IEnumerator RepeatSpawn()
-        //{
-        //    while (repeatCount < maxRepeatCount)
-        //    {
-        //        yield return new WaitForSeconds(10f); // 10초 대기
-
-        //        spawnManager.SpawnPhaseFinal();
-
-        //        repeatCount++;
-        //    }
-        //}
 
         public void Descend()
         {
@@ -90,8 +75,19 @@ namespace VR
             Debug.Log("Marshmallow Damaged");
             float nextSpeed = growSpeed - 0.2f;
             if (nextSpeed > 0) { growSpeed -= 0.2f; Invoke("RecoverSpeed", 2f); }
-            else { growSpeed = 0; }
+            else { growSpeed = 0; Invoke("RecoverSpeed", 2f); }
             
+        }
+        public void StopGrowing()
+        {
+            StopAllCoroutines();
+        }
+        IEnumerator OnActivateWarning()
+        {
+            VR.GameManager.Instance.warningScreen.SetActive(true);
+            yield return new WaitForSeconds(2.0f);
+            VR.GameManager.Instance.warningScreen.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
         }
 
         private void RecoverSpeed() => growSpeed += 0.2f;

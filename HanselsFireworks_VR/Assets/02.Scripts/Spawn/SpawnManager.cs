@@ -237,13 +237,13 @@ namespace VR
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 2),
-                                                                 Tuple.Create("ShortEnemy", 0)}
+                                                                 Tuple.Create("ShortEnemy", 2)}
                 },
                 // 3
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("LongEnemy", 2),
-                                                                 Tuple.Create("ShortEnemy", 0)}
+                                                                 Tuple.Create("SheildEnemy", 2)}
                 },
                 // 5
                 new SpawnPhaseInfo
