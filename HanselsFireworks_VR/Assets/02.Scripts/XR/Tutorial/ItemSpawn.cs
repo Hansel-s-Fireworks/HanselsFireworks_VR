@@ -24,6 +24,7 @@ namespace VR
             Debug.Log("Spawn Item");
             GameObject clone = Instantiate(item, transform);
             clone.transform.SetParent(null);
+            clone.transform.localScale = new Vector3(2, 2, 2);
             // gameObject.SetActive(false);
         }
     }
