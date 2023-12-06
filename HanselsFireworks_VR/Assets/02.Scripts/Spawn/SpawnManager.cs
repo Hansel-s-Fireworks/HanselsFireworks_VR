@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 namespace VR
     {
@@ -117,9 +118,24 @@ namespace VR
             colorAdjustments.active = true;
             colorAdjustments.saturation.Override(-40f);
             // 시간 느려짐
-            // UI 띄우기
+            Time.timeScale = 0.3f;
+            // UI 띄우기, 다리 부술수 있게 활성화
+            bridge.SetCanDestroy();
 
-            bridge.setCanDestroy();
+
+            // 부술 때까지 체크
+            while (true)
+            {
+                if (bridge.CheckWaferBroken())
+                {                    
+                    Time.timeScale = 1.0f;      // 원래 시간
+                    Invoke("LoadEndingScene", 5);
+                    break;
+                }
+                yield return null;
+            }
+
+            // 부수고서 떨어지기
             GameObject[] finalEnemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach(var enemy in finalEnemies)
             {
@@ -129,8 +145,14 @@ namespace VR
                     enemy.GetComponent<Enemy>().DeActivate();
                 }
             }
-        }
+            colorAdjustments.active = false;
+            colorAdjustments.saturation.Override(0f);
 
+        }
+        private void LoadEndingScene()
+        {
+            SceneManager.LoadScene(2);
+        }
         public void SpawnPhase()
         {
             StartCoroutine(SpawnPhaseWithDelay());
@@ -200,7 +222,7 @@ namespace VR
             // Stage3
             phasesInStageFinal = new SpawnPhaseInfo[]
             {
-                new SpawnPhaseInfo
+                /*new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 1)}
                 },
@@ -236,7 +258,7 @@ namespace VR
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 2),
                                                                  Tuple.Create("SheildEnemy_3", 3),
                                                                  Tuple.Create("Ghost", 1)}
-                },
+                },*/
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 3)}

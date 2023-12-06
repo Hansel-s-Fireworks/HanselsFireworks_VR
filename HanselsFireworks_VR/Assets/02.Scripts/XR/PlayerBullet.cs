@@ -93,8 +93,13 @@ namespace VR
             else if (other.CompareTag("Interactable"))
             {
                 // Debug.Log("Interactable");
-                other.GetComponent<InteractableObject>().TakeDamage(1);
-                other.GetComponent<InteractableObject>().TakeScore();
+                InteractableObject interactableComponent = other.GetComponent<InteractableObject>();
+                if (interactableComponent != null && interactableComponent.enabled)
+                {
+                    Debug.Log("아이템 스폰");
+                    interactableComponent.TakeDamage(1);
+                    interactableComponent.TakeScore();
+                }
                 memoryPool.DeactivatePoolItem(gameObject);
             }
             else if (other.CompareTag("Item"))

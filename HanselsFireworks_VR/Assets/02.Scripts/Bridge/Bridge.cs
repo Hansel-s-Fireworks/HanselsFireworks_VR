@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Bridge : MonoBehaviour
 {
-    [SerializeField]
-    public List<GameObject> bridges;
+    public List<Wafer> bridges;
     public List<Animator> brigeAnimators;
-    public GameObject pointsUI;
+    public List<GameObject> pointsUI;
 
     [SerializeField] private AudioSource bridgeAudio;
 
@@ -26,12 +25,41 @@ public class Bridge : MonoBehaviour
         }
     }
 
-    public void setCanDestroy()
-    {
-        foreach (var bridge in bridges)
+
+    public void SetCanDestroy()
+    {        
+        /*foreach (var bridge in bridges)
         {
             pointsUI.SetActive(true);
+            bridge.enabled = true;            
+        }*/
+
+        for (int i = 0; i < bridges.Count; i++)
+        {
+            pointsUI[i].SetActive(true);
+            bridges[i].enabled = true;
         }
+
     }
+    public bool CheckWaferBroken()
+    {
+        for (int i = 0; i < bridges.Count; i++)
+        {
+            if (bridges[i].CurrentHP != 0)
+            {
+                pointsUI[i].SetActive(false);
+                return false;
+            }
+        }
+        return true;
+        /*foreach (var bridge in bridges)
+        {
+            if (bridge.CurrentHP != 0)
+            {
+                return false;
+            }            
+        }*/
+    }
+
 
 }
