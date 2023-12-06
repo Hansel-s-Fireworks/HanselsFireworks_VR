@@ -228,6 +228,7 @@ namespace VR
         {
             while (true)
             {
+                ActivateCane();
                 nav.enabled = false;
                 FreezeVelocity();
                 LookRotationToTarget();                 // 타겟 방향을 계속 주시
@@ -237,11 +238,7 @@ namespace VR
                 SetStatebyDistance();
                 // ----------------------------------
                 // DeActivateCane();
-                // yield return new WaitForSeconds(0.2f / 2f);
-                ActivateCane();
-                yield return new WaitForSeconds(0.75f / 2f);
-                DeActivateCane();
-                yield return new WaitForSeconds(0.75f / 2f);
+                // yield return new 
             }
         }
 
