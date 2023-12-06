@@ -24,7 +24,7 @@ namespace VR
         {
             Vector3 startPosition = transform.position;
             Vector3 targetPosition = target.transform.position;
-            targetPosition.y += 0.5f;
+            targetPosition.y += 3.5f;
 
             float elapsedTime = 0f;
 
