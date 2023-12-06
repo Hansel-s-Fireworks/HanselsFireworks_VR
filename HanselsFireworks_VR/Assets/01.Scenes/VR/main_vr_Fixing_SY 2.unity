@@ -27667,7 +27667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28cb5e26e171a4c4aa64fc63144cb295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadTime: 100
+  loadTime: 1
   growSpeed: 1
   currentHeight: 0
   spawnDuration: 0
@@ -63904,13 +63904,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemList:
   - {fileID: 484672446764435600, guid: 23e407885d3e5764c91a5d105921cae9, type: 3}
-  - {fileID: 7604360408358366463, guid: cab2c460a7a5fd64eab7b6ff3cb9dbb3, type: 3}
   - {fileID: 5527754803340247087, guid: cc9b7b7d0c2430046bb39f74aaf3904d, type: 3}
   - {fileID: 2070480037217183047, guid: bff82cc9ea656ea4dacda7db63cf4ac2, type: 3}
   - {fileID: 7604360408358366463, guid: cab2c460a7a5fd64eab7b6ff3cb9dbb3, type: 3}
   - {fileID: 7604360408358366463, guid: cab2c460a7a5fd64eab7b6ff3cb9dbb3, type: 3}
-  - {fileID: 7604360408358366463, guid: cab2c460a7a5fd64eab7b6ff3cb9dbb3, type: 3}
   - {fileID: 2070480037217183047, guid: bff82cc9ea656ea4dacda7db63cf4ac2, type: 3}
+  - {fileID: 7604360408358366463, guid: cab2c460a7a5fd64eab7b6ff3cb9dbb3, type: 3}
+  - {fileID: 7604360408358366463, guid: cab2c460a7a5fd64eab7b6ff3cb9dbb3, type: 3}
   - {fileID: 7604360408358366463, guid: cab2c460a7a5fd64eab7b6ff3cb9dbb3, type: 3}
 --- !u!4 &1632358957
 Transform:

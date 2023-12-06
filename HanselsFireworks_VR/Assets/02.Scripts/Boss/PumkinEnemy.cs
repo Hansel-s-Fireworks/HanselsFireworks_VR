@@ -75,7 +75,7 @@ public class PumkinEnemy : Enemy
         animator.enabled = false;
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = target.transform.position;
-        targetPosition.y += 3.5f;
+        targetPosition.y += 2.0f;
 
         float elapsedTime = 0f;
 
