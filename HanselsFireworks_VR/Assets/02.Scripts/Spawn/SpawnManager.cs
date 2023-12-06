@@ -92,10 +92,6 @@ namespace VR
                     {
                         GameObject spawnedMonster = Instantiate(monsterPrefabs[GetMonsterIndex(monsterType)], firstSpawnPoint.position, Quaternion.identity);
 
-                        if (spawnIndex % itemSpawnDuration == 1)
-                        {
-                            AddItemToMonster(spawnedMonster, itemMng.GetCurrentItem());
-                        }
 
                         IMonster monster = spawnedMonster.GetComponent<IMonster>();
                         yield return new WaitForSeconds(0.1f);
@@ -246,18 +242,18 @@ namespace VR
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 10),
-                                                                 Tuple.Create("SheildEnemy_3", 10),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 3),
+                                                                 Tuple.Create("SheildEnemy_3", 3),
                                                                  Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy_3", 20),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy_3", 5),
                                                                  Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy_3", 20),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy_3", 5),
                                                                  Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
