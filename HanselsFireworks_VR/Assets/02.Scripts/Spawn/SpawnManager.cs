@@ -91,6 +91,12 @@ namespace VR
                     for (int i = 0; i < count; i++)
                     {
                         GameObject spawnedMonster = Instantiate(monsterPrefabs[GetMonsterIndex(monsterType)], firstSpawnPoint.position, Quaternion.identity);
+
+                        if (spawnIndex % itemSpawnDuration == 1)
+                        {
+                            AddItemToMonster(spawnedMonster, itemMng.GetCurrentItem());
+                        }
+
                         IMonster monster = spawnedMonster.GetComponent<IMonster>();
                         yield return new WaitForSeconds(0.1f);
                         monster.Spawn(spawnIndex);

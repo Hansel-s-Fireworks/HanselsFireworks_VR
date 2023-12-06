@@ -192,6 +192,7 @@ namespace VR
             Debug.Log(animationLength);
             while (true)
             {
+                ActivateCane();
                 nav.enabled = false;
                 FreezeVelocity();
                 LookRotationToTarget();                 // 타겟 방향을 계속 주시
@@ -199,13 +200,6 @@ namespace VR
 
                 PlaySound(audioClipAttack);
                 SetStatebyDistance();
-                // ----------------------------------
-                // DeActivateCane();
-                // yield return new WaitForSeconds(0.2f / 2f);
-                ActivateCane();
-                yield return new WaitForSeconds(animationLength / 4f);
-                DeActivateCane();
-                yield return new WaitForSeconds(animationLength / 4f);
             }
         }
 

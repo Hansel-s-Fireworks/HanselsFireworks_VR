@@ -236,9 +236,6 @@ namespace VR
 
                 PlaySound(audioClipAttack);
                 SetStatebyDistance();
-                // ----------------------------------
-                // DeActivateCane();
-                // yield return new 
             }
         }
 
