@@ -224,7 +224,7 @@ namespace VR
             // Stage3
             phasesInStageFinal = new SpawnPhaseInfo[]
             {
-                /*new SpawnPhaseInfo
+                new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 1)}
                 },
@@ -260,7 +260,7 @@ namespace VR
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 2),
                                                                  Tuple.Create("SheildEnemy_3", 3),
                                                                  Tuple.Create("Ghost", 1)}
-                },*/
+                },
                 new SpawnPhaseInfo
                 {
                     monsterData = new List<Tuple<string, int>> { Tuple.Create("Ghost", 3)}
