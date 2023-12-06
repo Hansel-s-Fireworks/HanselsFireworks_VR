@@ -5325,7 +5325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &84230660
 Transform:
   m_ObjectHideFlags: 0
@@ -31873,7 +31873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &875578132
 Transform:
   m_ObjectHideFlags: 0
@@ -32035,10 +32035,11 @@ MonoBehaviour:
   - {fileID: 2025031089}
   - {fileID: 252789647}
   - {fileID: 523042637}
-  pointsUI:
+  pointsUIs:
   - {fileID: 84230659}
   - {fileID: 1785498750}
   - {fileID: 891916277}
+  pointsUI: {fileID: 875578131}
   bridgeAudio: {fileID: 880463824}
 --- !u!4 &880463823
 Transform:
@@ -32476,7 +32477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &891916278
 Transform:
   m_ObjectHideFlags: 0
@@ -69690,7 +69691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1785498751
 Transform:
   m_ObjectHideFlags: 0

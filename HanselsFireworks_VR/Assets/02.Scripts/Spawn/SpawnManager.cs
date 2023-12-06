@@ -129,6 +129,7 @@ namespace VR
                 if (bridge.CheckWaferBroken())
                 {                    
                     Time.timeScale = 1.0f;      // 원래 시간
+                    bridge.pointsUI.SetActive(false);
                     Invoke("LoadEndingScene", 5);
                     break;
                 }
