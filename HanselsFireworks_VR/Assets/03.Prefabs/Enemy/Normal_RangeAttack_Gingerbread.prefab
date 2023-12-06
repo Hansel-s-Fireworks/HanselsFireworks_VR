@@ -565,7 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 1
   currentHP: 0
-  score: 100
+  score: 30
   attackRange: 100
   projectilePrefab: {fileID: 3728249667321437466, guid: ea9900ae9c749db46881772981a0cc76,
     type: 3}

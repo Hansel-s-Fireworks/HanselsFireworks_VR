@@ -152,6 +152,7 @@ namespace VR
         }
         private void LoadEndingScene()
         {
+            
             SceneManager.LoadScene(2);
         }
         public void SpawnPhase()

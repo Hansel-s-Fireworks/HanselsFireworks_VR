@@ -6656,7 +6656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 1
   currentHP: 0
-  score: 100
+  score: 50
   pursuitSpeed: 3
   runSpeed: 0
   attackRange: 5

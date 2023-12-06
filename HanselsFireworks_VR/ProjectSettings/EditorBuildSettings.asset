@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/01.Scenes/VR/main_vr_Fixing_SY 2.unity
     guid: 4cf75f64b24bdf249860e4d056a18752
   - enabled: 1
-    path: Assets/01.Scenes/VR/main_key.unity
-    guid: 10e78ff7afa2c8142a3689acefa85af1
+    path: Assets/01.Scenes/VR/main_key(JOOHONG).unity
+    guid: 15e58aff4ebf3d94c804e93586d9d848
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 4b36b7eaa57f08c478431851c43ff0dd,
       type: 2}

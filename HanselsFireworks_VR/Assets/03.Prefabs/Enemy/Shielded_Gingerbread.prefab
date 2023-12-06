@@ -6658,7 +6658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 6
   currentHP: 0
-  score: 100
+  score: 500
   pursuitSpeed: 2
   runSpeed: 0
   attackRange: 5
@@ -6672,7 +6672,7 @@ MonoBehaviour:
   audioClipAttack: {fileID: 8300000, guid: 6e80bf2fc38ceba4e8853bfd59fb5fca, type: 3}
   shieldScoreEffect: {fileID: 8847372282683971104, guid: 16e2c87a9db9e1a4585e9af6f734ff95,
     type: 3}
-  scoreEffect: {fileID: 8847372282683971104, guid: 826d3f8f42699544bacea904a921639d,
+  scoreEffect: {fileID: 8847372282683971104, guid: e778e21e226c37b4284004755f47a9ea,
     type: 3}
   nav: {fileID: 6009529452846109001}
   rb: {fileID: 7521202174756880475}

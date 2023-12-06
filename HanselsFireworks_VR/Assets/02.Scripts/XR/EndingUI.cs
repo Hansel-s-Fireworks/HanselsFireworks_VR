@@ -12,12 +12,16 @@ public class EndingUI : MonoBehaviour
     void Start()
     {
         tScore.text = VR.GameManager.Instance.score.ToString();
-        tTime.text = VR.GameManager.Instance.takenTime.ToString();
+        float takenTime = VR.GameManager.Instance.takenTime;
+        tTime.text = ConvertToTimeString(takenTime);
     }
 
-    // Update is called once per frame
-    void Update()
+    string ConvertToTimeString(float timeInSeconds)
     {
-        
+        int minutes = Mathf.FloorToInt(timeInSeconds / 60);
+        int seconds = Mathf.FloorToInt(timeInSeconds % 60);
+
+        string timeString = string.Format("{0}m {1}s", minutes, seconds);
+        return timeString;
     }
 }

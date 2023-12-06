@@ -23,6 +23,7 @@ namespace VR
 
         private void Awake()
         {
+            var obj = FindObjectsOfType<VR.GameManager>();
             if (instance == null)
             {
                 instance = this;
@@ -32,6 +33,14 @@ namespace VR
             {
                 Destroy(this.gameObject);
             }
+            /*if(obj.Length == 1)
+            {
+                DontDestroyOnLoad(this.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }*/
         }
 
         [Header("Info")]
@@ -150,15 +159,13 @@ namespace VR
             mainBGM.Play();
             StartStage();
             yield return StartCoroutine(CheckObjective());
+            // yield return StartCoroutine(CheckTime());
         }
 
         IEnumerator CheckTime()
-        {
-            while (leftMonster == 0)
-            {
-                takenTime += Time.deltaTime;
-                yield return true;
-            }
+        {            
+            takenTime += Time.deltaTime;
+            yield return null;            
         }
 
         IEnumerator CheckObjective()
@@ -166,7 +173,8 @@ namespace VR
             Debug.Log("호출 시작");
             while (true)
             {
-                if(status.CurrentHP <= 0) 
+                takenTime += Time.deltaTime;
+                if (status.CurrentHP <= 0) 
                 { 
                     Debug.Log("Lose");
                     GameOver();
@@ -180,8 +188,9 @@ namespace VR
 
         public void Restart()
         {
+            Time.timeScale = 1.0f;
             SceneManager.LoadScene(1);
-            Destroy(this);
+            Destroy(gameObject);
         }
 
         public void GameOver()
