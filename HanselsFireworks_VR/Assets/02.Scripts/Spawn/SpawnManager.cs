@@ -246,12 +246,12 @@ namespace VR
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy_3", 20),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy_3", 10),
                                                                  Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy_3", 20),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy_3", 10),
                                                                  Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
@@ -261,8 +261,8 @@ namespace VR
                 },
                  new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Pumkin", 1),
-                                                                 Tuple.Create("Ghost", 1)}
+                    monsterData = new List<Tuple<string, int>> { 
+                                                                 Tuple.Create("Ghost", 2)}
                 },
                 new SpawnPhaseInfo
                 {
