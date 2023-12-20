@@ -91,8 +91,6 @@ namespace VR
                     for (int i = 0; i < count; i++)
                     {
                         GameObject spawnedMonster = Instantiate(monsterPrefabs[GetMonsterIndex(monsterType)], firstSpawnPoint.position, Quaternion.identity);
-
-
                         IMonster monster = spawnedMonster.GetComponent<IMonster>();
                         yield return new WaitForSeconds(0.1f);
                         monster.Spawn(spawnIndex);
@@ -242,18 +240,18 @@ namespace VR
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 3),
-                                                                 Tuple.Create("SheildEnemy_3", 3),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("ShortEnemy_3", 10),
+                                                                 Tuple.Create("SheildEnemy_3", 10),
                                                                  Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy_3", 5),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy_3", 10),
                                                                  Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy_3", 5),
+                    monsterData = new List<Tuple<string, int>> { Tuple.Create("SheildEnemy_3", 10),
                                                                  Tuple.Create("Ghost", 1)}
                 },
                 new SpawnPhaseInfo
@@ -263,8 +261,8 @@ namespace VR
                 },
                  new SpawnPhaseInfo
                 {
-                    monsterData = new List<Tuple<string, int>> { Tuple.Create("Pumkin", 1),
-                                                                 Tuple.Create("Ghost", 1)}
+                    monsterData = new List<Tuple<string, int>> { 
+                                                                 Tuple.Create("Ghost", 2)}
                 },
                 new SpawnPhaseInfo
                 {
